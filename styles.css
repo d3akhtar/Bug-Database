@@ -1,0 +1,103 @@
+body{
+    padding: 30px 50px 50px 0px;
+    background-color: white;
+}
+
+h1{
+    padding-left: 30px;
+    font-size: 70px;
+    font-family: monospace;
+}
+
+button{
+    display: block;
+}
+
+input{
+    display: inline;
+}
+
+.header-separator{
+    width: 120%;
+    height: 30px;
+    margin: 30px -10px;
+    background-color: red;
+}
+
+.header{
+    display: flex;
+    margin-left: 40px;
+}
+
+.header-img{
+    width: 10%;
+    height: 10%;
+    display: inline;
+}
+
+.header-title{
+    margin: 20px;
+    top: 0px;
+}
+
+.login-details-input{
+    font-size: large;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding: 50px;
+    background-color: aliceblue;
+    margin: auto;
+    border: 3px solid black;
+    width: 350px;
+    height: 200px;
+    box-shadow: 5px;
+}
+
+.input-area{
+    display: block;
+    padding: 5px;
+}
+
+label{
+    display: inline-block;
+    width: 120px;
+}
+
+.login-button{
+    margin-left: 125px;
+}
+
+input{
+    display: inline-block;
+}
+
+a{
+    display: inline-block;
+}
+
+.forgot{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    top: 0;
+    color: grey;
+}
+
+.login-help{
+    padding: 20px;
+    width: 100%;
+    height: 100px;
+    display: block;
+}
+
+.forgot{
+    display: block;
+    width: 50%;
+}
+
+.new-user{
+    width: 65%;
+    height: 30px;
+    margin-top: 10px;
+    display: block;
+}
