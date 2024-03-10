@@ -2,31 +2,33 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <title>Bug Database Project</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     </head>
-    <body>
-        <div class="header">
-            <img src="Images/kingbug.png" class="header-img">
-            <h1 class="header-title">Bug Report System (BRS)</h1>
-        </div>
-        <div class="header-separator"></div>
-        <div class="login-details-input">
-            <div class="input-area" id="username">
-                <label>User Name: </label><input>
-            </div>
-            <div class="input-area" id="password">
-                <label>Password: </label><input type="password">
-            </div>
-            <button type="submit" class="login-button">Log in</button>
-            <div class="login-help">
-                <a href="" class="forgot">*Forgot password</a>
-                <div class="new-user">
-                    <a href="">New User?</a>
-                    <em>Sign up now!</em>
+
+    <body class="bug-bg">
+        <div class="container">
+            <h1 class="center text-center text-uppercase font-weight-bold text-white header"><i class="bi bi-bug-fill"></i> ~ Bug Database ~ <i class="bi bi-bug-fill"></i></h1>
+            <div class="login-section">
+                <div class="login-header-image"></div>
+                <div class="login-input-section">
+                    <h2 class="text-dark font-weight-bold"><b>Login</b></h2>
+                    <div class="input-group-prepend">
+                        <input type="text" class="input-field form-control" placeholder="Username" id="username">
+                        <input type="text" class="input-field form-control" placeholder="Password" id="password">
+                        <div class="container d-flex justify-content-between login-flex-section">
+                            <div class="remember-me"><input type="checkbox" class="d-inline-block"><p class="d-inline-block"><span class="remember-me-text">Remember Me</span></p></div>
+                            <a href="" class="text-right"><span class="forgot-password-text">Forgot Password</span></a>
+                        </div>
+                        <button type="submit" value="submit" class="btn btn-dark login-button">Login</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
     </body>
 </html>
