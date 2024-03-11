@@ -10,7 +10,7 @@ body{
 
 .bug-bg{
     background-image: linear-gradient(rgba(150, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
-                  url("Images/bugbg.jpeg");
+                  url("Images/bugbg.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -28,7 +28,7 @@ body{
     width: 100%;
     height: 43%;
     background-image: linear-gradient(rgba(150, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
-                  url("Images/bugbg.jpeg");
+                  url("Images/bugbg.png");
     background-repeat: no-repeat;
     background-attachment: contain;
     background-size: cover;
