@@ -24,11 +24,29 @@
                             <div class="remember-me"><input type="checkbox" class="d-inline-block"><p class="d-inline-block"><span class="remember-me-text">Remember Me</span></p></div>
                             <a href="" class="text-right"><span class="forgot-password-text">Forgot Password</span></a>
                         </div>
-                        <button type="submit" value="submit" class="btn btn-dark login-button">Login</button>
+                        <button id="redirect" type="submit" value="submit" class="btn btn-dark login-button">Login</button>
                     </div>
                 </div>
             </div>
         </div>
         <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+        <script src="credentials.js"></script>
+        
+        <script>
+            document.getElementById('redirect').addEventListener('click', function() {
+                var enteredUsername = document.getElementById('username').value;
+                var enteredPassword = document.getElementById('password').value;
+                var isValidCredentials = userCredentials.some(function(credentials) {
+                    return credentials.username === enteredUsername && credentials.password === enteredPassword;
+                });
+                if (isValidCredentials) {
+                    window.location.href = "home.html";
+                }
+                else {
+                    window.location.href = "index.html";
+                }
+            });
+        </script>
+        
     </body>
 </html>
