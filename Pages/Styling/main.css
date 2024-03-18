@@ -1,0 +1,50 @@
+body {
+    background-image: url("Images\bugbg.jpeg");
+}
+
+h1 {
+    margin-left: 40px
+}
+
+.menu-icon {
+    margin: 15px;
+}
+
+.bar1, .bar2, .bar3 {
+    background-color: black;
+    margin-top: 5px;
+    width: 35px;
+    height: 5px;
+}
+
+.separator {
+    background-color: black;
+    position: fixed;
+    width: 4px;
+    height: 100%;
+    left: 80px;
+    top: 0;
+}
+
+.button-container {
+    margin-top: 10px;
+}
+
+.mainButton {
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 16px;
+    margin-left: 40px;
+    border-width: 0px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(94, 9, 9);
+}
+
+.button-container {
+    display: inline-flex;
+    justify-content: center;
+    width: auto;
+    height: auto;
+}
