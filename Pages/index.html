@@ -17,15 +17,17 @@
                 <div class="login-header-image"></div>
                 <div class="login-input-section">
                     <h2 class="text-dark font-weight-bold"><b>Login</b></h2>
-                    <div class="input-group-prepend">
-                        <input type="text" class="input-field form-control" placeholder="Username" id="username">
-                        <input type="text" class="input-field form-control" placeholder="Password" id="password">
-                        <div class="container d-flex justify-content-between login-flex-section">
-                            <div class="remember-me"><input type="checkbox" class="d-inline-block"><p class="d-inline-block"><span class="remember-me-text">Remember Me</span></p></div>
-                            <a href="resetPassword.html" class="text-right"><span class="forgot-password-text">Forgot Password</span></a>
+                    <form action="../Scripts/login.php" method="post">
+                        <div class="input-group-prepend">
+                            <input type="text" class="input-field form-control" placeholder="Username" id="username">
+                            <input type="text" class="input-field form-control" placeholder="Password" id="password">
+                            <div class="container d-flex justify-content-between login-flex-section">
+                                <div class="remember-me"><input type="checkbox" class="d-inline-block"><p class="d-inline-block"><span class="remember-me-text">Remember Me</span></p></div>
+                                <a href="resetPassword.html" class="text-right"><span class="forgot-password-text">Forgot Password</span></a>
+                            </div>
+                            <button id="redirect" type="submit" value="submit" class="btn btn-dark login-button">Login</button>
                         </div>
-                        <button id="redirect" type="submit" value="submit" class="btn btn-dark login-button">Login</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

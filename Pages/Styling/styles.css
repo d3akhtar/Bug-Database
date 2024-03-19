@@ -16,6 +16,14 @@ body{
     background-size: cover;
 }
 
+.bug-bg-contain{
+    background-image: linear-gradient(rgba(150, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
+                  url("../../Images/bugbg.png");
+    background-repeat: no-repeat;
+    background-attachment: contain;
+    background-size: cover;
+}
+
 .login-section{
     box-shadow: rgba(255, 255, 255, 0.8) 0 0 20px 5px;
     outline-width: 5px;
@@ -64,4 +72,26 @@ body{
     text-decoration: underline;
     color:rgba(150, 0, 0, 0.85);
     text-decoration-color: rgba(150, 0, 0, 0.85);
+}
+
+.main-page-section{
+    padding: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-page-info{
+    
+}
+
+.text-section-info{
+    width: 450px;
+    height: 100px
+}
+
+.text-section-about h3{
+    font-size: 30px;
+}
+.text-section-about p{
+    font-size: 20px;
 }
