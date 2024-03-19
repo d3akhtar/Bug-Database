@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0", user-scalable="yes">
         <link rel="stylesheet" href="Styling/main.css">
         <title>Main Page</title>
     </head>
     <body>
-        <div class="menu-icon">
-            <div class="bar1"></div>
-            <div class="bar2"></di<div class="separator"></div>
-            <div class="bar3"></div>
+        <div class="separator"></div>
+        <div class="title-container">
+            <div class="menu-icon" onclick="displayMenu()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <h1 class="bugHeader">Bug Reports</h1>
         </div>
-        <div class="separator">
-        <h1>Bug Reports</h1>
-        <div class ="button-container">
-            <button class="mainButton" type="button">Add Bug Report</button>
-            <button class="mainButton" type ="button"> View Completed Sprints</button>
+        <div class="container2">
+            <button type="button" class="mainButton">Add Bug Report</button>
+            <button type="button" class="mainButton">View Completed Sprints</button>
+            <div class="tableContainer">
+                <button type="button" class="tableButton">Sort By:</button>
+                <button type="button" class="tableButton">View: Unresolved</button>
+            </div>
         </div>
     </body>
 </html>

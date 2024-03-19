@@ -1,50 +1,87 @@
 body {
-    background-image: url("Images\bugbg.jpeg");
-}
-
-h1 {
-    margin-left: 40px
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: url("C:\Users\micha\Downloads\BugDatabase\Bug-Database\Images\back.jpeg") center/cover;
 }
 
 .menu-icon {
-    margin: 15px;
+    padding: 10px;
+    /* border: 4px solid green; */
+}
+
+.menu-icon:hover {
+    background-color: rgb(231, 231, 224);
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    /*border: 4px solid black;*/
+}
+
+.container2 {
+    position: relative;
+    /*border: 4px solid blue;*/
+    top: 40px;
+    left: 100px;
+    width: 960px;
+    height: 100vh;
+}
+
+.tableContainer {
+    position: absolute;
+    top: 80px;
+    left: 70px;
+    /*border: 4px solid green;*/
+    width: 800px;
+    height: 400px;    
+}
+
+.bugHeader {
+    position: absolute;
+    left: 115px;
+}
+
+button {
+    background-color: brown;
+    color: white;
+    border-radius: 16px;
+    border-width: 1px;
+    border-bottom: black;
+}
+
+button:hover {background-color: rgb(139, 70, 70)}
+
+button:active {
+    box-shadow: 0 0.5px #665;
+    transform: translateY(0.5px);
+}
+
+.mainButton {
+    width: 200px;
+    height: 40px;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.tableButton {
+    width: 160px;
+    height: 35px;
+    margin-right: 12px;
+    font-size: 14px;
+}
+
+.separator {
+    position: fixed;
+    top: 0px;
+    left: 80px;
+    width: 4px;
+    height: 100vh;
+    background-color: black;
 }
 
 .bar1, .bar2, .bar3 {
     background-color: black;
-    margin-top: 5px;
+    margin: 5px;
     width: 35px;
     height: 5px;
-}
-
-.separator {
-    background-color: black;
-    position: fixed;
-    width: 4px;
-    height: 100%;
-    left: 80px;
-    top: 0;
-}
-
-.button-container {
-    margin-top: 10px;
-}
-
-.mainButton {
-    align-items: center;
-    width: 200px;
-    height: 40px;
-    border-radius: 16px;
-    margin-left: 40px;
-    border-width: 0px;
-    font-size: 16px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(94, 9, 9);
-}
-
-.button-container {
-    display: inline-flex;
-    justify-content: center;
-    width: auto;
-    height: auto;
 }
