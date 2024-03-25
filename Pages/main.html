@@ -1,28 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width", initial-scale="1.0", user-scalable="yes">
-        <link rel="stylesheet" href="Styling/main.css">
-        <title>Main Page</title>
-    </head>
-    <body>
-        <div class="separator"></div>
-        <div class="title-container">
-            <div class="menu-icon" onclick="displayMenu()">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-            </div>
-            <h1 class="bugHeader">Bug Reports</h1>
-        </div>
-        <div class="container2">
-            <button type="button" class="mainButton">Add Bug Report</button>
-            <button type="button" class="mainButton">View Completed Sprints</button>
-            <div class="tableContainer">
-                <button type="button" class="tableButton">Sort By:</button>
-                <button type="button" class="tableButton">View: Unresolved</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styling/main.css">
+    <title>Main Page</title>
+</head>
+<body class="bg">
+    <div class="container">
+        <div class="dropdown" onclick="toggleMenu()">
+            <!-- <div class="menu-icon" id="menu"> -->
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            <!-- </div> -->
+            <div class="dropdown-content" id="menu">
+                <a id="home" href="home.html">Home</a>
+                <a id="logout" href="index.html">Log Out</a>
+                <a>Placeholder</a>
             </div>
         </div>
-    </body>
+        <h1>Bug Report Database</h1>
+        <div class="mainButton">
+            <button>Add Bug Report</button>
+            <button>View Complete Sprints</button>
+        </div>
+        <div class="tableCont">
+            <button>Sort By:</button>
+            <button>View: Unresolved</button>
+        </div>
+    </div>
+    <div class="separator"></div>
+    <script>
+        x = document.getElementById("menu");
+        x.style.display = "none";
+        
+        function toggleMenu() {
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+            else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</body>
 </html>
