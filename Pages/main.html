@@ -8,20 +8,21 @@
 </head>
 <body class="bg">
     <div class="container">
-        <div class="dropdown" onclick="toggleMenu()">
-            <!-- <div class="menu-icon" id="menu"> -->
+        <div class="dropdown">
+            <div class="menu-icon" id="menuIcon">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
-            <!-- </div> -->
+            </div>
             <div class="dropdown-content" id="menu">
                 <a id="home" href="home.html">Home</a>
                 <a id="logout" href="index.html">Log Out</a>
                 <a>Placeholder</a>
+                <a>Placeholder</a>
             </div>
         </div>
         <h1>Bug Report Database</h1>
-        <div class="mainButton">
+        <div class= "mainButton">
             <button>Add Bug Report</button>
             <button>View Complete Sprints</button>
         </div>
@@ -32,17 +33,20 @@
     </div>
     <div class="separator"></div>
     <script>
-        x = document.getElementById("menu");
-        x.style.display = "none";
-        
-        function toggleMenu() {
-            if (x.style.display === "none") {
-                x.style.display = "block";
+        const menu = document.getElementById("menu");
+        const menu_icon = document.getElementById("menuIcon");
+        menu.style.visibility = "hidden";
+
+        document.addEventListener("click", (event) => {
+            if (event.target === menu_icon) {
+                menu.style.visibility = menu.style.visibility === "hidden" ? "visible" : "hidden";
             }
             else {
-                x.style.display = "none";
+                if (menu.style.visibility === "visible") {
+                    menu.style.visibility = "hidden";
+                }
             }
-        }
+        });
     </script>
 </body>
 </html>
