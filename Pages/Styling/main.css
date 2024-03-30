@@ -103,8 +103,8 @@ button:active {
     position: absolute;
     top: 240px;
     left: 10%;
+    box-shadow: 0 0 10px white;
     display: inline-block;
-    border: 4px solid orange;
 }
 
 table {
