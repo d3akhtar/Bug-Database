@@ -103,6 +103,7 @@ button:active {
     position: absolute;
     top: 240px;
     left: 10%;
+    border: 2px solid white;
     box-shadow: 0 0 10px white;
     display: inline-block;
 }
@@ -111,9 +112,38 @@ table {
     padding: 12px;
 }
 
-td {
+table {
+    border-collapse: collapse;
+    margin: 15px;
+}
+
+td, th {
+    padding: 8px;
+    padding-right: 110px;
     color: white;
-    font-size: 36px;
+    border: 1px solid black;
+}
+
+th {
+    font-size: 28px;
+    text-align: left;
+    background: rgb(88, 25, 25);
+}
+
+tr {
+    font-size: 18px;
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(88, 25, 25);
+}
+
+tr:nth-child(even) {
+    background-color: rgb(154, 25, 25);
+}
+
+tr:hover {
+    background-color: red;
 }
 
 .container {
