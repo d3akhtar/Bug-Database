@@ -45,18 +45,8 @@
     <script>
         const menu = document.getElementById("menu");
         const menu_icon = document.getElementById("menuIcon");
-        menu.style.visibility = "hidden";
 
-        document.addEventListener("click", (event) => {
-            if (event.target == menu_icon) {
-                menu.style.visibility = menu.style.visibility === "hidden" ? "visible" : "hidden";
-            }
-            else {
-                if (menu.style.visibility === "visible") {
-                    menu.style.visibility = "hidden";
-                }
-            }
-        });
+        
 
         function moveToAddReport() {
             window.location.href = "addReport.html";
