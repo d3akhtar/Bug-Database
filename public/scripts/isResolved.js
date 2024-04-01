@@ -1,0 +1,1 @@
+// this should figure out if a bug is resolved or not and render the bugView page accordingly

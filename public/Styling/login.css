@@ -1,0 +1,97 @@
+body{
+    padding: 30px 50px 50px 0px;
+    background-color: white;
+    overflow-y: hidden;
+}
+
+.header{
+    font-size: 60px;
+}
+
+.bug-bg{
+    background-image: linear-gradient(rgba(150, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+                  url("../../Images/bugbg.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.bug-bg-contain{
+    background-image: linear-gradient(rgba(150, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
+                  url("../../Images/bugbg.png");
+    background-repeat: no-repeat;
+    background-attachment: contain;
+    background-size: cover;
+}
+
+.login-section{
+    box-shadow: rgba(255, 255, 255, 0.8) 0 0 20px 5px;
+    outline-width: 5px;
+    margin: 50px auto;
+    width: 450px;
+    height: 600px;
+}
+
+.login-header-image{
+    width: 100%;
+    height: 43%;
+    background-image: linear-gradient(rgba(150, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
+                  url("../../Images/bugbg.png");
+    background-repeat: no-repeat;
+    background-attachment: contain;
+    background-size: cover;
+}
+
+.login-input-section{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 1000;
+    padding: 1.5em 2.5em;
+    background-color: white;
+    width: 100%;
+    height: 57%;
+}
+
+.login-flex-section{
+    margin-bottom: .7em;
+}
+
+.input-field{
+    margin: 1em 0;
+    border-radius: 30px;
+}
+
+.login-button{
+    width: 100%;
+}
+
+.remember-me-text{
+    margin: auto .3em;
+}
+
+.forgot-password-text{
+    text-decoration: underline;
+    color:rgba(150, 0, 0, 0.85);
+    text-decoration-color: rgba(150, 0, 0, 0.85);
+}
+
+.main-page-section{
+    padding: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-page-info{
+    
+}
+
+.text-section-info{
+    width: 450px;
+    height: 100px
+}
+
+.text-section-about h3{
+    font-size: 30px;
+}
+.text-section-about p{
+    font-size: 20px;
+}
