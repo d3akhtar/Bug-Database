@@ -24,7 +24,7 @@
         <h1>Bug Report Database</h1>
         <div class= "mainButtonCont">
             <button class="mainButton" onClick="moveToAddReport()">Add Bug Report</button>
-            <button class="mainButton">View Complete Sprints</button>
+            <button class="mainButton" onClick="moveToGraph()">View Complete Sprints</button>
             <button class="adminButton">Admin</button>
         </div>
         <div class="tableCont">
@@ -77,6 +77,10 @@
 
         function moveToAddReport() {
             window.location.href = "addReport.html";
+        }
+
+        function moveToGraph() {
+            window.location.href = "graph.html"
         }
     </script>
 </body>

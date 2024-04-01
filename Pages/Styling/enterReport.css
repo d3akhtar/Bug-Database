@@ -5,8 +5,7 @@ body {
 }
 
 .bg {
-    background-image: linear-gradient(rgba(150, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
-    url("../../Images/bugbg.png");
+    background-image: url("../../Images/back4.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -17,8 +16,7 @@ h1 {
 }
 
 .formCont {
-    background-image: linear-gradient(rgba(150, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
-                  url("../../Images/bugbg.png");
+    background-image: linear-gradient(rgba(72, 10, 95, 0.9), rgba(0, 0, 0, 0.8));
     background-repeat: no-repeat;
     background-attachment: contain;
     background-size: cover;

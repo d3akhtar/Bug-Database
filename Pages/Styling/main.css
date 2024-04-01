@@ -3,8 +3,7 @@ body {
 }
 
 .bg {
-    background-image: linear-gradient(rgba(150, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
-                  url("../../Images/bugbg.png");
+    background-image: url("../../Images/back2.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -94,7 +93,7 @@ button:active {
 }
 
 .tableCont {
-    background-image: linear-gradient(rgba(150, 0, 0, 0.9), rgba(0, 0, 0, 0.8)),
+    background-image: linear-gradient(rgba(173, 45, 45, 0.9), rgba(57, 30, 20, 0.8)),
                   url("../../Images/bugbg.png");
     background-repeat: no-repeat;
     background-attachment: contain;
