@@ -99,9 +99,9 @@ section {
   /* Larger width */
   max-width: 800px;
   /* Maximum width */
-  height: 80%;
+  height: 90%;
   /* Larger height */
-  max-height: 600px;
+  max-height: 800px;
   /* Maximum height */
   overflow-y: auto;
   /* Enable vertical scroll if needed */
@@ -123,4 +123,8 @@ section {
 
 .exit-button:hover {
   color: #333;
+}
+
+.update {
+  background-color: red;
 }

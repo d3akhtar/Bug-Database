@@ -43,7 +43,7 @@ function drawSubGraph(xValue, yValue) {
       if (!subBox.classList.contains('active')) {
         subBox.classList.add('active');
         subBox.style.width = '90%'; 
-        subBox.style.height = '90%'; 
+        subBox.style.height = '80%'; 
         subBoxChart.width = subBox.clientWidth;
         subBoxChart.height = subBox.clientHeight;
         var ctx = subBoxChart.getContext('2d');
