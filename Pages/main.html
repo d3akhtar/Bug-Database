@@ -53,6 +53,10 @@
         function moveToGraph() {
             window.location.href = "graph.html"
         }
+        
+        function moveToViewBug() {
+            window.location.href = "viewBug.html"
+        }
     </script>
     <script>
         $(document).ready(function() {
@@ -78,7 +82,7 @@
                     
                     document.getElementById("bug-table")
                     .innerHTML +=
-                    `<tr>
+                    `<tr onClick="moveToViewBug()">
                     <td>${bug_number}</td>
                     <td>${title}</td>
                     <td>${date_add}</td>
