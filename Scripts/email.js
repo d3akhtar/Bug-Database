@@ -1,25 +1,28 @@
 var nodemailer = require('nodemailer');
+var webMail = 'bugByte406@gmail.com';
+var webMailPass = 'the password';   // Find secure way to hold this (hash,bycrypt)
+var subjectList = ['Bug #id has been resolved', 'Bug #id has been modified'];
 
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'youremail@gmail.com',
-    pass: 'yourpassword'
+    user: webMail,
+    pass: webMailPass
   }
 });
 
 var singleSend = {
-  from: 'youremail@gmail.com',
+  from: webMail,
   to: 'myfriend@yahoo.com',
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
+  subject: subjectList[0],
+  text: 'Glad, that was over!'
 };
 
 var multipleSend = {
-  from: 'youremail@gmail.com',
+  from: webMail,
   to: 'myfriend@yahoo.com, myotherfriend@yahoo.com',
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
+  subject: subjectList[1],
+  text: 'Here are some changes, view the site for more details: '
 };
 
 transporter.sendMail(mailOptions, function(error, info){
