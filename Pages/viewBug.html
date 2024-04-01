@@ -35,12 +35,14 @@
 
         function GenerateCommentBlocks(){
             console.log("Generating comments...");
+            let bug_number = localStorage.getItem("bug_number");
+            console.log(bug_number);
             $.ajax({
                 async: false,
                 cache: false,
                 type: "GET",
                 url: "../Scripts/php/getComments.php",
-                data: {bug_number: "1"}
+                data: {bug_number: bug_number}
             }).done(function ( response ){
                 console.log(response);
                 let first = true;
