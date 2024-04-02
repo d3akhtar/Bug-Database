@@ -2,7 +2,8 @@
   "dependencies": {
     "express": "^4.19.2",
     "express-session": "^1.18.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.24.3",
