@@ -4,7 +4,7 @@ Requirements:
 - SQL Server 8.0.36
 	https://dev.mysql.com/downloads/installer/
 - Node js
-	npm install -g npm
+	node-v20.10.0-x64.msi
 
 Setup:
 - After setting up your SQL account, input your username and password into the "userSQL.json" file
