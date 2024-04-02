@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to fetch comments from the server
     function fetchComments() {
         const order = 'ORDER BY b.dateModified DESC';
-        const url = `/getCommentsForBug?param=${encodeURIComponent(order)}`;
+        const url = `/getBugsTable?param=${encodeURIComponent(order)}`;
 
         return fetch(url)
             .then(response => {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // Function to check bug status asynchronously
+    // Function to check bug status asynchronously (written in file, just don't know how to call it)
     async function checkBugStatus(bugId) {
         try {
             const response = await fetch(`/getBugStatus/${bugId}`);
@@ -45,9 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     td.innerText = item[key];
                     tr.appendChild(td);
                 }
-                console.log(item["bug_id"]);
-                const stat = await checkBugStatus(item["bug_id"]);
-                console.log(stat);
                 container.appendChild(tr);
             }
         });

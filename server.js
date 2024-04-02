@@ -312,7 +312,7 @@ app.post('/sprintDetails', (req, res) => {
     });
 });
 
-app.get('/getCommentsForBug', (req, res) => {
+app.get('/getBugsTable', (req, res) => {
   // Query to fetch comments from the database
 	const order = req.query.param;
   const sql = `SELECT 
@@ -332,6 +332,37 @@ JOIN
 
   // Execute the query
   con.query(sql + " " + order, (error, results) => {
+    if (error) {
+      console.error('Error fetching comments:', error);
+      res.status(500).json({ error: 'Failed to fetch comments' });
+    } else {
+      // Send the comments as a JSON response
+      res.json(results);
+    }
+  });
+});
+
+app.get('/getCommentsForBug', (req, res) => {
+  // Query to fetch comments from the database
+	const id = req.query.param;
+  const sql = `SELECT
+    u.username AS author_username,
+    c.title AS comment_title,
+    c.body AS comment_body,
+    LEFT(DATE(c.dateAdded), 10) AS comment_dateAdded
+FROM
+    comments c
+JOIN
+    users u ON c.author_id = u.id
+JOIN
+    bugs b ON c.bug_id = b.id
+WHERE
+    c.bug_id = ${id}
+ORDER BY
+    b.dateAdded ASC`;
+
+  // Execute the query
+  con.query(sql, (error, results) => {
     if (error) {
       console.error('Error fetching comments:', error);
       res.status(500).json({ error: 'Failed to fetch comments' });
