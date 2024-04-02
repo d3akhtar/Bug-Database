@@ -1,6 +1,6 @@
 body{
     padding: 30px 50px 50px 0px;
-    background-color: white;
+    background-color: rgb(249, 247, 247);
     overflow-y: hidden;
 }
 
@@ -9,43 +9,24 @@ body{
 }
 
 .bug-bg{
-    background-image: url("../../Images/back4.jpg");
+    background-image: url("../../Images/backDrop.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
-.bug-bg-contain{
-    background-image: linear-gradient(rgba(79, 11, 93, 0.9), rgba(0, 0, 0, 0.8)),
-                  url("../../Images/bugbg.png");
-    background-repeat: no-repeat;
-    background-attachment: contain;
-    background-size: cover;
-}
-
 .login-section{
-    box-shadow: rgba(255, 255, 255, 0.8) 0 0 20px 5px;
     outline-width: 5px;
     margin: 50px auto;
-    width: 450px;
-    height: 600px;
-}
-
-.login-header-image{
-    width: 100%;
-    height: 43%;
-    background-image: linear-gradient(rgba(122, 59, 167, 0.9), rgba(0, 0, 0, 0.8)),
-                  url("../../Images/bugbg.png");
-    background-repeat: no-repeat;
-    background-attachment: contain;
-    background-size: cover;
+    width: 650px;
+    height: 800px;
 }
 
 .login-input-section{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 1000;
     padding: 1.5em 2.5em;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.2);
     width: 100%;
     height: 57%;
 }
@@ -57,10 +38,12 @@ body{
 .input-field{
     margin: 1em 0;
     border-radius: 30px;
+    height: 50px;
 }
 
 .login-button{
     width: 100%;
+    height: 50px;
 }
 
 .remember-me-text{
@@ -79,18 +62,14 @@ body{
     justify-content: space-between;
 }
 
-.main-page-info{
-    
-}
-
 .text-section-info{
     width: 450px;
     height: 100px
 }
 
 .text-section-about h3{
-    font-size: 30px;
+    font-size: 40px;
 }
 .text-section-about p{
-    font-size: 20px;
+    font-size: 30px;
 }
