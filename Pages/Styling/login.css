@@ -17,9 +17,9 @@ body{
 
 .login-section{
     outline-width: 5px;
-    margin: 50px auto;
     width: 650px;
     height: 800px;
+    margin-top: 150px;
 }
 
 .login-input-section{

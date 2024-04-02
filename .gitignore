@@ -35,3 +35,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# SQL Server files
+*.mdf
+*.ldf
