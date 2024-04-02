@@ -271,6 +271,29 @@ function getBugReports(startDate, endDate, callback) {
     });
 }
 
+app.get('/getBugStatus/:bugId', (req, res) => {
+    const bugId = req.params.bugId;
+
+    // Query the database to fetch the bug with the specified ID
+    const sql = `SELECT id, dateResolved FROM bugs WHERE id = ?`;
+    con.query(sql, [bugId], (error, results) => {
+        if (error) {
+            console.error('Error fetching bug details:', error);
+            res.status(500).json({ error: 'Failed to fetch bug details' });
+        } else {
+            if (results.length === 0) {
+                // Bug with the specified ID not found
+                res.status(404).json({ error: 'Bug not found' });
+            } else {
+                // Bug found, return whether dateResolved is null or not
+                const bug = results[0];
+                const isResolved = bug.dateResolved !== null;
+                res.json({ bugId: bug.id, isResolved: isResolved });
+            }
+        }
+    });
+});
+
 // Add a route to handle the AJAX request for retrieving bug reports
 app.post('/sprintDetails', (req, res) => {
     const { startDate, endDate } = req.body;
@@ -305,8 +328,7 @@ app.get('/getCommentsForBug', (req, res) => {
 FROM 
     bugs b
 JOIN 
-    comments c ON b.id = c.bug_id
-AND b.dateResolved IS NULL`;
+    comments c ON b.id = c.bug_id AND b.dateAdded = c.dateAdded`;
 
   // Execute the query
   con.query(sql + " " + order, (error, results) => {
@@ -318,6 +340,55 @@ AND b.dateResolved IS NULL`;
       res.json(results);
     }
   });
+});
+
+app.post('/checkCurrentPassword', (req, res) => {
+    const { currentPassword } = req.body;
+    const userId = req.session.userId;
+    const isLoggedIn = req.session.isLoggedIn;
+
+	console.log("server here");
+    if (!isLoggedIn){
+	console.log("not logged in");
+	res.sendStatus(401); // Unauthorized - Current password is incorrect
+	return;
+    }
+    const sql = `SELECT * FROM users WHERE id = ? AND password = ?`;
+    con.query(sql, [userId, currentPassword], (err, results) => {
+	if (err) {
+	    console.error('Error executing query:', err);
+	    return;
+	}
+	if (results.length > 0){
+	console.log("user found");
+        	res.sendStatus(200); // Current password is correct
+		return;
+	}
+	res.sendStatus(404); // Current password is correct	
+    });
+});
+
+app.post('/createPassword', (req, res) => {
+    const { newPassword } = req.body;
+    const userId = req.session.userId;
+    const isLoggedIn = req.session.isLoggedIn;
+
+	console.log("changing password server here");
+    if (!isLoggedIn){
+	console.log("not logged in");
+	res.sendStatus(401); // Unauthorized - Current password is incorrect
+	return;
+    }
+	console.log("yeet1");
+    const sql = `UPDATE users SET password = ? WHERE id = ?`;
+    con.query(sql, [newPassword, userId], (err, results) => {
+	if (err) {
+	    console.error('Error executing query:', err);
+		res.sendStatus(400);
+	    return;
+	}
+	res.sendStatus(200);
+    });
 });
 
 app.use(express.static('public'));
