@@ -16,7 +16,7 @@
                 <div class="bar"></div>
             </div>
             <div class="dropdown-content" id="menu">
-                <a id="home" href="home.html">Home</a>
+                <a id="home" href="index.html">Home</a>
                 <a id="logout" href="login.html">Log Out</a>
                 <a>Placeholder</a>
                 <a>Placeholder</a>
@@ -53,6 +53,11 @@
         function moveToGraph() {
             window.location.href = "graph.html"
         }
+        
+        function moveToViewBug(bug_number) {
+            localStorage.setItem("bug_number", bug_number);
+            window.location.href = "viewBug.html"
+        }
     </script>
     <script>
         $(document).ready(function() {
@@ -65,7 +70,7 @@
                 async: false,
                 cache: false,
                 type: "GET",
-                url: "../Scripts/getBugs.php",
+                url: "../Scripts/php/getBugs.php",
                 data: {id: "1"}
             }).done(function ( response ){
                 console.log(response);
@@ -78,7 +83,7 @@
                     
                     document.getElementById("bug-table")
                     .innerHTML +=
-                    `<tr>
+                    `<tr onClick="moveToViewBug(${bug_number})">
                     <td>${bug_number}</td>
                     <td>${title}</td>
                     <td>${date_add}</td>
