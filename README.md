@@ -3,8 +3,8 @@ The Bug Report System is a program designed to let users log bugs/errors into a 
 Requirements:
 - SQL Server 8.0.36
 	https://dev.mysql.com/downloads/installer/
-- Node js
-	node-v20.10.0-x64.msi
+- Node js v20.10.0-x64
+	https://nodejs.org/en/download
 
 Setup:
 - After setting up your SQL account, input your username and password into the "userSQL.json" file
