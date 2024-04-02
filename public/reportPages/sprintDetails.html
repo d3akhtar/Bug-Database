@@ -4,19 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sprint Information</title>
+    <link rel="stylesheet" href="../Styling/graph.css">
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Sprint Information</h1>
-    <form id="dateForm">
-        <label for="startDate">Start Date:</label>
-        <input type="date" id="startDate" name="startDate" required><br><br>
-        
-        <label for="endDate">End Date:</label>
-        <input type="date" id="endDate" name="endDate" required><br><br>
-        
-        <button type="button" id="submitDatesBtn">Submit</button>
-    </form>
+<nav>
+  <div class="name">BugBytes</div>
+  <ul>
+    <li>
+      <a href="../home.html">
+        <span style="font-size: large; position: static;"><i class="bi bi-house-door"></i></span>
+        HOME
+      </a>
+    </li>
+    <li>
+      <a href="resetPassword.html">
+        <span style="font-size: large; position: static;"><i class="bi bi-gear"></i></span>
+        SETTINGS
+      </a>
+    </li>
+    <li>
+      <a href="home.html">
+        <span style="font-size: large; position: static;"><i class="bi bi-box-arrow-right"></i></span>
+        LOG OUT
+      </a>
+    </li>
+  </ul>
+</nav>
 
-    <script src="../scripts/sprintInfo.js"></script>
+<!-- Your page content -->
+<section id="section2">
+  <div class="graph-container" id="graphContainer">
+    <canvas id="myChart"></canvas>
+  </div>
+  
+<div id="dateInputContainer">
+  <label for="startDate">Start Date:</label>
+  <input type="date" id="startDate">
+  <label for="endDate">End Date:</label>
+  <input type="date" id="endDate">
+  <button id="submitDatesBtn" onclick="updatedChart()">Update Chart</button>
+</div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="../scripts/sprintInfo.js"></script>
 </body>
 </html>

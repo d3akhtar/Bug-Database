@@ -47,11 +47,11 @@
         <div class= "mainButtonCont">
             <button class="mainButton" onClick="moveToAddReport()">Add Bug Report</button>
             <button class="mainButton" onClick="moveToProgressView()">View Progress</button>
-            <button class="adminButton">Admin</button>
+            <button class="adminButton" onClick="moveToAdminPanel()">Admin</button>
         </div>
         <div class="tableCont">
             <button class="tableButton">Sort By:</button>
-            <button class="tableButton">View: Unresolved</button>
+            <button class="tableButton">View: In Progress</button>
             <table id="bugTable">
 		<tr>
 			<td>Report ID</td>
@@ -88,6 +88,10 @@
         function moveToProgressView() {
             window.location.href = "reportPages/sprintDetails.html";
         }
+	
+	function moveToAdminPanel() {
+	    window.location.href = "admin.html";
+	}
     </script>
 	<script src="scripts/loadHomeReports.js"></script>
 </body>
