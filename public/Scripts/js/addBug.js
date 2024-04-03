@@ -13,6 +13,7 @@ document.getElementById('addReport').addEventListener('click', () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         console.log(xhr.responseText);
+        window.location.href = "/Pages/main.html";
         alert("Report added successfully");
         // Optionally, do something with the response
       } else {
@@ -23,5 +24,4 @@ document.getElementById('addReport').addEventListener('click', () => {
     }
   };
   xhr.send(JSON.stringify({ title: bugTitle, description: bugDescription }));
-  window.location.href("main.html");
 });

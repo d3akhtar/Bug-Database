@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Function to fetch comments from the server
-    const id = document.getElementById("bugId").textContent;
+    const id = localStorage.getItem("bug_id");
+    document.getElementById("bug-number-display").innerText = id;
     function fetchComments() {
         const url = `/getCommentsForBug?param=${encodeURIComponent(id)}`;
 
