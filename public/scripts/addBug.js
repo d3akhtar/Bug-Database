@@ -1,4 +1,5 @@
-document.getElementById('addReport').addEventListener('click', () => {
+document.getElementById('addForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
     const bugTitle = document.getElementById('bugTitle').value;
     const bugDescription = document.getElementById('bugDescription').value;
 
