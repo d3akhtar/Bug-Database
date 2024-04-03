@@ -13,35 +13,22 @@
             <form>
                 <div class="inputBlock">
                     <div class="lab">
-                        <label>Report #: </label>
+                        <label>Bug Title: </label>
                     </div>
                     <div class="inp">
-                        <input class="reportNum" type="text" id="reportNum" name="reportNum" placeholder="Enter the report type" required>
+                        <input id="bugTitle" type="text">
                     </div>
                 </div>
                 <div class="inputBlock">
                     <div class="lab">
-                        <label>Type of Bug: </label>
+                        <label>Description: </label>
                     </div>
                     <div class="inp">
-                        <select class="bugType" id="bugType" name="bugType">
-                            <option value="t1">Type 1</option>
-                            <option value="t2">Type 2</option>
-                            <option value="t3">Type 3</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="inputBlock">
-                    <div class="lab">
-                        <label>Summary of Bug: </label>
-                    </div>
-                    <div class="inp">
-                        <textarea class="summary" id="summary" name="summary" placeholder="Enter description of report"></textarea>
+                        <textarea class="summary" name="summary" placeholder="Enter description of report" id="bugDescription"></textarea>
                     </div>
                 </div>
                 <div class="buttons">
-                    <button>Submit</button>
+                    <button id="addReport" onclic="movePage()">Submit</button>
                     <button onclick="movePage()">Cancel</button>
                 </div>
             </form>
@@ -52,5 +39,6 @@
             window.location.href = "main.html";
         }
     </script>
+    <script src="../Scripts/js/addBug.js"></script>
 </body>
 </html>
