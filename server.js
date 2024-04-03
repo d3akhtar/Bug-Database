@@ -58,7 +58,7 @@ con.connect((err) => {
   console.log("Connected to MySQL server");
 
   // Check if the database exists
-  con.query("SHOW DATABASES LIKE 'bugs'", (err, results) => {
+  con.query("SHOW DATABASES LIKE 'bugsForBugBytes'", (err, results) => {
     if (err) {
       console.error("Error checking if database exists:", err);
       throw err;
@@ -66,20 +66,20 @@ con.connect((err) => {
 
     if (results.length === 0) {
       // Database doesn't exist, create it
-      con.query("CREATE DATABASE bugs", (err) => {
+      con.query("CREATE DATABASE bugsForBugBytes", (err) => {
         if (err) {
           console.error("Error creating database:", err);
           throw err;
         }
-        console.log("Database 'bugs' created");
+        console.log("Database 'bugsForBugBytes' created");
 
         // Connect to the 'bugs' database
-        con.changeUser({ database: "bugs" }, (err) => {
+        con.changeUser({ database: "bugsForBugBytes" }, (err) => {
           if (err) {
             console.error("Error connecting to 'bugs' database:", err);
             throw err;
           }
-          console.log("Connected to 'bugs' database");
+          console.log("Connected to 'bugsForBugBytes' database");
 
           // Call a function to create tables and fill data if needed
           createTablesAndFillData();
@@ -87,12 +87,12 @@ con.connect((err) => {
       });
     } else {
       // Database exists, connect to it directly
-      con.changeUser({ database: "bugs" }, (err) => {
+      con.changeUser({ database: "bugsForBugBytes" }, (err) => {
         if (err) {
           console.error("Error connecting to 'bugs' database:", err);
           throw err;
         }
-        console.log("Connected to 'bugs' database");
+        console.log("Connected to 'bugsForBugBytes' database");
       });
     }
   });
@@ -112,7 +112,7 @@ function createTablesAndFillData() {
       id INT PRIMARY KEY AUTO_INCREMENT,
       username VARCHAR(8) NOT NULL UNIQUE,
       email VARCHAR(255) UNIQUE,
-      password NULL,
+      password TEXT,
       isAdmin BOOLEAN NOT NULL
     )`,
     `CREATE TABLE comments (
@@ -806,7 +806,7 @@ app.post('/addBugAndComment', (req, res) => {
 });
 
 // Login endpoint
-app.post('/login', (req, res) => {
+app.post('/login', (req, res) => { /// I need to make this not case sensitive for username
   const { username, password, rememberMe } = req.body;
 
   const sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
@@ -833,6 +833,21 @@ app.post('/login', (req, res) => {
       res.status(401).send("Invalid username or password");
     }
   });
+});
+
+app.post('/logout', (req, res) => {
+    // Perform logout actions here, such as destroying session, clearing cookies, etc.
+   	console.log("logging out"); 
+    // For example, if you're using sessions with express-session middleware
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err);
+            res.sendStatus(500); // Internal Server Error
+            return;
+        }
+        // Redirect the user to the login page after successful logout
+        res.redirect('/login.html');
+    });
 });
 
 // back to login
