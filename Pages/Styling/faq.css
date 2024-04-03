@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.bug-bg{
+    background-image: url("../../Images/backDrop.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.top-bar {
+    background-color: rgba(64,76,92); 
+    color: white; 
+    text-align: left;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    width: 100%; 
+}
+
+.top-bar h1 {
+    margin: 0; /* Remove default margin for the heading */
+    line-height: 50px; /* Vertically center the text */
+    text-align: right;
+    padding-right: 1030px;
+    font-size: 15px;
+}
+
+
+.nav-button {
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px; /* Add spacing between buttons */
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: none;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.nav-button:first-child {
+    margin-left: 0; /* Remove left margin from first button */
+}
+
+.FAQ {
+    text-align: center;
+}
+
+.FAQ h1 {
+    color: white;
+    padding-top: 35px;
+    margin: 0; /* Remove default margin for the heading */
+}
+
+
+.accordion-item {
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+.accordion-title {
+    background-color: rgba(249, 249, 249, 0.8); /* Adjust opacity */
+    color: #333;
+    cursor: pointer;
+    padding: 15px;
+    font-weight: bold;
+    border-radius: 10px; 
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+/* Show content when accordion title is clicked */
+.accordion-item.active .accordion-content {
+    display: block;
+}
