@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-const reportDetails = ["author", "title", "body", "dateAdded"];
+const reportDetails = ["author", "title", "description", "dateAdded"];
 
   // Call fetchComments when the page is loaded
     fetchComments()

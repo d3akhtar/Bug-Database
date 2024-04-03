@@ -1,9 +1,10 @@
 document.getElementById('resolveBugButton').addEventListener('click', async () => {
     event.preventDefault(); // Prevent default form submission
 
-    const bugId = document.getElementById('bugId').value;
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
+    const bugId = document.getElementById('bugId').innerText;
+    const title = document.getElementById('inputTitle').value;
+    const description = document.getElementById('inputDescription').value;
+	console.log(bugId);
 
     const response = await fetch('/resolveBugAndComment', {
         method: 'POST',
@@ -16,6 +17,8 @@ document.getElementById('resolveBugButton').addEventListener('click', async () =
     if (response.ok) {
         // Bug resolved and comment added successfully
         console.log('Bug resolved and comment added successfully');
+	document.getElementById('updateBugButton').style.display = 'none';
+	document.getElementById('resolveBugButton').style.display = 'none';
     } else {
         // Error handling
         console.error('Failed to resolve bug and add comment');
