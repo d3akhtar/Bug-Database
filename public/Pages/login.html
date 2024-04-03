@@ -20,34 +20,15 @@
                         <input type="text" class="input-field form-control" placeholder="Username" id="username">
                         <input type="password" class="input-field form-control" placeholder="Password" id="password">
                         <div class="container d-flex justify-content-between login-flex-section">
-                            <div class="remember-me"><input type="checkbox" class="d-inline-block"><p class="d-inline-block"><span class="remember-me-text">Remember Me</span></p></div>
+                            <div class="remember-me"><input type="checkbox" id="rememberMe" class="d-inline-block"><p class="d-inline-block"><span class="remember-me-text">Remember Me</span></p></div>
                             <a href="resetPassword.html" class="text-right"><span class="forgot-password-text">Forgot Password</span></a>
                         </div>
-                        <button id="redirect" type="submit" value="submit" class="btn btn-dark login-button">Login</button>
+                        <button id="loginBtn" type="submit" value="submit" class="btn btn-dark login-button">Login</button>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="../Scripts/js/passwords.js"></script>
         <script src="../bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
-        <script>
-            document.getElementById('redirect').addEventListener('click', function() {
-                var enteredUsername = document.getElementById('username').value;
-                var enteredPassword = document.getElementById('password').value;
-
-                var isValidCredentials = userCredentials.some(function(credentials) {
-                    return credentials.username === enteredUsername && credentials.password === enteredPassword;
-                });
-
-                // Use localHost to keep track of cookies for remember me feature
-
-                if (isValidCredentials) {
-                    window.location.href = "main.html";
-                }
-                else {
-                    window.location.href = "login.html";
-                }
-            });
-        </script>
+        <script src="../Scripts/js/login.js"></script>
     </body>
 </html>

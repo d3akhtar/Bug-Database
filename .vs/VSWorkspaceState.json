@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\public",
-    "\\public\\Pages"
+    "\\public\\Pages",
+    "\\public\\Pages\\Styling",
+    "\\public\\Scripts",
+    "\\public\\Scripts\\js"
   ],
-  "SelectedNode": "\\public\\Pages\\index.html",
+  "SelectedNode": "\\public\\Scripts\\js\\loadHomeReports.js",
   "PreviewInSolutionExplorer": false
 }

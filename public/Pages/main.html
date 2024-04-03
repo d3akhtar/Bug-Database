@@ -41,14 +41,16 @@
             <button class="mainButton" onClick="moveToGraph()">View Complete Sprints</button>
             <button class="adminButton">Admin</button>
         </div>
-        <div class="tableCont">
+        <div class="tableCont" id="bugTable">
             <button class="tableButton">Sort By:</button>
             <button class="tableButton">View: Unresolved</button>
-            <table id="bug-table">
+            <table>
                 <tr>
-                    <th>Bug Number</th>
+                    <th>Report ID</th>
                     <th>Title</th>
-                    <th>Date Added</th>
+                    <th>Description</th>
+                    <th>Date Created</th>
+                    <th>Last Modified</th>
                     <th>Status</th>
                 </tr>
             </table>
@@ -72,39 +74,6 @@
             window.location.href = "viewBug.html"
         }
     </script>
-    <script>
-        $(document).ready(function () {
-            GenerateBugTableRows();
-        });
-
-        function GenerateBugTableRows() {
-            console.log("Generating bugs...");
-            $.ajax({
-                async: false,
-                cache: false,
-                type: "GET",
-                url: "../Scripts/php/getBugs.php",
-                data: { id: "1" }
-            }).done(function (response) {
-                console.log(response);
-                response.forEach(element => {
-
-                    let bug_number = element.bug_number;
-                    let title = element.title;
-                    let date_add = element.date_add;
-                    let status = element.status;
-
-                    document.getElementById("bug-table")
-                        .innerHTML +=
-                        `<tr onClick="moveToViewBug(${bug_number})">
-                        <td>${bug_number}</td>
-                        <td>${title}</td>
-                        <td>${date_add}</td>
-                        <td>${status}</td>
-                        </tr>`;
-                });
-            })
-        }
-    </script>
+    <script src="../Scripts/js/loadHomeReports.js"></script>
 </body>
 </html>

@@ -564,7 +564,7 @@ app.post('/addBugAndComment', (req, res) => {
       }
 
       console.log("Comment added");
-      res.redirect('/home.html');
+      res.redirect('/Pages/main.html');
     });
   });
 });
@@ -611,7 +611,7 @@ app.get('/checkLogin', (req, res) => {
 // Dashboard endpoint (protected route)
 app.get('/dashboard', (req, res) => {
   if (req.session.isLoggedIn) {
-    res.redirect('/Pages/home.html');
+    res.redirect('/Pages/main.html');
   } else {
     res.redirect('/Pages/login.html'); // Redirect to login page if not logged in
   }
