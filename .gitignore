@@ -39,3 +39,7 @@ Thumbs.db
 # SQL Server files
 *.mdf
 *.ldf
+
+# Other stuff
+
+userSQL.json
