@@ -11,7 +11,7 @@ document.getElementById('addReport').addEventListener('click', () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           console.log(xhr.responseText);
-	  alert("Report added successfully");
+	  window.location.href = "../home.html"
           // Optionally, do something with the response
         } else {
 	alert("error adding bug");

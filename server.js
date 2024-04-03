@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const session = require('express-session');
 const os = require('os');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const hostname = '0.0.0.0';
@@ -41,6 +42,8 @@ try {
 }
 
 const userData = readData;
+
+// some con query thing that sends the emails to a fetched list of users
 
 // Create a MySQL connection
 const con = mysql.createConnection({
@@ -155,6 +158,56 @@ function createTablesAndFillData() {
     });
   });
 
+}
+
+const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'your_email@gmail.com', // Your email address
+        pass: 'your_password' // Your email password
+    }
+});
+
+function sendEmailToUsers(users, subject, message) {
+    // Iterate over each user
+    users.forEach(user => {
+        // Create email message
+        const mailOptions = {
+            from: 'bugByte406@gmail.com', // Sender's email address
+            to: user.email, // Receiver's email address
+            subject: subject,
+            text: message
+        };
+
+        // Send email
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
+    });
+}
+
+function getEmailsForBug(bugId, callback) {
+  const query = `
+    SELECT DISTINCT u.email
+    FROM users u
+    JOIN comments c ON u.id = c.author_id
+    WHERE c.bug_id = ?;
+  `;
+  
+  con.query(query, [bugId], (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      callback(err, null);
+      return;
+    }
+
+    const emails = results.map(result => result.email);
+    callback(null, emails);
+  });
 }
 
 function calculateBugStats(bugs, startDate, endDate, startingNum) {
@@ -722,7 +775,7 @@ app.post('/resolveBugAndComment', (req, res) => {
                         });
                         return;
                     }
-
+		    sendEmailToUsers(getEmailsForBug(bugId), `Report#${bugId}: New Activity`, "This report has been resolved, please do not reply.");
                     console.log('Bug resolved and comment added successfully');
                     res.status(200).send('Bug resolved and comment added successfully');
                 });
@@ -748,6 +801,7 @@ app.post('/updateBug', (req, res) => {
     const updateBug = 'UPDATE bugs SET dateModified = CURRENT_TIMESTAMP WHERE id = ?';
     const insertComment = 'INSERT INTO comments(bug_id, author_id, title, body) VALUES (?, ?, ?, ?)';
 
+    const participants = 'SELECT * FROM '
     con.query(updateBug, [bugId], (updateErr, result) => {
         if (updateErr) {
             console.error('Error updating bug report:', err);
@@ -760,7 +814,7 @@ app.post('/updateBug', (req, res) => {
                 res.status(500).send('Error adding comment');
                 return;
             }
-
+	    sendEmailToUsers(getEmailsForBug(bugId), `Report#${bugId}: New Activity`, "This report has recieved new activity, please do not reply.");
             res.status(200).send('Bug report updated and comment added successfully');
         });
     });

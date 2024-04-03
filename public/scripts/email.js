@@ -17,14 +17,14 @@ var singleSend = {
   subject: subjectList[0],
   text: 'Glad, that was over!'
 };
-
+/*
 var multipleSend = {
   from: webMail,
   to: 'myfriend@yahoo.com, myotherfriend@yahoo.com',
   subject: subjectList[1],
   text: 'Here are some changes, view the site for more details: '
 };
-
+*/
 transporter.sendMail(mailOptions, function(error, info){
   if (error) {
     console.log(error);
