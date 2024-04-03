@@ -190,7 +190,7 @@ function sendEmailToUsers(users, subject, message) {
     });
 }
 
-function getEmailsForBug(bugId, callback) {
+function getEmailsForBug(bugId, subject, message) {
   const query = `
     SELECT DISTINCT u.email
     FROM users u
@@ -201,12 +201,13 @@ function getEmailsForBug(bugId, callback) {
   con.query(query, [bugId], (err, results) => {
     if (err) {
       console.error('Error executing query:', err);
-      callback(err, null);
       return;
     }
 
     const emails = results.map(result => result.email);
-    callback(null, emails);
+    console.log(emails);
+    // sendEmailToUsers(emails, subject, message);
+    return;
   });
 }
 
@@ -775,7 +776,7 @@ app.post('/resolveBugAndComment', (req, res) => {
                         });
                         return;
                     }
-		    sendEmailToUsers(getEmailsForBug(bugId), `Report#${bugId}: New Activity`, "This report has been resolved, please do not reply.");
+		    getEmailsForBug(bugId, `Report#${bugId}: New Activity`, "This report has been resolved, please do not reply.");
                     console.log('Bug resolved and comment added successfully');
                     res.status(200).send('Bug resolved and comment added successfully');
                 });
@@ -814,7 +815,7 @@ app.post('/updateBug', (req, res) => {
                 res.status(500).send('Error adding comment');
                 return;
             }
-	    sendEmailToUsers(getEmailsForBug(bugId), `Report#${bugId}: New Activity`, "This report has recieved new activity, please do not reply.");
+	    getEmailsForBug(bugId, `Report#${bugId}: New Activity`, "This report has recieved new activity, please do not reply.");
             res.status(200).send('Bug report updated and comment added successfully');
         });
     });
