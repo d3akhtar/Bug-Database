@@ -19,6 +19,7 @@ document.getElementById('resolveBugButton').addEventListener('click', async () =
         console.log('Bug resolved and comment added successfully');
 	document.getElementById('updateBugButton').style.display = 'none';
 	document.getElementById('resolveBugButton').style.display = 'none';
+	window.location.href = "../home.html"
     } else {
         // Error handling
         console.error('Failed to resolve bug and add comment');
