@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\Pages\\Styling\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\Pages\\Styling\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
@@ -62,11 +74,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "login.css",
+              "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\Pages\\Styling\\login.css",
+              "RelativeDocumentMoniker": "public\\Pages\\Styling\\login.css",
+              "ToolTip": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\Pages\\Styling\\login.css",
+              "RelativeToolTip": "public\\Pages\\Styling\\login.css",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-04-03T04:12:06.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\Pages\\index.html",
+              "RelativeDocumentMoniker": "public\\Pages\\index.html",
+              "ToolTip": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\Pages\\index.html",
+              "RelativeToolTip": "public\\Pages\\index.html",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-04-03T04:09:18.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "server.js",
+              "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\server.js",
+              "RelativeDocumentMoniker": "server.js",
+              "ToolTip": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\server.js",
+              "RelativeToolTip": "server.js",
+              "ViewState": "AQIAAJkBAAAAAAAAAAAqwKgBAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-03T03:54:52.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -79,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "viewBug.html",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\viewBug.html",
               "RelativeDocumentMoniker": "Pages\\viewBug.html",
@@ -87,12 +138,11 @@
               "RelativeToolTip": "Pages\\viewBug.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-02T04:14:18.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T04:14:18.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "applicationhost.config",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\.vs\\Bug-Database\\config\\applicationhost.config",
               "RelativeDocumentMoniker": ".vs\\Bug-Database\\config\\applicationhost.config",
@@ -100,12 +150,11 @@
               "RelativeToolTip": ".vs\\Bug-Database\\config\\applicationhost.config",
               "ViewState": "AQIAAEIAAAAAAAAAAAAAAC8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-04-02T04:13:54.702Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T04:13:54.702Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "login.css",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\Styling\\login.css",
               "RelativeDocumentMoniker": "Pages\\Styling\\login.css",
@@ -113,12 +162,11 @@
               "RelativeToolTip": "Pages\\Styling\\login.css",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABQAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-04-02T04:06:21.43Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T04:06:21.43Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "FAQ.html",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\FAQ.html",
               "RelativeDocumentMoniker": "Pages\\FAQ.html",
@@ -126,12 +174,11 @@
               "RelativeToolTip": "Pages\\FAQ.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-02T04:03:41.541Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T04:03:41.541Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "graph.css",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\Styling\\graph.css",
               "RelativeDocumentMoniker": "Pages\\Styling\\graph.css",
@@ -139,12 +186,11 @@
               "RelativeToolTip": "Pages\\Styling\\graph.css",
               "ViewState": "AQIAADMAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-04-02T03:58:06.137Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T03:58:06.137Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "main.html",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\main.html",
               "RelativeDocumentMoniker": "Pages\\main.html",
@@ -152,12 +198,11 @@
               "RelativeToolTip": "Pages\\main.html",
               "ViewState": "AQIAAAsAAAAAAAAAAAAAAA8AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-02T03:52:55.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T03:52:55.999Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "graph.html",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\graph.html",
               "RelativeDocumentMoniker": "Pages\\graph.html",
@@ -165,12 +210,11 @@
               "RelativeToolTip": "Pages\\graph.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-02T03:52:01.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T03:52:01.266Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "addUser.html",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\addUser.html",
               "RelativeDocumentMoniker": "Pages\\addUser.html",
@@ -178,12 +222,11 @@
               "RelativeToolTip": "Pages\\addUser.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-02T03:50:02.219Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T03:50:02.219Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "login.html",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\login.html",
               "RelativeDocumentMoniker": "Pages\\login.html",
@@ -191,12 +234,11 @@
               "RelativeToolTip": "Pages\\login.html",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-02T03:49:52.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T03:49:52.361Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "admin.html",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\admin.html",
               "RelativeDocumentMoniker": "Pages\\admin.html",
@@ -204,12 +246,11 @@
               "RelativeToolTip": "Pages\\admin.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-02T03:49:39.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T03:49:39.59Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "addReport.html",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\addReport.html",
               "RelativeDocumentMoniker": "Pages\\addReport.html",
@@ -217,12 +258,11 @@
               "RelativeToolTip": "Pages\\addReport.html",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-02T03:49:21.96Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T03:49:21.96Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "createPassword.html",
               "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\Pages\\createPassword.html",
               "RelativeDocumentMoniker": "Pages\\createPassword.html",
@@ -230,8 +270,7 @@
               "RelativeToolTip": "Pages\\createPassword.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-02T03:49:19.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T03:49:19.068Z"
             }
           ]
         }

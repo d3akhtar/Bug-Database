@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Pages",
-    "\\Pages\\Styling"
+    "\\public",
+    "\\public\\Pages"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\public\\Pages\\index.html",
   "PreviewInSolutionExplorer": false
 }
