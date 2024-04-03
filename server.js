@@ -1,7 +1,7 @@
 const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
-const mysql = require('mysql2');
+const mysql = require('mysql');
 const path = require('path');
 const fs = require('fs');
 const session = require('express-session');
@@ -146,13 +146,15 @@ function createTablesAndFillData() {
 
   // Execute insert user query
   insertUserQuery.forEach(query => {
-  con.query(query, (err, results) => {
-    if (err) {
-      console.error("Error inserting user:", err);
-      throw err;
-    }
-    console.log("query executed:", results);
+    con.query(query, (err, results) => {
+      if (err) {
+        console.error("Error inserting user:", err);
+        throw err;
+      }
+      console.log("query executed:", results);
+    });
   });
+
 }
 
 function calculateBugStats(bugs, startDate, endDate, startingNum) {
