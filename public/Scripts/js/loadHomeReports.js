@@ -42,8 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
             for (const item of items) {
                 console.log(item);
                 const tr = document.createElement('tr');
+                tr.onclick = function () {
+                    console.log("clicked");
+                    console.log(item.bug_id);
+                    localStorage.setItem("bug_id", item.bug_id);
+                    window.location.href = "/Pages/viewBug.html";
+                }
                 for (const key in item) {
                     const td = document.createElement('td');
+                    console.log(key);
                     td.innerText = item[key];
                     tr.appendChild(td);
                 }
