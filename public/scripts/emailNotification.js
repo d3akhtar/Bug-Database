@@ -1,0 +1,1 @@
+// a function that sends emails with a list of receipients, a title, and body

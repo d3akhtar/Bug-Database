@@ -46,7 +46,7 @@ const userData = readData;
 const con = mysql.createConnection({
   host: "localhost",
   user: userData.username,
-  password: userData.password,
+  password: userData.password
 });
 
 // Connect to MySQL server
@@ -99,7 +99,6 @@ con.connect((err) => {
 });
 
 // Function to create tables and fill data if needed
-// Function to create tables and fill data if needed
 function createTablesAndFillData() {
   // Queries to create tables
   const createQueries = [
@@ -112,8 +111,8 @@ function createTablesAndFillData() {
     `CREATE TABLE users (
       id INT PRIMARY KEY AUTO_INCREMENT,
       username VARCHAR(8) NOT NULL UNIQUE,
-      email VARCHAR(255) NOT NULL UNIQUE,
-      password TEXT NOT NULL,
+      email VARCHAR(255) UNIQUE,
+      password NULL,
       isAdmin BOOLEAN NOT NULL
     )`,
     `CREATE TABLE comments (
@@ -130,7 +129,9 @@ function createTablesAndFillData() {
   ];
 
   // Query to insert user
-  const insertUserQuery = `INSERT INTO users(username, email, password, isAdmin) VALUES("admin1", "user@gmail.com", "1234", TRUE)`;
+  const insertUserQuery = [`INSERT INTO users(username, email, password, isAdmin) VALUES("admin1", "user@gmail.com", "1234", TRUE)`,
+			   `INSERT INTO users(id, username, email, password, isAdmin) VALUES(0, "null", null, null, false)`,
+			   `UPDATE users SET id=0 WHERE username="null"`];
 
   // Execute create table queries
   createQueries.forEach(query => {
@@ -144,12 +145,13 @@ function createTablesAndFillData() {
   });
 
   // Execute insert user query
-  con.query(insertUserQuery, (err, results) => {
+  insertUserQuery.forEach(query => {
+  con.query(query, (err, results) => {
     if (err) {
       console.error("Error inserting user:", err);
       throw err;
     }
-    console.log("Default Admin Created:", results);
+    console.log("query executed:", results);
   });
 }
 
@@ -371,6 +373,238 @@ ORDER BY
       res.json(results);
     }
   });
+});
+
+function isAdmin(userId) {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM users WHERE id=${userId} AND isAdmin = TRUE`;
+        con.query(sql, [userId], (err, results) => {
+            if (err) {
+                console.error('Error executing query:', err);
+                reject(err);
+                return;
+            }
+            resolve(results.length > 0);
+        });
+    });
+}
+
+function isTakenUsername(username) {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM users WHERE username="${username}"`;
+        con.query(sql, [username], (err, results) => {
+            if (err) {
+                console.error('Error executing query:', err);
+                reject(err);
+                return;
+            }
+            resolve(results.length > 0);
+        });
+    });
+}
+
+function isTakenEmail(email) {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM users WHERE email="${email}"`;
+        con.query(sql, [email], (err, results) => {
+            if (err) {
+                console.error('Error executing query:', err);
+                reject(err);
+                return;
+            }
+            resolve(results.length > 0);
+        });
+    });
+}
+
+app.post('/addUser', (req, res) => {
+
+    const { email, username, password, confirmPassword, adminSetting } = req.body;
+    const userId = req.session.userId;
+    const isLoggedIn = req.session.isLoggedIn;
+
+	console.log("server here");
+    if (!isLoggedIn){
+	console.log("not logged in");
+	res.sendStatus(401); // Unauthorized - Current password is incorrect
+	return;
+    }
+	isAdmin(userId)
+	.then(isAdmin => {
+		if (isAdmin){
+			isTakenUsername(username)
+			.then(isTakenUsername => {
+					if (isTakenUsername){
+						console.log("username taken");
+			       			res.sendStatus(409); // username taken
+						return;						
+					}
+				isTakenEmail(email)
+				.then(isTakenEmail => {
+					if (isTakenEmail){
+						console.log("email taken");
+			       			res.sendStatus(410); // username taken
+						return;						
+					}					
+			const sql = `INSERT INTO users(username, email, password, isAdmin) VALUES("${username}", "${email}", "${password}", ${adminSetting})`;
+			con.query(sql, (err, results) => {
+				
+					if (err) {
+						console.log("query error");
+						console.error('Error executing query:', err);
+						return;
+					}
+					console.log("user added");
+			       		res.sendStatus(200); // user added
+					return;
+			}); })
+				.catch(error => {
+					console.error('Error:', error);
+					res.sendStatus(500);
+				});
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					res.sendStatus(500);
+				});
+		} else {
+			res.sendStatus(404); // admin with given id not found
+			return;
+		}
+	})
+	.catch(error => {
+		console.error('Error:', error);
+		res.sendStatus(500);
+	});
+});
+
+// should probably make this not change the user's own password
+app.post('/removeUser', (req, res) => {
+
+    const { username } = req.body;
+    const userId = req.session.userId;
+    const isLoggedIn = req.session.isLoggedIn;
+
+	console.log("server here");
+    if (!isLoggedIn){
+	console.log("not logged in");
+	res.sendStatus(401); // Unauthorized - Current password is incorrect
+	return;
+    }
+	isAdmin(userId)
+	.then(isAdmin => {
+		if (isAdmin){
+			isTakenUsername(username)
+			.then(isTakenUsername => {
+					if (!isTakenUsername){
+						console.log("no user exists");
+			       			res.sendStatus(404); // username doesn't exist
+						return;						
+					}
+
+		const check = `SELECT * FROM users WHERE username = "${username}" AND id = "${userId}"`;
+		con.query(check, (err, results) => {
+				
+				if (err) {
+					console.log("query error");
+					console.error('Error executing query:', err);
+					return;
+				}
+				if (results.length > 0){
+					console.log("cannot remove yourself");
+		       			res.sendStatus(400); // user not removed
+					return;
+				}
+		const sql = `UPDATE comments c JOIN users u ON c.author_id = u.id SET c.author_id = 0 WHERE u.username = "${username}"`;
+		const sql2 = `DELETE FROM users WHERE username = "${username}"`;
+		con.query(sql, (err, results) => {
+				
+				if (err) {
+					console.log("query error");
+					console.error('Error executing query:', err);
+					return;
+				}
+				console.log("updated user comments");
+		       		res.sendStatus(200); // user added
+				return;
+			});
+		con.query(sql2, (err, results) => {
+				
+				if (err) {
+					console.log("query error");
+					console.error('Error executing query:', err);
+					return;
+				}
+				console.log("user removed");
+		       		res.sendStatus(200); // user added
+				return;
+			});
+			});
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					res.sendStatus(500);
+				});
+		} else {
+			res.sendStatus(401); // admin with given id not found
+			return;
+		}
+	})
+	.catch(error => {
+		console.error('Error:', error);
+		res.sendStatus(500);
+	});
+});
+
+app.post('/changeUserPassword', (req, res) => {
+
+    const { username, newPassword, confirmPassword } = req.body;
+    const userId = req.session.userId;
+    const isLoggedIn = req.session.isLoggedIn;
+
+	console.log("server here");
+    if (!isLoggedIn){
+	console.log("not logged in");
+	res.sendStatus(401); // Unauthorized - Current password is incorrect
+	return;
+    }
+	isAdmin(userId)
+	.then(isAdmin => {
+		if (isAdmin){
+			isTakenUsername(username)
+			.then(isTakenUsername => {
+					if (!isTakenUsername){
+						console.log(username);
+						console.log("no user exists");
+			       			res.sendStatus(404); // username doesn't exist
+						return;						
+					}
+		const sql = `UPDATE users SET password = "${newPassword}" WHERE username = "${username}"`;
+		con.query(sql, (err, results) => {
+				
+				if (err) {
+					console.log("query error");
+					console.error('Error executing query:', err);
+					return;
+				}
+				console.log("user's password changed");
+		       		res.sendStatus(200); // user added
+				return;
+			});
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					res.sendStatus(500);
+				});
+		} else {
+			res.sendStatus(401); // admin with given id not found
+			return;
+		}
+	})
+	.catch(error => {
+		console.error('Error:', error);
+		res.sendStatus(500);
+	});
 });
 
 app.post('/checkCurrentPassword', (req, res) => {
