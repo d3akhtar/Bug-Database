@@ -1,4 +1,4 @@
-document.getElementById('resolveBug').addEventListener('click', async () => {
+document.getElementById('resolveBugButton').addEventListener('click', async () => {
     event.preventDefault(); // Prevent default form submission
 
     const bugId = document.getElementById('bugId').value;
