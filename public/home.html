@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styling/home.css">
-    <link rel="stylesheet" href="Styling/graph.css">
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--<link rel="stylesheet" href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css" />-->
+    <link rel="stylesheet" href="Styling/home.css">
+    <link rel="stylesheet" href="Styling/graph.css">
     <title>Home - BugBytes</title>
-<style>
-    </style>
 </head>
 <body class="bg">
     <nav>
@@ -37,22 +37,23 @@
         </ul>
     </nav>
     <div class="container">
-        <div class= "mainButtonCont">
+        <div class= "mainButtonCont" style="margin-top: -80px;">
             <button class="mainButton" onClick="moveToAddReport()">Add Bug Report</button>
             <button class="mainButton" onClick="moveToProgressView()">View Progress</button>
             <button class="adminButton" onClick="moveToAdminPanel()">Admin</button>
         </div>
-        <div class="tableCont">
-            <button class="tableButton">Sort By:</button>
-            <button class="tableButton">View: In Progress</button>
-            <table id="bugTable">
+        <div class="tableCont" id="bugTable">
+            <table id="tblData">
+
+                <thead>
 		<tr>
-			<td>Report ID</td>
-			<td>Title</td>
-			<td>Description</td>
-			<td>Date Created</td>
-			<td>Last Modified</td>
+                        <th style="width: auto;">ID</td>
+                        <th >Title</td>
+                        <th>Description</th>
+                        <th>Date Created</th>
+                        <th>Last Modified</th>
 		</tr>
+                </thead>
             </table>
         </div>
     </div>
@@ -69,7 +70,10 @@
 	    window.location.href = "admin.html";
 	}
     </script>
-	<script src="scripts/loadHomeReports.js"></script>
-<script src="scripts/transferToNewPage.js"></script>
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="scripts/loadHomeReports.js"></script>
+    <script src="scripts/transferToNewPage.js"></script>
+    <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+
 </body>
 </html>

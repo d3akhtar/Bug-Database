@@ -416,7 +416,7 @@ app.get("/getBugsTable", (req, res) => {
     LEFT(DATE(b.dateAdded), 10) AS bug_dateAdded,
     CASE
         WHEN b.dateResolved IS NULL THEN LEFT(DATE(b.dateModified), 10)
-        ELSE "Complete"
+        ELSE CONCAT(LEFT(DATE(b.dateResolved), 10), ' (Resolved)')
     END AS bug_dateModified
 FROM 
     bugs b
