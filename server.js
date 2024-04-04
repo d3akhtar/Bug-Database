@@ -165,11 +165,14 @@ function createTablesAndFillData() {
   });
 }
 
+const senderEmail = "bugByte406@gmail.com";
+const senderPassword = "!cps406yeet";
+
 const transporter = nodemailer.createTransport({
   service: "Gmail",
   auth: {
-    user: "your_email@gmail.com", // Your email address
-    pass: "your_password", // Your email password
+    user: senderEmail,
+    pass: senderPassword,
   },
 });
 
@@ -178,7 +181,7 @@ function sendEmailToUsers(users, subject, message) {
   users.forEach((user) => {
     // Create email message
     const mailOptions = {
-      from: "bugByte406@gmail.com", // Sender's email address
+      from: senderEmail, // Sender's email address
       to: user.email, // Receiver's email address
       subject: subject,
       text: message,
