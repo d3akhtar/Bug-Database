@@ -8,13 +8,6 @@ body{
     font-size: 40px;
 }
 
-.bug-bg{
-    background-image: url("../Images/backDrop.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-
 .login-section{
     outline-width: 5px;
     width: 420px;

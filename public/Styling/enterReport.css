@@ -4,29 +4,8 @@ body {
     font-size: 18px;
 }
 
-.bg {
-    background-image: url("../../Images/backDrop.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-
 h1 {
     text-align: center;
-}
-
-.formCont {
-    background-image: linear-gradient(rgba(72, 10, 95, 0.9), rgba(0, 0, 0, 0.8));
-    background-repeat: no-repeat;
-    background-attachment: contain;
-    background-size: cover;
-    padding: 25px;
-    margin: auto;
-    margin-top: 40px;
-    width: 800px;
-    height: 400px;
-    box-shadow: rgba(255, 255, 255, 0.8) 0 0 20px 5px;
-    border-radius: 52px;
 }
 
 .container {

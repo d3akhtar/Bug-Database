@@ -1,0 +1,42 @@
+.bg{
+    background-image: url("../Images/backDrop.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container {
+    position: relative;
+    border: 4px solid white;
+    background-color: grey;
+    margin-top: -8px;
+    width:100%;
+}
+
+button {
+    padding: 15px;
+    margin-left: 15px;
+    border-radius: 16px;
+    border-width: 3px;
+    color: white;
+    background-color:rgb(44, 42, 42);
+}
+
+button:hover {
+    background-color: rgb(121, 117, 117);
+    transform: translateY(0.5px);
+}
+
+.formCont {
+    background-image: linear-gradient(rgba(72, 10, 95, 0.9), rgba(0, 0, 0, 0.8));
+    background-repeat: no-repeat;
+    background-attachment: contain;
+    background-size: cover;
+    padding: 25px;
+    margin: auto;
+    margin-top: 40px;
+    width: 800px;
+    height: 400px;
+    box-shadow: rgba(255, 255, 255, 0.8) 0 0 20px 5px;
+    border-radius: 52px;
+}

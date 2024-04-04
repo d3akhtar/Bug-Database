@@ -1,6 +1,25 @@
+function extractIntegerFromString(str) {
+  // Regular expression to match the pattern [n]
+  var regex = /\[(\d+)\]/;
+  
+  // Match the pattern in the string
+  var match = str.match(regex);
+  
+  // Check if a match is found
+  if (match) {
+    // Extract the integer from the matched group
+    var integer = parseInt(match[1]);
+    return integer;
+  } else {
+    // No match found
+    return null;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   // Function to fetch comments from the server
-    const id = document.getElementById("bugId").textContent;
+    const elem = document.getElementById("bug-number-display").textContent;
+    const id = extractIntegerFromString(elem);
     function fetchComments() {
         const url = `/getCommentsForBug?param=${encodeURIComponent(id)}`;
 
@@ -38,38 +57,50 @@ const reportDetails = ["author", "title", "description", "dateAdded"];
         .then(async items => {
             // Get the container div
             const container = document.getElementById('comments');
+	    const details = document.getElementById("details")
 
             // Loop through the items array and create a div for each item
+		
 
 	for (let i = 0; i < items.length; i++) {
+		const item = items[i];
+		const {author_username, comment_title, comment_body, comment_dateAdded} = item;
 		if (i==0){	
-			let j = 0;
-			for (const key in items[i]) {
-				document.getElementById(reportDetails[j]).innerText = items[i][key];
-				j++;
-			}
+			details.innerHTML +=
+                        ` <div class="formCont bug-description-block" style="margin-top:80px; display:flex-box; width:70%; padding: 80px; border: 4px solid black; border-radius: 30px; color:white;">
+                            <div class="bug-description">
+                                <h2 "style="font-weight:700">${author_username}: [${comment_title}]</h2>
+                            </div>
+                            <br>
+                            <div class="bug-description">
+                                <h3>Description:</h3>
+                                <p>${comment_body}</p>
+                            </div><br><br>
+                        </div>`
 		} else{
 
 		/// this part is the one that fetches the comment data
+		// order: [author_username, comment_title, comment_body, comment_dateAdded]
 
 		const item = items[i];
-		const tr = document.createElement('tr');
-		for (const key in item) {
-			const td = document.createElement('td');
-			td.innerText = item[key];
-			tr.appendChild(td);
-		}
-		container.appendChild(tr);
-
+		const {author_username, comment_title, comment_body, comment_dateAdded} = item;
+			container.innerHTML +=
+                        `<div class="container contribution-block p-4 w-70">
+                            <h3 class="text-dark" style="font-weight:800; font-size: 40px;">${comment_title} - ${comment_dateAdded}</h3>
+                            <h4 class="text-dark">${author_username}</h4>
+                            <p>${comment_body}</p>
+                        </div>`
 		/// this part is the one that fetches the comment data
 }
 	}
 
 	const stat = await checkBugStatus(id);
 	if (!stat) {
-		// hide add and resolve buttons
-		document.getElementById('updateBugButton').style.display = 'block';
-		document.getElementById('resolveBugButton').style.display = 'block';
+		// show add and resolve buttons when not resolved
+		document.getElementById('contributeForm').style.display = 'block';
+	} else { 
+		// show resolved tag
+		document.getElementById('resolvedTag').style.display = 'block';
 	}
 });
 });

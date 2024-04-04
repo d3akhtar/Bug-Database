@@ -1,7 +1,27 @@
+function extractIntegerFromString(str) {
+  // Regular expression to match the pattern [n]
+  var regex = /\[(\d+)\]/;
+  
+  // Match the pattern in the string
+  var match = str.match(regex);
+  
+  // Check if a match is found
+  if (match) {
+    // Extract the integer from the matched group
+    var integer = parseInt(match[1]);
+    return integer;
+  } else {
+    // No match found
+    return null;
+  }
+}
+
+
 document.getElementById('updateBugButton').addEventListener('click', () => {
     event.preventDefault(); // Prevent default form submission
 
-    const bugId = document.getElementById('bugId').innerText;
+    const elem = document.getElementById("bug-number-display").textContent;
+    const bugId = extractIntegerFromString(elem);
     const title = document.getElementById('inputTitle').value;
     const description = document.getElementById('inputDescription').value;
 
