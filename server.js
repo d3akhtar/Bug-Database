@@ -200,7 +200,7 @@ function getEmailsForBug(bugId, subject, message) {
     SELECT DISTINCT u.email
     FROM users u
     JOIN comments c ON u.id = c.author_id
-    WHERE c.bug_id = ?;
+    WHERE c.bug_id = ? AND c.author_id != 0;
   `;
 
   con.query(query, [bugId], (err, results) => {
