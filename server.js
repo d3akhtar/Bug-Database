@@ -217,19 +217,19 @@ function getEmailsForBug(bugId, subject, message) {
 }
 
 function convertToUTCMinus4(timestampStr) {
-    // Parse the timestamp string into a Date object
-    const date = new Date(timestampStr);
+  // Parse the timestamp string into a Date object
+  const date = new Date(timestampStr);
 
-    // Get the timezone offset in minutes
-    const offsetInMinutes = date.getTimezoneOffset();
+  // Get the timezone offset in minutes
+  const offsetInMinutes = date.getTimezoneOffset();
 
-    // Convert the timezone offset to milliseconds
-    const offsetInMilliseconds = offsetInMinutes * 60 * 1000;
+  // Convert the timezone offset to milliseconds
+  const offsetInMilliseconds = offsetInMinutes * 60 * 1000;
 
-    // Adjust the date to UTC-4 by subtracting the offset
-    const dateUTCMinus4 = new Date(date.getTime() - offsetInMilliseconds);
+  // Adjust the date to UTC-4 by subtracting the offset
+  const dateUTCMinus4 = new Date(date.getTime() - offsetInMilliseconds);
 
-    return dateUTCMinus4;
+  return dateUTCMinus4;
 }
 
 function calculateBugStats(bugs, startDate, endDate, startingNum) {
@@ -251,14 +251,17 @@ function calculateBugStats(bugs, startDate, endDate, startingNum) {
   let bugsAdded = 0;
   let bugsResolved = 0;
   let netIncrease = 0;
-console.log(dateDiffInDays(startDate, endDate) + 1);
+  console.log(dateDiffInDays(startDate, endDate) + 1);
   let result = new Array(dateDiffInDays(startDate, endDate) + 1).fill(0);
 
   // Iterate over each bug
   //console.log(bugs);
   bugs.forEach((bug) => {
     // Calculate the difference in days between the bug's dateAdded and the start date
-    const daysSinceStart = dateDiffInDays(new Date(startDate), new Date(convertToUTCMinus4(bug.dateAdded)));
+    const daysSinceStart = dateDiffInDays(
+      new Date(startDate),
+      new Date(convertToUTCMinus4(bug.dateAdded)),
+    );
 
     // Increment the number of bugs added on the corresponding day
     result[daysSinceStart]++;
