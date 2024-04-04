@@ -411,11 +411,10 @@ app.get("/getBugsTable", (req, res) => {
     c.title AS comment_title,
     c.body AS comment_body,
     LEFT(DATE(b.dateAdded), 10) AS bug_dateAdded,
-    LEFT(DATE(b.dateModified), 10) AS bug_dateModified,
     CASE
-        WHEN b.dateResolved IS NOT NULL THEN LEFT(DATE(b.dateResolved), 10)
-        ELSE "In Progress"
-    END AS bug_resolved
+        WHEN b.dateResolved IS NULL THEN LEFT(DATE(b.dateModified), 10)
+        ELSE "Complete"
+    END AS bug_dateModified
 FROM 
     bugs b
 JOIN 
