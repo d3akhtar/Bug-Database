@@ -13,110 +13,110 @@ const port = 3000;
 
 // Configure session middleware
 app.use(session({
-  secret: 'your_secret_key',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { 
-    maxAge: (60 * 60 * 1000 * 24)
-  }
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: (60 * 60 * 1000 * 24)
+    }
 }));
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
-  secret: 'your_secret_key',
-  resave: false,
-  saveUninitialized: true
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: true
 }));
 
 // fetch username and password from json
 let readData;
 
 try {
-  const data = fs.readFileSync('./userSQL.json', 'utf8');
-  readData = JSON.parse(data);
+    const data = fs.readFileSync('./userSQL.json', 'utf8');
+    readData = JSON.parse(data);
 } catch (error) {
-  console.error('Error reading or parsing userSQL.json:', error);
+    console.error('Error reading or parsing userSQL.json:', error);
 }
 
 const userData = readData;
 
 // Create a MySQL connection
 const con = mysql.createConnection({
-  host: "localhost",
-  user: userData.username,
-  password: userData.password,
+    host: "localhost",
+    user: userData.username,
+    password: userData.password,
 });
 
 // Connect to MySQL server
 con.connect((err) => {
-  if (err) {
-    console.error("Error connecting to MySQL server:", err);
-    throw err;
-  }
-  console.log("Connected to MySQL server");
-
-  // Check if the database exists
-  con.query("SHOW DATABASES LIKE 'bugs'", (err, results) => {
     if (err) {
-      console.error("Error checking if database exists:", err);
-      throw err;
+        console.error("Error connecting to MySQL server:", err);
+        throw err;
     }
+    console.log("Connected to MySQL server");
 
-    if (results.length === 0) {
-      // Database doesn't exist, create it
-      con.query("CREATE DATABASE bugs", (err) => {
+    // Check if the database exists
+    con.query("SHOW DATABASES LIKE 'bugs'", (err, results) => {
         if (err) {
-          console.error("Error creating database:", err);
-          throw err;
-        }
-        console.log("Database 'bugs' created");
-
-        // Connect to the 'bugs' database
-        con.changeUser({ database: "bugs" }, (err) => {
-          if (err) {
-            console.error("Error connecting to 'bugs' database:", err);
+            console.error("Error checking if database exists:", err);
             throw err;
-          }
-          console.log("Connected to 'bugs' database");
-
-          // Call a function to create tables and fill data if needed
-          createTablesAndFillData();
-        });
-      });
-    } else {
-      // Database exists, connect to it directly
-      con.changeUser({ database: "bugs" }, (err) => {
-        if (err) {
-          console.error("Error connecting to 'bugs' database:", err);
-          throw err;
         }
-        console.log("Connected to 'bugs' database");
-      });
-    }
-  });
+
+        if (results.length === 0) {
+            // Database doesn't exist, create it
+            con.query("CREATE DATABASE bugs", (err) => {
+                if (err) {
+                    console.error("Error creating database:", err);
+                    throw err;
+                }
+                console.log("Database 'bugs' created");
+
+                // Connect to the 'bugs' database
+                con.changeUser({ database: "bugs" }, (err) => {
+                    if (err) {
+                        console.error("Error connecting to 'bugs' database:", err);
+                        throw err;
+                    }
+                    console.log("Connected to 'bugs' database");
+
+                    // Call a function to create tables and fill data if needed
+                    createTablesAndFillData();
+                });
+            });
+        } else {
+            // Database exists, connect to it directly
+            con.changeUser({ database: "bugs" }, (err) => {
+                if (err) {
+                    console.error("Error connecting to 'bugs' database:", err);
+                    throw err;
+                }
+                console.log("Connected to 'bugs' database");
+            });
+        }
+    });
 });
 
 // Function to create tables and fill data if needed
 // Function to create tables and fill data if needed
 function createTablesAndFillData() {
-  // Queries to create tables
-  const createQueries = [
-    `CREATE TABLE bugs (
+    // Queries to create tables
+    const createQueries = [
+        `CREATE TABLE bugs (
       id INT PRIMARY KEY AUTO_INCREMENT,
       dateAdded DATETIME DEFAULT CURRENT_TIMESTAMP,
       dateModified DATETIME DEFAULT CURRENT_TIMESTAMP,
       dateResolved DATETIME
     )`,
-    `CREATE TABLE users (
+        `CREATE TABLE users (
       id INT PRIMARY KEY AUTO_INCREMENT,
       username VARCHAR(8) NOT NULL UNIQUE,
       email VARCHAR(255) NOT NULL UNIQUE,
       password TEXT NOT NULL,
       isAdmin BOOLEAN NOT NULL
     )`,
-    `CREATE TABLE comments (
+        `CREATE TABLE comments (
       id INT AUTO_INCREMENT,
       author_id INT NOT NULL,
       bug_id INT NOT NULL,
@@ -127,45 +127,45 @@ function createTablesAndFillData() {
       FOREIGN KEY (author_id) REFERENCES users(id),
       FOREIGN KEY (bug_id) REFERENCES bugs(id)
     )`
-  ];
+    ];
 
-  // Query to insert user
-  const insertUserQuery = `INSERT INTO users(username, email, password, isAdmin) VALUES("admin1", "user@gmail.com", "1234", TRUE)`;
+    // Query to insert user
+    const insertUserQuery = `INSERT INTO users(username, email, password, isAdmin) VALUES("admin1", "user@gmail.com", "1234", TRUE)`;
 
-  // Execute create table queries
-  createQueries.forEach(query => {
-    con.query(query, (err, results) => {
-      if (err) {
-        console.error("Error creating table:", err);
-        throw err;
-      }
-      console.log("Table created:", results);
+    // Execute create table queries
+    createQueries.forEach(query => {
+        con.query(query, (err, results) => {
+            if (err) {
+                console.error("Error creating table:", err);
+                throw err;
+            }
+            console.log("Table created:", results);
+        });
     });
-  });
 
-  // Execute insert user query
-  con.query(insertUserQuery, (err, results) => {
-    if (err) {
-      console.error("Error inserting user:", err);
-      throw err;
-    }
-    console.log("Default Admin Created:", results);
-  });
+    // Execute insert user query
+    con.query(insertUserQuery, (err, results) => {
+        if (err) {
+            console.error("Error inserting user:", err);
+            throw err;
+        }
+        console.log("Default Admin Created:", results);
+    });
 }
 
 function calculateBugStats(bugs, startDate, endDate, startingNum) {
     // Call the calculateBugStats function here with the bug reports array
     // Define a helper function to calculate the difference in days between two dates
     function dateDiffInDays(date1, date2) {
-  	// Convert date strings to Date objects
-	const a = new Date(date1);
-  	const b = new Date(date2);
+        // Convert date strings to Date objects
+        const a = new Date(date1);
+        const b = new Date(date2);
 
-  	// Calculate the difference in milliseconds
-	const diffInMs = b - a;
+        // Calculate the difference in milliseconds
+        const diffInMs = b - a;
 
-  	// Convert milliseconds to days
-	return Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+        // Convert milliseconds to days
+        return Math.floor(diffInMs / (1000 * 60 * 60 * 24));
     }
 
     // Initialize variables to track bug counts and results
@@ -175,11 +175,11 @@ function calculateBugStats(bugs, startDate, endDate, startingNum) {
     let result = new Array(dateDiffInDays(startDate, endDate) + 1).fill(0);
 
     // Iterate over each bug
-//console.log(bugs);
+    //console.log(bugs);
     bugs.forEach(bug => {
         // Calculate the difference in days between the bug's dateAdded and the start date
         const daysSinceStart = dateDiffInDays(new Date(startDate), new Date(bug.dateAdded));
-        
+
         // Increment the number of bugs added on the corresponding day
         result[daysSinceStart]++;
         bugsAdded++;
@@ -195,7 +195,7 @@ function calculateBugStats(bugs, startDate, endDate, startingNum) {
     });
     let net = startingNum;
     for (let i = 0; i < result.length; i++) {
-	//console.log(result.length);
+        //console.log(result.length);
         result[i] += net;
         net = result[i];
     }
@@ -213,16 +213,16 @@ function calculateBugStats(bugs, startDate, endDate, startingNum) {
 }
 
 function incrementDate(dateString) {
-  // Convert the date string to a JavaScript Date object
-  const date = new Date(dateString);
-  
-  // Increment the date by one day
-  date.setDate(date.getDate() + 1);
-  
-  // Format the incremented date as YYYY-MM-DD
-  const incrementedDateString = date.toISOString().split('T')[0];
-  
-  return incrementedDateString;
+    // Convert the date string to a JavaScript Date object
+    const date = new Date(dateString);
+
+    // Increment the date by one day
+    date.setDate(date.getDate() + 1);
+
+    // Format the incremented date as YYYY-MM-DD
+    const incrementedDateString = date.toISOString().split('T')[0];
+
+    return incrementedDateString;
 }
 
 function getBugReports(startDate, endDate, callback) {
@@ -262,8 +262,8 @@ function getBugReports(startDate, endDate, callback) {
 
                 // Modify bug reports based on a, b, and n
                 console.log(results.length);
-		const modifiedResults = calculateBugStats(results, startDate, endDate, n);
-		console.log(modifiedResults);
+                const modifiedResults = calculateBugStats(results, startDate, endDate, n);
+                console.log(modifiedResults);
                 // Pass the modified bug reports to the callback function
                 callback(null, modifiedResults, n);
             });
@@ -297,8 +297,8 @@ app.get('/getBugStatus/:bugId', (req, res) => {
 // Add a route to handle the AJAX request for retrieving bug reports
 app.post('/sprintDetails', (req, res) => {
     const { startDate, endDate } = req.body;
-	// add something so that if endDate > todayDate, endDate = todayDate
-	// might need more work since endDate is const
+    // add something so that if endDate > todayDate, endDate = todayDate
+    // might need more work since endDate is const
 
     // Call the getBugReports function with the provided start and end dates
     getBugReports(startDate, endDate, (err, bugReports) => {
@@ -313,9 +313,9 @@ app.post('/sprintDetails', (req, res) => {
 });
 
 app.get('/getBugsTable', (req, res) => {
-  // Query to fetch comments from the database
-	const order = req.query.param;
-  const sql = `SELECT 
+    // Query to fetch comments from the database
+    const order = req.query.param;
+    const sql = `SELECT 
     b.id AS bug_id,
     c.title AS comment_title,
     c.body AS comment_body,
@@ -330,22 +330,22 @@ FROM
 JOIN 
     comments c ON b.id = c.bug_id AND b.dateAdded = c.dateAdded`;
 
-  // Execute the query
-  con.query(sql + " " + order, (error, results) => {
-    if (error) {
-      console.error('Error fetching comments:', error);
-      res.status(500).json({ error: 'Failed to fetch comments' });
-    } else {
-      // Send the comments as a JSON response
-      res.json(results);
-    }
-  });
+    // Execute the query
+    con.query(sql + " " + order, (error, results) => {
+        if (error) {
+            console.error('Error fetching comments:', error);
+            res.status(500).json({ error: 'Failed to fetch comments' });
+        } else {
+            // Send the comments as a JSON response
+            res.json(results);
+        }
+    });
 });
 
 app.get('/getCommentsForBug', (req, res) => {
-  // Query to fetch comments from the database
-	const id = req.query.param;
-  const sql = `SELECT
+    // Query to fetch comments from the database
+    const id = req.query.param;
+    const sql = `SELECT
     u.username AS author_username,
     c.title AS comment_title,
     c.body AS comment_body,
@@ -361,16 +361,16 @@ WHERE
 ORDER BY
     b.dateAdded ASC`;
 
-  // Execute the query
-  con.query(sql, (error, results) => {
-    if (error) {
-      console.error('Error fetching comments:', error);
-      res.status(500).json({ error: 'Failed to fetch comments' });
-    } else {
-      // Send the comments as a JSON response
-      res.json(results);
-    }
-  });
+    // Execute the query
+    con.query(sql, (error, results) => {
+        if (error) {
+            console.error('Error fetching comments:', error);
+            res.status(500).json({ error: 'Failed to fetch comments' });
+        } else {
+            // Send the comments as a JSON response
+            res.json(results);
+        }
+    });
 });
 
 app.post('/checkCurrentPassword', (req, res) => {
@@ -378,24 +378,24 @@ app.post('/checkCurrentPassword', (req, res) => {
     const userId = req.session.userId;
     const isLoggedIn = req.session.isLoggedIn;
 
-	console.log("server here");
-    if (!isLoggedIn){
-	console.log("not logged in");
-	res.sendStatus(401); // Unauthorized - Current password is incorrect
-	return;
+    console.log("server here");
+    if (!isLoggedIn) {
+        console.log("not logged in");
+        res.sendStatus(401); // Unauthorized - Current password is incorrect
+        return;
     }
     const sql = `SELECT * FROM users WHERE id = ? AND password = ?`;
     con.query(sql, [userId, currentPassword], (err, results) => {
-	if (err) {
-	    console.error('Error executing query:', err);
-	    return;
-	}
-	if (results.length > 0){
-	console.log("user found");
-        	res.sendStatus(200); // Current password is correct
-		return;
-	}
-	res.sendStatus(404); // Current password is correct	
+        if (err) {
+            console.error('Error executing query:', err);
+            return;
+        }
+        if (results.length > 0) {
+            console.log("user found");
+            res.sendStatus(200); // Current password is correct
+            return;
+        }
+        res.sendStatus(404); // Current password is correct	
     });
 });
 
@@ -404,21 +404,21 @@ app.post('/createPassword', (req, res) => {
     const userId = req.session.userId;
     const isLoggedIn = req.session.isLoggedIn;
 
-	console.log("changing password server here");
-    if (!isLoggedIn){
-	console.log("not logged in");
-	res.sendStatus(401); // Unauthorized - Current password is incorrect
-	return;
+    console.log("changing password server here");
+    if (!isLoggedIn) {
+        console.log("not logged in");
+        res.sendStatus(401); // Unauthorized - Current password is incorrect
+        return;
     }
-	console.log("yeet1");
+    console.log("yeet1");
     const sql = `UPDATE users SET password = ? WHERE id = ?`;
     con.query(sql, [newPassword, userId], (err, results) => {
-	if (err) {
-	    console.error('Error executing query:', err);
-		res.sendStatus(400);
-	    return;
-	}
-	res.sendStatus(200);
+        if (err) {
+            console.error('Error executing query:', err);
+            res.sendStatus(400);
+            return;
+        }
+        res.sendStatus(200);
     });
 });
 
@@ -426,10 +426,10 @@ app.use(express.static('public/'));
 
 // Middleware to enable CORS
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
 app.post('/resolveBugAndComment', (req, res) => {
@@ -437,10 +437,10 @@ app.post('/resolveBugAndComment', (req, res) => {
     const userId = 1; // req.session.userId;
     const isLoggedIn = req.session.isLoggedIn;
     const { bugId, title, description } = req.body;
-    
+
     // Check if the user is logged in
     if (!isLoggedIn) {
-	// probably add a line here that yeets the user back to the login screen
+        // probably add a line here that yeets the user back to the login screen
         res.status(401).send("User not logged in");
         return;
     }
@@ -499,16 +499,16 @@ app.post('/updateBug', (req, res) => {
     const userId = req.session.userId;
     const isLoggedIn = req.session.isLoggedIn;
     const { bugId, title, description } = req.body;
-    
+
     // Check if the user is logged in
     if (!isLoggedIn) {
-	// probably add a line here that yeets the user back to the login screen
+        // probably add a line here that yeets the user back to the login screen
         res.status(401).send("User not logged in");
         return;
     }
 
     // Update the bug report in the database
-	// I should also make a few lines to check if the bug is resolved or not
+    // I should also make a few lines to check if the bug is resolved or not
     const updateBug = 'UPDATE bugs SET dateModified = CURRENT_TIMESTAMP WHERE id = ?';
     const insertComment = 'INSERT INTO comments(bug_id, author_id, title, body) VALUES (?, ?, ?, ?)';
 
@@ -532,117 +532,117 @@ app.post('/updateBug', (req, res) => {
 
 // Route handler for adding a bug and comment
 app.post('/addBugAndComment', (req, res) => {
-  // Retrieve user ID from session
-  const userId = req.session.userId;
-  const isLoggedIn = req.session.isLoggedIn;
+    // Retrieve user ID from session
+    const userId = req.session.userId;
+    const isLoggedIn = req.session.isLoggedIn;
 
-  if (!isLoggedIn) {
-	// probably add a line here that yeets the user back to the login screen
-    res.status(401).send("User not logged in");
-    return;
-  }
-
-  const { title, description } = req.body;
-
-  const makeBugQuery = "INSERT INTO bugs() VALUES()";
-  const addCommentQuery = "INSERT INTO comments(bug_id, author_id, title, body) SELECT MAX(id), ?, ?, ? FROM bugs";
-
-  con.query(makeBugQuery, (err, result) => {
-    if (err) {
-      console.error("Error creating bug:", err);
-      res.status(500).send("Error creating bug");
-      return;
-    }
-    
-    console.log("Report created");
-    
-    con.query(addCommentQuery, [userId, title, description], (err, result) => {
-      if (err) {
-        console.error("Error adding comment:", err);
-        res.status(500).send("Error adding comment");
+    if (!isLoggedIn) {
+        // probably add a line here that yeets the user back to the login screen
+        res.status(401).send("User not logged in");
         return;
-      }
+    }
 
-      console.log("Comment added");
-      res.redirect('/Pages/main.html');
+    const { title, description } = req.body;
+
+    const makeBugQuery = "INSERT INTO bugs() VALUES()";
+    const addCommentQuery = "INSERT INTO comments(bug_id, author_id, title, body) SELECT MAX(id), ?, ?, ? FROM bugs";
+
+    con.query(makeBugQuery, (err, result) => {
+        if (err) {
+            console.error("Error creating bug:", err);
+            res.status(500).send("Error creating bug");
+            return;
+        }
+
+        console.log("Report created");
+
+        con.query(addCommentQuery, [userId, title, description], (err, result) => {
+            if (err) {
+                console.error("Error adding comment:", err);
+                res.status(500).send("Error adding comment");
+                return;
+            }
+
+            console.log("Comment added");
+            res.redirect('/Pages/main.html');
+        });
     });
-  });
 });
 
 // Login endpoint
 app.post('/login', (req, res) => {
-  const { username, password, rememberMe } = req.body;
+    const { username, password, rememberMe } = req.body;
 
-  const sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
-  con.query(sql, [username, password], (err, results) => {
-    if (err) {
-      console.error("Error executing query:", err);
-      res.status(500).send("Internal Server Error");
-      return;
-    }
+    const sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
+    con.query(sql, [username, password], (err, results) => {
+        if (err) {
+            console.error("Error executing query:", err);
+            res.status(500).send("Internal Server Error");
+            return;
+        }
 
-    if (results.length > 0) {
-      // Start a session
-      const userId = results[0].id;
-      req.session.userId = userId;
-      req.session.isLoggedIn = true;
-      if (rememberMe) {
-	console.log("big cookie");
-        req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
-      } else {
-	console.log("smol cookie");
-      }
-      res.redirect('/dashboard');
-    } else {
-      res.status(401).send("Invalid username or password");
-    }
-  });
+        if (results.length > 0) {
+            // Start a session
+            const userId = results[0].id;
+            req.session.userId = userId;
+            req.session.isLoggedIn = true;
+            if (rememberMe) {
+                console.log("big cookie");
+                req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
+            } else {
+                console.log("smol cookie");
+            }
+            res.redirect('/dashboard');
+        } else {
+            res.status(401).send("Invalid username or password");
+        }
+    });
 });
 
 // back to login
 app.get('/checkLogin', (req, res) => {
-  if (!req.session.isLoggedIn) {
-    res.redirect('/login'); // Redirect to login page if not logged in
-  } else {
-    res.end();
-  }
+    if (!req.session.isLoggedIn) {
+        res.redirect('/login'); // Redirect to login page if not logged in
+    } else {
+        res.end();
+    }
 });
 
 // Dashboard endpoint (protected route)
 app.get('/dashboard', (req, res) => {
-  if (req.session.isLoggedIn) {
-    res.redirect('/Pages/main.html');
-  } else {
-    res.redirect('/Pages/login.html'); // Redirect to login page if not logged in
-  }
+    if (req.session.isLoggedIn) {
+        res.redirect('/Pages/main.html');
+    } else {
+        res.redirect('/Pages/login.html'); // Redirect to login page if not logged in
+    }
 });
 
 // Route handler for serving index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/Pages/index.html'));
+    res.sendFile(path.join(__dirname, 'public/Pages/index.html'));
 });
 
 // Get local IP address
 const interfaces = os.networkInterfaces();
 let ipAddress;
 for (const ifaceName in interfaces) {
-  const iface = interfaces[ifaceName];
-  for (const alias of iface) {
-    if (alias.family === 'IPv4' && !alias.internal) {
-      ipAddress = alias.address;
-      break;
+    const iface = interfaces[ifaceName];
+    for (const alias of iface) {
+        if (alias.family === 'IPv4' && !alias.internal) {
+            ipAddress = alias.address;
+            break;
+        }
     }
-  }
-  if (ipAddress) {
-    break;
-  }
+    if (ipAddress) {
+        break;
+    }
 }
 
 // Start the server 
 // change first line below to "const server = app.listen(port, ipAddress, () => {"const server = app.listen(port, ipAddress, () => {"
 // for hosting a server to current ipaddress
 const server = app.listen(port, () => {
-  const host = server.address().address;
-  const port = server.address().port;
-  console.log(`Server running at http://${host}:${port}`);
+    const host = server.address().address;
+    const port = server.address().port;
+    console.log(`Server running at http://${host}:${port}`);
 });

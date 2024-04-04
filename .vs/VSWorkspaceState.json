@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\public",
+    "\\public\\jquery",
     "\\public\\Pages",
     "\\public\\Pages\\Styling",
     "\\public\\Scripts",

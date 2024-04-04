@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="Styling/graph.css">
     <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css" />
     <title>Main Page</title>
 </head>
 <body class="bg">
@@ -35,28 +36,28 @@
             </li>
         </ul>
     </nav>
-    <div class="container">
+    <div class="container" style="margin-top: -80px;">
         <div class="mainButtonCont">
             <button class="mainButton" onClick="moveToAddReport()">Add Bug Report</button>
             <button class="mainButton" onClick="moveToGraph()">View Complete Sprints</button>
             <button class="adminButton">Admin</button>
         </div>
         <div class="tableCont" id="bugTable">
-            <button class="tableButton">Sort By:</button>
-            <button class="tableButton">View: Unresolved</button>
-            <table>
-                <tr>
-                    <th>Report ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Date Created</th>
-                    <th>Last Modified</th>
-                    <th>Status</th>
-                </tr>
+            <table id="tblData">
+                <thead>
+                    <tr>
+                        <th>Report ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date Created</th>
+                        <th>Date Modified</th>
+                        <th>Resolved</th>
+                        <th></th>
+                    </tr>
+                </thead>
             </table>
         </div>
     </div>
-    <div class="separator"></div>
     <script>
         const menu = document.getElementById("menu");
         const menu_icon = document.getElementById("menuIcon");
@@ -74,6 +75,48 @@
             window.location.href = "viewBug.html"
         }
     </script>
-    <script src="../Scripts/js/loadHomeReports.js"></script>
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            loadDataTable();
+        });
+
+        function loadViewBugPageBasedOffId(bug_id) {
+            localStorage.setItem("bug_id", bug_id);
+            window.location.href = "/Pages/viewBug.html";
+        }
+
+        function loadDataTable() {
+            console.log("In loadDataTable()");
+
+            const order = 'ORDER BY b.dateModified DESC';
+            const url = `/getBugsTable?param=${encodeURIComponent(order)}`;
+            console.log(url);
+
+
+            dataTable = $('#tblData').DataTable({
+                select: true,
+                "ajax": { url: url, dataSrc: '' },
+                "columns": [
+                    { data: 'bug_id', "width": "10%" },
+                    { data: 'comment_title', "width": "10%" },
+                    { data: 'comment_body', "width": "10%" },
+                    { data: 'bug_dateAdded', "width": "5%" },
+                    { data: 'bug_dateModified', "width": "12%" },
+                    { data: 'bug_resolved', "width": "12%" },
+                    {
+                        data: 'bug_id',
+                        "render": function (data) {
+                            return `<button class="btn-info" onclick=loadViewBugPageBasedOffId(${data}) 
+                                        style="width:70px; height:30px; font-size:13px; font-weight:bolder ;padding:0px;">View</button>`
+                        },
+                        "width": "5%"
+                    }
+                ]
+            })
+        }
+    </script>
+    <!--<script src="../Scripts/js/loadHomeReports.js"></script>-->
 </body>
 </html>
