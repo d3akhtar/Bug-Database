@@ -1,0 +1,1 @@
+npx prettier --write server.js

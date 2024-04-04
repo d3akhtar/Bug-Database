@@ -52,7 +52,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
 	if (xhr.readyState === XMLHttpRequest.DONE) {
 		if (xhr.status === 200) {
 			console.log(xhr.responseText);
-			alert("${username} was added successfully");
+			alert(`${fields.username} was added successfully`);
 			return;
 			// Optionally, do something with the response
 		} else if (xhr.status === 404) {
@@ -98,7 +98,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
 	if (xhr.readyState === XMLHttpRequest.DONE) {
 		if (xhr.status === 200) {
 			console.log(xhr.responseText);
-			alert("${username} was removed successfully");
+			alert(`${fields.username} was removed successfully`);
 			return;
 			// Optionally, do something with the response
 		} else if (xhr.status === 401) {
