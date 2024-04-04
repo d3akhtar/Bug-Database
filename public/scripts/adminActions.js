@@ -87,6 +87,8 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
 	if (fields.username.length > 8){
 		alert("username is too long");
 		return;
+	} else if ((fields.username).toLowerCase() == "deleted user") {
+		
 	}
 	
 	// Make an AJAX request to the server-side endpoint

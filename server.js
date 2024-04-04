@@ -117,7 +117,7 @@ function createTablesAndFillData() {
     )`,
     `CREATE TABLE users (
       id INT PRIMARY KEY AUTO_INCREMENT,
-      username VARCHAR(8) NOT NULL UNIQUE,
+      username VARCHAR(16) NOT NULL UNIQUE,
       email VARCHAR(255) UNIQUE,
       password TEXT,
       isAdmin BOOLEAN NOT NULL
@@ -386,6 +386,13 @@ app.get("/getBugStatus/:bugId", (req, res) => {
       }
     }
   });
+});
+
+app.get('/isAdmin', (req, res) => {
+  // Send the response back to the client
+	console.log("testing for admin here");
+	console.log(req.session.isAdmin);
+  res.send(req.session.isAdmin);
 });
 
 // Add a route to handle the AJAX request for retrieving bug reports
@@ -918,28 +925,43 @@ app.post("/login", (req, res) => {
   const { username, password, rememberMe } = req.body;
 
   const sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
+  const sql2 = `SELECT * FROM users WHERE username = ? AND password = ? AND isAdmin = true`;
   con.query(sql, [username, password], (err, results) => {
     if (err) {
       console.error("Error executing query:", err);
       res.status(500).send("Internal Server Error");
       return;
     }
-
-    if (results.length > 0) {
-      // Start a session
-      const userId = results[0].id;
-      req.session.userId = userId;
-      req.session.isLoggedIn = true;
-      if (rememberMe) {
-        console.log("big cookie");
-        req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
-      } else {
-        console.log("smol cookie");
-      }
-      res.redirect("/dashboard");
-    } else {
+    if (results.length == 0){
       res.status(401).send("Invalid username or password");
+      return;
     }
+    // Start a session
+    const userId = results[0].id;
+    req.session.userId = userId;
+    req.session.isLoggedIn = true;
+    
+    con.query(sql2, [username, password], (err, results2) => {
+        if (err) {
+          console.error("Error executing query:", err);
+          res.status(500).send("Internal Server Error");
+          return;
+        }
+	if (results2.length > 0){
+          req.session.isAdmin = true;
+	  console.log("this is admin");
+        } else {
+	  req.session.isAdmin = false;
+	  console.log("this is not an admin");
+	}
+	if (rememberMe) {
+          console.log("big cookie");
+          req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
+        } else {
+          console.log("smol cookie");
+        }
+        res.redirect("/dashboard");
+    });
   });
 });
 

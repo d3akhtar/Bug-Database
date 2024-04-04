@@ -16,11 +16,15 @@
         <div class="name">BugBytes</div>
         <ul>
             <li>
-                <a href="resetPassword.html">
-                    <span style="font-size: large; position: static;"><i class="bi bi-gear"></i></span>
+  <span class="dropdown-toggle" onclick="toggleDropdown()">
+    <i class="bi bi-gear"></i>
+  </span>
                     <!-- Make a Settings page where you can go to reset password or do dark/light mode toggle switch -->
                     Settings
-                </a>
+  <ul class="dropdown-menu" id="dropdownMenu">
+    <li><a href="#">Toggle Dark/Light Mode</a></li>
+    <li><a href="#">Reset Password</a></li>
+  </ul>
             </li>
             <li>
                 <a href="FAQ.html">
@@ -37,12 +41,12 @@
         </ul>
     </nav>
     <div class="container">
-        <div class= "mainButtonCont" style="margin-top: -80px;">
+
+        <div class="tableCont" id="bugTable">
+        <div class= "mainButtonCont">
             <button class="mainButton" onClick="moveToAddReport()">Create Report</button>
             <button class="mainButton" onClick="moveToProgressView()">View Progress</button>
-            <button class="adminButton" onClick="moveToAdminPanel()">Admin</button>
         </div>
-        <div class="tableCont" id="bugTable">
             <table id="tblData">
 
                 <thead>
@@ -69,9 +73,14 @@
 	function moveToAdminPanel() {
 	    window.location.href = "admin.html";
 	}
+	function toggleDropdown() {
+	    var dropdownMenu = document.getElementById("dropdownMenu");
+	    dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
+	}
     </script>
     <script src="/jquery/jquery.min.js"></script>
     <script src="scripts/loadHomeReports.js"></script>
+    <script src="scripts/renderAdminButton.js"></script>
     <script src="scripts/transferToNewPage.js"></script>
     <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
 

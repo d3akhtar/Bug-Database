@@ -49,6 +49,9 @@ const reportDetails = ["author", "title", "description", "dateAdded"];
 				j++;
 			}
 		} else{
+
+		/// this part is the one that fetches the comment data
+
 		const item = items[i];
 		const tr = document.createElement('tr');
 		for (const key in item) {
@@ -57,6 +60,8 @@ const reportDetails = ["author", "title", "description", "dateAdded"];
 			tr.appendChild(td);
 		}
 		container.appendChild(tr);
+
+		/// this part is the one that fetches the comment data
 }
 	}
 

@@ -15,6 +15,24 @@ body {
     z-index: 1;
 }
 
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  list-style-type: none;
+}
+
+.dropdown-menu li {
+  margin: 5px 0;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: black;
+}
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -83,13 +101,13 @@ button:active {
 }
 
 .mainButtonCont {
-    position: absolute;
-    top: 140px;
-    left: 10%;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .mainButton {
     font-size: 24px;
+    font-weight: bold;
 }
 
 .tableButton {
@@ -185,8 +203,28 @@ tr:nth-child(even), tbody tr:nth-child(even){
     background-color: rgb(55, 55, 55);
 }
 
+.dt-layout-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dt-length label, .dt-search label{
+    padding: 7px;
+    text-transform: capitalize;
+}
+
+.dt-layout-cell{
+    display: inline-block;
+    padding: 4px
+}
+
 .dt-input{
     cursor: pointer;
+    background-color: #1e1e1e;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 tbody tr:hover, tr:hover {
