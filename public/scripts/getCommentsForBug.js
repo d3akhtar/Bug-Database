@@ -69,7 +69,7 @@ const reportDetails = ["author", "title", "description", "dateAdded"];
 			details.innerHTML +=
                         ` <div class="formCont bug-description-block" style="margin-top:80px; display:flex-box; width:70%; padding: 80px; border: 4px solid black; border-radius: 30px; color:white;">
                             <div class="bug-description">
-                                <h2 "style="font-weight:700">${author_username}: [${comment_title}]</h2>
+                                <h2 style="font-weight:700;">${author_username}: [${comment_title}]</h2>
                             </div>
                             <br>
                             <div class="bug-description">
@@ -86,9 +86,8 @@ const reportDetails = ["author", "title", "description", "dateAdded"];
 		const {author_username, comment_title, comment_body, comment_dateAdded} = item;
 			container.innerHTML +=
                         `<div class="container contribution-block p-4 w-70">
-                            <h3 class="text-dark" style="font-weight:800; font-size: 40px;">${comment_title} - ${comment_dateAdded}</h3>
-                            <h4 class="text-dark">${author_username}</h4>
-                            <p>${comment_body}</p>
+                            <h3 class="text-dark" style="font-weight:800; font-size: 40px;">${author_username}: [${comment_title}]</h3>
+                            <h4 class="text-dark">${comment_body}</h4>
                         </div>`
 		/// this part is the one that fetches the comment data
 }

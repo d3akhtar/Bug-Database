@@ -16,7 +16,7 @@ function createNavBar() {
   settingsSpan.classList.add("dropdown-toggle");
   settingsSpan.setAttribute("onclick", "toggleDropdown()");
   var settingsIcon = document.createElement("i");
-  settingsIcon.classList.add("bi", "bi-gear");
+  settingsIcon.classList.add("bi", "bi-gear", "navbtn");
   settingsSpan.appendChild(settingsIcon);
   settingsLi.appendChild(settingsSpan);
   settingsLi.appendChild(document.createTextNode("Settings"));
@@ -28,7 +28,7 @@ function createNavBar() {
   var toggleDarkModeLi = document.createElement("li");
   toggleDarkModeLi.innerHTML = "<a href='#'>Toggle Dark/Light Mode</a>";
   var resetPasswordLi = document.createElement("li");
-  resetPasswordLi.innerHTML = "<a href='#'>Reset Password</a>";
+  resetPasswordLi.innerHTML = "<a href='#'>Change Password</a>";
   dropdownMenuUl.appendChild(toggleDarkModeLi);
   dropdownMenuUl.appendChild(resetPasswordLi);
   settingsLi.appendChild(dropdownMenuUl);
@@ -41,7 +41,7 @@ function createNavBar() {
   helpSpan.style.fontSize = "large";
   helpSpan.style.position = "static";
   var helpIcon = document.createElement("i");
-  helpIcon.classList.add("bi", "bi-question-circle");
+  helpIcon.classList.add("bi", "bi-question-circle", "navbtn");
   helpSpan.appendChild(helpIcon);
   helpLink.appendChild(helpSpan);
   helpLink.appendChild(document.createTextNode("Help"));
@@ -54,7 +54,7 @@ function createNavBar() {
   signOutSpan.style.fontSize = "large";
   signOutSpan.style.position = "static";
   var signOutIcon = document.createElement("i");
-  signOutIcon.classList.add("bi", "bi-box-arrow-right");
+  signOutIcon.classList.add("bi", "bi-box-arrow-right", "navbtn");
   signOutSpan.appendChild(signOutIcon);
   signOutLink.appendChild(signOutSpan);
   signOutLink.setAttribute("id", "logoutBtn");

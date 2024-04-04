@@ -6,9 +6,9 @@ const today = getTodaysDate();
 const twoWeeks = getDateTwoWeeksAgo();
 const dates = getDates(twoWeeks, today);
 const pending = await gatherArray(twoWeeks, today);
+changeData(pending);
 
-drawGraph(dates, pending);
-drawSubGraph(dates, pending);
+drawGraph(dates, pending.result);
 }
 main();
 function getDateTwoWeeksAgo() {
@@ -78,52 +78,6 @@ scales: {
 }
 
 // Function to draw the graph that you see when you click the original
-function drawSubGraph(xValue, yValue) {
-    document.getElementById('graphContainer').addEventListener('click', function () {
-      var subBox = document.getElementById('subBox');
-      var subBoxChart = document.getElementById('myChartExpanded');
-      if (!subBox.classList.contains('active')) {
-        subBox.classList.add('active');
-        subBox.style.width = '90%'; 
-        subBox.style.height = '90%'; 
-        subBoxChart.width = subBox.clientWidth;
-        subBoxChart.height = subBox.clientHeight;
-        var ctx = subBoxChart.getContext('2d');
-        var myChartExpanded = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: xValue,
-            datasets: [{
-              label: 'Data',
-              borderColor: '#3498db', 
-              borderWidth: 4,
-              pointBackgroundColor: '#3498db', 
-              pointBorderColor: '#fff',
-              pointBorderWidth: 2,
-              pointRadius: 6,
-              pointHoverRadius: 8,
-              fill: true, 
-              backgroundColor: 'rgba(52, 152, 219, 0.2)', 
-              data: yValue
-            }]
-          },
-          options: {
-            legend: {
-              display: false
-            },
-scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true // Ensure the y-axis starts at 0
-        }
-      }]
-    }
-          }
-        });
-	console.log(myChartExpanded);
-      }
-    });
-}
 
 // Function to close the sub-box
 function closeSubBox() {
@@ -166,10 +120,17 @@ async function gatherArray(startDate, endDate){
         // Process the bug reports as needed
 	// code to draw graph can go here
 	result = bugReports.result
-	return result;
+	return bugReports;
 	} else {
 	        console.error('Error retrieving bug reports:', response.status);
 	}
+}
+
+function changeData(results){
+	console.log("changing");
+	document.getElementById("net").textContent = results.netIncrease;
+	document.getElementById("created").textContent = results.bugsAdded;
+	document.getElementById("resolved").textContent = results.bugsResolved;
 }
 
 document.getElementById('submitDatesBtn').addEventListener('click', async () => {
@@ -177,7 +138,8 @@ document.getElementById('submitDatesBtn').addEventListener('click', async () => 
     const endDate = document.getElementById('endDate').value;
 	
 	const xValues = getDates(startDate, endDate);
-	const yValues = await gatherArray(startDate, endDate);
+	const bugReports = await gatherArray(startDate, endDate);
+	const yValues = bugReports.result;
+	changeData(bugReports);
 	drawGraph(xValues, yValues);
-	drawSubGraph(xValues, yValues);
 });

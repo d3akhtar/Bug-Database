@@ -1,3 +1,67 @@
+nav {
+  background-color: #34495e;
+  /* Dark blue */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  background-color: #2c3e50;
+  /* Darker blue on hover */
+}
+
+/* Underline effect */
+nav a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+nav a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+
+.navbtn{
+    cursor: "pointer"
+}
+
 .bg{
     background-image: url("../Images/backDrop.png");
     background-repeat: no-repeat;
@@ -7,8 +71,6 @@
 
 .container {
     position: relative;
-    border: 4px solid white;
-    background-color: grey;
     margin-top: -8px;
     width:100%;
 }
