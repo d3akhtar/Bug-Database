@@ -10,32 +10,53 @@ function createNavBar() {
   // Create ul element
   var ul = document.createElement("ul");
 
+  // Create li element for Home
+  var homeLi = document.createElement("li");
+  homeLi.classList.add("nav-item");
+  var homeLink = document.createElement("a");
+  homeLink.classList.add("nav-link");
+  homeLink.href = "index.html";
+  homeLink.textContent = "Home";
+  homeLi.appendChild(homeLink);
+
   // Create li element for settings
   var settingsLi = document.createElement("li");
-  var settingsSpan = document.createElement("span");
-  settingsSpan.classList.add("dropdown-toggle");
-  settingsSpan.setAttribute("onclick", "toggleDropdown()");
+  settingsLi.classList.add("nav-item", "dropdown"); // Add classes for styling
+  settingsLi.addEventListener("mouseenter", function() {
+    toggleDropdown(true);
+  });
+  settingsLi.addEventListener("mouseleave", function() {
+    toggleDropdown(false);
+  });
+  var settingsLink = document.createElement("a");
+  settingsLink.classList.add("nav-link", "dropdown-toggle"); // Add classes for styling
+  settingsLink.href = "#"; // Set href for dropdown
+  settingsLink.textContent = "Settings"; // Use text content for "Settings"
+  settingsLink.setAttribute("role", "button"); // Set role for accessibility
+  settingsLink.setAttribute("aria-expanded", "false"); // Set aria-expanded for accessibility
+  settingsLink.setAttribute("aria-haspopup", "true"); // Set aria-haspopup for accessibility
   var settingsIcon = document.createElement("i");
-  settingsIcon.classList.add("bi", "bi-gear", "navbtn");
-  settingsSpan.appendChild(settingsIcon);
-  settingsLi.appendChild(settingsSpan);
-  settingsLi.appendChild(document.createTextNode("Settings"));
+  settingsIcon.classList.add("bi", "bi-gear", "navbtn"); // Add classes for icon styling
+  settingsLink.appendChild(settingsIcon);
+  settingsLi.appendChild(settingsLink);
 
   // Create ul element for dropdown menu
   var dropdownMenuUl = document.createElement("ul");
   dropdownMenuUl.classList.add("dropdown-menu");
-  dropdownMenuUl.id = "dropdownMenu";
+  dropdownMenuUl.setAttribute("aria-labelledby", "navbarDropdown"); // Set aria-labelledby for accessibility
   var toggleDarkModeLi = document.createElement("li");
-  toggleDarkModeLi.innerHTML = "<a href='#'>Toggle Dark/Light Mode</a>";
-  var resetPasswordLi = document.createElement("li");
-  resetPasswordLi.innerHTML = "<a href='#'>Change Password</a>";
+  toggleDarkModeLi.innerHTML = "<a class='dropdown-item' href='#'>Sign Out</a>"; // Use Bootstrap dropdown-item class
+  var signOutLi = document.createElement("li");
+  signOutLi.innerHTML = "<a class='dropdown-item' href='../createPassword.html'>Change Password</a>"; // Use Bootstrap dropdown-item class and direct to resetPassword.html
   dropdownMenuUl.appendChild(toggleDarkModeLi);
-  dropdownMenuUl.appendChild(resetPasswordLi);
+  dropdownMenuUl.appendChild(signOutLi);
   settingsLi.appendChild(dropdownMenuUl);
 
   // Create li element for Help
   var helpLi = document.createElement("li");
+  helpLi.classList.add("nav-item");
   var helpLink = document.createElement("a");
+  helpLink.classList.add("nav-link");
   helpLink.href = "FAQ.html";
   var helpSpan = document.createElement("span");
   helpSpan.style.fontSize = "large";
@@ -47,24 +68,10 @@ function createNavBar() {
   helpLink.appendChild(document.createTextNode("Help"));
   helpLi.appendChild(helpLink);
 
-  // Create li element for Sign Out
-  var signOutLi = document.createElement("li");
-  var signOutLink = document.createElement("a");
-  var signOutSpan = document.createElement("span");
-  signOutSpan.style.fontSize = "large";
-  signOutSpan.style.position = "static";
-  var signOutIcon = document.createElement("i");
-  signOutIcon.classList.add("bi", "bi-box-arrow-right", "navbtn");
-  signOutSpan.appendChild(signOutIcon);
-  signOutLink.appendChild(signOutSpan);
-  signOutLink.setAttribute("id", "logoutBtn");
-  signOutLink.appendChild(document.createTextNode("Sign Out"));
-  signOutLi.appendChild(signOutLink);
-
   // Append all elements
+  ul.appendChild(homeLi);
   ul.appendChild(settingsLi);
   ul.appendChild(helpLi);
-  ul.appendChild(signOutLi);
   nav.appendChild(nameDiv);
   nav.appendChild(ul);
 
@@ -76,23 +83,37 @@ function createNavBar() {
 // Call the function to create the navbar
 createNavBar();
 
-document.getElementById('logoutBtn').addEventListener('click', () => {
-            fetch('/logout', {
-                method: 'POST',
-                credentials: 'same-origin' // Include cookies in the request
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Redirect to login page after successful logout
-                    window.location.href = '../login.html';
-                } else {
-                    // Handle error responses
-                    console.error('Error:', response.statusText);
-                    alert('Failed to logout. Please try again.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An unexpected error occurred. Please try again later.');
-            });
-        });
+// Function to toggle dropdown menu
+function toggleDropdown(show) {
+    var dropdownMenu = document.querySelector(".dropdown-menu");
+    var settingsLink = document.querySelector(".dropdown-toggle");
+    if (show) {
+        dropdownMenu.style.display = "block";
+        settingsLink.setAttribute("aria-expanded", "true");
+    } else {
+        dropdownMenu.style.display = "none";
+        settingsLink.setAttribute("aria-expanded", "false");
+    }
+}
+
+// Logout functionality
+document.querySelector('.dropdown-menu a[href="#"]').addEventListener('click', () => {
+    fetch('/logout', {
+        method: 'POST',
+        credentials: 'same-origin' // Include cookies in the request
+    })
+    .then(response => {
+        if (response.ok) {
+            // Redirect to resetPassword page after successful logout
+            window.location.href = '../login.html';
+        } else {
+            // Handle error responses
+            console.error('Error:', response.statusText);
+            alert('Failed to logout. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An unexpected error occurred. Please try again later.');
+    });
+});
