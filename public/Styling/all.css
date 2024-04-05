@@ -90,10 +90,7 @@ button:hover {
 }
 
 .formCont {
-    background-image: linear-gradient(rgba(72, 10, 95, 0.9), rgba(0, 0, 0, 0.8));
-    background-repeat: no-repeat;
-    background-attachment: contain;
-    background-size: cover;
+    background-color: rgb(79, 27, 131);
     padding: 25px;
     margin: auto;
     margin-top: 40px;

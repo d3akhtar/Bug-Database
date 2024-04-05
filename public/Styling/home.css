@@ -133,7 +133,7 @@ button:active {
     background-repeat: no-repeat;
     background-attachment: contain;
     background-size: cover;
-    padding: 24px;
+    padding: 80px 100px;
     width:80%;
     border: 2px solid white;
     box-shadow: 0 0 10px white;
@@ -142,6 +142,7 @@ button:active {
     top: 50%;
     left: 50%;
     transform: translate(-50%,150px);
+    margin-top: -100px;
 }
 
 table {
@@ -155,7 +156,6 @@ td, th {
     padding: 8px;
     padding-right: 110px;
     color: white;
-    border: 1px solid black;
     overflow: hidden; /* Hide any content that overflows */
     text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
     white-space: nowrap; /* Prevent text from wrapping */
@@ -174,7 +174,6 @@ th, thread th {
     font-size: 22px;
     text-align: left;
     background: rgb(65, 65, 65);
-    border: 4px solid black;
 }
 
 tr, tbody tr {
@@ -183,17 +182,16 @@ tr, tbody tr {
 }
 
 td, tbody td {
-    border: 4px solid black;
     padding: 8px;
     cursor: pointer;
 }
 
 tr:nth-child(odd), tbody tr:nth-child(odd){
-    background-color: rgb(35, 35, 35);
+    background-color: rgb(77, 77, 77);
 }
 
 tr:nth-child(even), tbody tr:nth-child(even){
-    background-color: rgb(55, 55, 55);
+    background-color: rgb(111, 111, 111);
 }
 
 .dt-layout-row{
@@ -221,11 +219,11 @@ tr:nth-child(even), tbody tr:nth-child(even){
 }
 
 tbody tr:hover, tr:hover {
-    background-color: rgb(100, 50, 100);
+    background-color: rgb(90, 138, 178);
 }
 
 tbody th:hover, th:hover {
-    background-color: rgb(130, 65, 130);
+    background-color: rgb(177, 80, 136);
 }
 
 .container {

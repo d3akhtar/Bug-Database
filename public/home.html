@@ -12,23 +12,22 @@
     <title>Home - BugBytes</title>
 </head>
 <body class="bg">
-        <div class="container">
-
+    <div class="container">
         <div class="tableCont" id="bugTable">
-        <div class= "mainButtonCont">
-            <button class="mainButton" onClick="moveToAddReport()">Create Report</button>
-            <button class="mainButton" onClick="moveToProgressView()">View Progress</button>
-        </div>
+            <div class="mainButtonCont">
+                <button class="mainButton" onClick="moveToAddReport()">Create Report</button>
+                <button class="mainButton" onClick="moveToProgressView()">View Progress</button>
+            </div>
             <table id="tblData">
 
                 <thead>
-		<tr>
+                    <tr>
                         <th style="width: auto;">ID</td>
-                        <th >Title</td>
+                        <th>Title</td>
                         <th>Description</th>
                         <th>Date Created</th>
                         <th>Last Modified</th>
-		</tr>
+                    </tr>
                 </thead>
             </table>
         </div>
@@ -41,14 +40,14 @@
         function moveToProgressView() {
             window.location.href = "reportPages/sprintDetails.html";
         }
-	
-	function moveToAdminPanel() {
-	    window.location.href = "admin.html";
-	}
-	function toggleDropdown() {
-	    var dropdownMenu = document.getElementById("dropdownMenu");
-	    dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
-	}
+
+        function moveToAdminPanel() {
+            window.location.href = "admin.html";
+        }
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
+        }
     </script>
     <script src="scripts/createNavBar.js"></script>
     <script src="/jquery/jquery.min.js"></script>
@@ -56,6 +55,5 @@
     <script src="scripts/renderAdminButton.js"></script>
     <script src="scripts/transferToNewPage.js"></script>
     <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
-
 </body>
 </html>

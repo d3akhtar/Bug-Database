@@ -18,7 +18,7 @@
                     { data: 'comment_title', "width": "20%" },
                     { data: 'comment_body', "width": "30%" },
                     { data: 'bug_dateAdded', "width": "20%" },
-                    { data: 'bug_dateModified', "width": "20%" }
+                    { data: 'bug_dateModified', "width": "30%" }
                 ]
             })
         }

@@ -67,7 +67,7 @@ const reportDetails = ["author", "title", "description", "dateAdded"];
 		const {author_username, comment_title, comment_body, comment_dateAdded} = item;
 		if (i==0){	
 			details.innerHTML +=
-                        ` <div class="formCont bug-description-block" style="margin-top:80px; display:flex-box; width:70%; padding: 80px; border: 4px solid black; border-radius: 30px; color:white;">
+                        ` <div class="formCont bug-description-block" style="margin-top:80px; display:flex-box; width:70%; padding: 80px; border-radius: 30px; color:white;">
                             <div class="bug-description">
                                 <h2 style="font-weight:700;">${author_username}: [${comment_title}]</h2>
                             </div>
