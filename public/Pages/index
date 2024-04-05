@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BugBytes</title>
+    <link rel="stylesheet" href="Styling/index.css">
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">BugBytes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="FAQ.html">Frequently Asked Questions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Sign In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bug-bg-contain">
+        <div class="container">
+            <h1>Welcome To Bug Database!</h1>
+        </div>
+    </div>
+
+    <div class="main-page-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title">About Us</h2>
+                    <p class="section-description">Creating, editing and closing bug reports, we're at your service!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="main-page-section">
+                        <div class="image-section">
+                            <img src="../Images/reportIcon.png" alt="Report Icon">
+                        </div>
+                        <div class="text-section-info">
+                            <h3 class="text-uppercase">Report Resolution</h3>
+                            <p>System notifies all people who have edited the bug report</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="main-page-section">
+                        <div class="text-section-info">
+                            <h3 class="text-uppercase">Notification System</h3>
+                            <p>Get notified when a bug report has been changed to a "resolved" status or any relevant updates about the progress of the bug</p>
+                        </div>
+                        <div class="image-section">
+                            <img src="../Images/notification.png" alt="Notification Icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-page-section">
+                        <div class="image-section">
+                            <img src="../Images/graph.jpeg" alt="Graph Image">
+                        </div>
+                        <div class="text-section-info">
+                            <h3 class="text-uppercase">Graphs</h3>
+                            <p>Our system provides a graph of the past sprints to indicate the number of existing bugs and new bugs that are in the system</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
