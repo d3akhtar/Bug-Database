@@ -15,7 +15,7 @@ function createNavBar() {
   homeLi.classList.add("nav-item");
   var homeLink = document.createElement("a");
   homeLink.classList.add("nav-link");
-  homeLink.href = "index.html";
+  homeLink.href = "home.html";
   homeLink.textContent = "Home";
   homeLi.appendChild(homeLink);
 
