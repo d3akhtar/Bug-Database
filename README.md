@@ -7,7 +7,6 @@ Requirements:
 	https://nodejs.org/en/download
 
 Setup:
-- After setting up your SQL account, input your username and password into the "userSQL.json" file
 - Run "installModules.bat" on windows to install the necessary node files
 	- if that does not work, run the following commands in a terminal in the same folder as "server.js"
 		npm install express
