@@ -23,16 +23,15 @@ body {
     font-weight: bold;
 }
 
-/* Bug Background Styles */
 .bug-bg-contain {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-image: url('../Images/cozy.gif');
-    background-size: cover; /* Ensure background image covers the entire container */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent background image from repeating */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     color: #fff;
     text-align: center;
 }
@@ -42,7 +41,6 @@ body {
     color: white;
 }
 
-/* Main Page Styles */
 .main-page-info {
     padding: 3rem 0;
     text-align: center;
@@ -57,21 +55,22 @@ body {
 .section-description {
     color: #6c757d;
     margin-bottom: 3rem;
-    font-style: italic; /* Make section descriptions italic */
+    font-style: italic; 
 }
 
 .main-page-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #343a40; /* Add border around main page sections */
-    border-radius: 10px; /* Add border radius for rounded corners */
-    padding: 2rem; /* Add padding inside main page sections */
-    background-color: #f8f9fa; /* Light background color */
+    border: 2px solid #343a40; 
+    border-radius: 10px; 
+    padding: 2rem; 
+    background-color: #f8f9fa; 
+    margin-top: 3rem;
 }
 
 .main-page-section:hover {
-    transform: scale(1.05); /* Add hover effect to scale up the section */
+    transform: scale(1.05); 
 }
 
 .image-section img {
@@ -79,7 +78,6 @@ body {
     height: auto;
 }
 
-/* Additional Styles for Fancier Look */
 .section-title {
-    font-family: 'Poppins', sans-serif; /* Use Poppins font for section titles */
+    font-family: 'Poppins', sans-serif; 
 }
