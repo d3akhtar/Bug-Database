@@ -55,6 +55,7 @@ function createPassword() {
     .then(response => {
         if (response.ok) {
             alert("Password created successfully");
+	    window.location.href = '../home.html';
             // Optionally, do something with the response
         } else {
             alert("Failed to create password");
