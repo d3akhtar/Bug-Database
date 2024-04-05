@@ -1,63 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>BugBytes</title>
-        <link rel="stylesheet" href="Styling/login.css">
-        <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BugBytes</title>
+    <link rel="stylesheet" href="Styling/index.css">
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body style="padding: 0px; overflow-y: scroll;">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            </ul>
-                <a href="resetPassword.html" class="btn btn-outline-primary mx-2">Change Password</a>  
-                <a href="login.html" class="btn btn-outline-success mx-2">Sign In</a>
-          </div>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">BugBytes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="FAQ.html">Frequently Asked Questions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Sign In</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </nav>
-    <div class="bug-bg-contain" style="width:100%; height:750px; -webkit-box-shadow:0px 0px 20px 0px rgba(0,0,0,0.9);-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.9);box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.9);">
-        <h1 class="text-secondary text-white text-center" style="position: relative; left: 50%; top:50%; transform: translate(-50%, -50%);"><b>Welcome To Bug Database!</b></h1>
+    </nav>
+
+    <div class="bug-bg-contain">
+        <div class="container">
+            <h1>Welcome To Bug Database!</h1>
+        </div>
     </div>
+
     <div class="main-page-info">
-        <div class="text-section-about px-5" style="margin-top: 7em; margin-bottom: 7em">
-            <h1 class="text-uppercase text-success text-center"><b>About Us</b></h1>
-            <p class="text-center">Creating, editing and closing bug reports, we're at your service!</p>
-        </div>
-        <div class="main-page-section" style="background-color:aliceblue; padding-right:22em; padding-left: 17em;">
-            <div class="image-section">
-                <img src="../Images/reportIcon.png" width="200" height="200">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title">About Us</h2>
+                    <p class="section-description">Creating, editing and closing bug reports, we're at your service!</p>
+                </div>
             </div>
-            <div class="text-section-info" style="margin-top: 2.5em; width:300px">
-                <h3 class="text-uppercase text-primary">Report resolution</h3><br>
-                <p>System notifies all people who have edited the bug report</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="main-page-section">
+                        <div class="image-section">
+                            <img src="../Images/reportIcon.png" alt="Report Icon">
+                        </div>
+                        <div class="text-section-info">
+                            <h3 class="text-uppercase">Report Resolution</h3>
+                            <p>System notifies all people who have edited the bug report</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="main-page-section">
+                        <div class="text-section-info">
+                            <h3 class="text-uppercase">Notification System</h3>
+                            <p>Get notified when a bug report has been changed to a "resolved" status or any relevant updates about the progress of the bug</p>
+                        </div>
+                        <div class="image-section">
+                            <img src="../Images/notification.png" alt="Notification Icon">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="main-page-section" style="padding-right:15em; padding-left: 12em;">
-            <div class="text-section-info" style="width:400px; margin-top: 4em;">
-                <h3 class="text-uppercase text-primary">Notification System</h3><br>
-                <p>Get notified when a bug report has been changed to a "resolved" status or any relevant updates about the progress of the bug</p>
-            </div>
-            <div class="image-section">
-                <img src="../Images/notification.png" width="350" height="350">
-            </div>
-        </div>
-        <div class="main-page-section" style="background-color:aliceblue;">
-            <div class="image-section">
-                <img src="../Images/graph.jpeg">
-            </div>
-            <div class="text-section-info mt-5">
-                <h3 class="text-uppercase text-primary">Graphs</h3>
-                <br>
-                <p>Our system provides a graph of the past sprints to indicate the number of existing bugs and new bugs that are in the system</p>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-page-section">
+                        <div class="image-section">
+                            <img src="../Images/graph.jpeg" alt="Graph Image">
+                        </div>
+                        <div class="text-section-info">
+                            <h3 class="text-uppercase">Graphs</h3>
+                            <p>Our system provides a graph of the past sprints to indicate the number of existing bugs and new bugs that are in the system</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </body>
+
+</body>
 </html>
