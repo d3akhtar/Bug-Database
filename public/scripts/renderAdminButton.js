@@ -38,6 +38,8 @@ function addAdminPanelLink() {
   var anchor = document.createElement("a");
   anchor.textContent = "Admin Panel";
   anchor.setAttribute("onClick", "moveToAdminPanel()");
+  anchor.setAttribute("class", "dropdown-item");
+  anchor.setAttribute("onmouseover", "this.style.cursor='pointer'");
 
   // Append the anchor element to the list item
   listItem.appendChild(anchor);

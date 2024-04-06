@@ -1,5 +1,25 @@
 .nav-item {
-	color: white;
+    color: white;
+    position: relative;
+    margin: 5px;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.name {
+    color: white;
+    position: relative;
+    margin: 15px;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.nav-link {
+  color: white;
+}
+
+a.nav-link:hover, li.nav-link:hover {
+    color: dark-blue;
 }
 
 nav {

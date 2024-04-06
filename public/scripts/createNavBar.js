@@ -43,6 +43,7 @@ function createNavBar() {
   // Create ul element for dropdown menu
   var dropdownMenuUl = document.createElement("ul");
   dropdownMenuUl.classList.add("dropdown-menu");
+  dropdownMenuUl.setAttribute("id", "dropdownMenu"); // Set aria-labelledby for accessibility
   dropdownMenuUl.setAttribute("aria-labelledby", "navbarDropdown"); // Set aria-labelledby for accessibility
   var toggleDarkModeLi = document.createElement("li");
   toggleDarkModeLi.innerHTML = "<a class='dropdown-item' href='#'>Sign Out</a>"; // Use Bootstrap dropdown-item class
