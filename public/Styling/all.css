@@ -1,19 +1,11 @@
-.nav-item {
+.nav-item, .name {
     color: white;
     position: relative;
     margin: 5px;
     z-index: 1;
     font-weight: bold;
     font-size: 20px;
-}
-
-.name {
-    color: white;
-    position: relative;
-    margin: 15px;
-    z-index: 1;
-    font-weight: bold;
-    font-size: 20px;
+    font-family: var(--bs-font-sans-serif);
 }
 
 .nav-link {
