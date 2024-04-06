@@ -1,7 +1,7 @@
 const http = require("http");
 const bodyParser = require("body-parser");
 const express = require("express");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const path = require("path");
 const fs = require("fs");
 const session = require("express-session");
@@ -37,12 +37,24 @@ app.use(
 
 // fetch username and password from json
 
+let readData;
+
+try {
+  const data = fs.readFileSync('./userSQL.json', 'utf8');
+  readData = JSON.parse(data);
+} catch (error) {
+  console.error('Error reading or parsing userSQL.json:', error);
+}
+
 // some con query thing that sends the emails to a fetched list of users
+
+const userData = readData;
 
 // Create a MySQL connection
 const con = mysql.createConnection({
   host: "localhost",
-  user: "root",
+  user: userData.username,
+  password: userData.password,
 });
 
 // Connect to MySQL server

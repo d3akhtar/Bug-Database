@@ -96,10 +96,11 @@ const reportDetails = ["author", "title", "description", "dateAdded"];
 	const stat = await checkBugStatus(id);
 	if (!stat) {
 		// show add and resolve buttons when not resolved
-		document.getElementById('contributeForm').style.display = 'block';
+		document.getElementById('contribute-btn-block').style.display = 'block';
 	} else { 
 		// show resolved tag
 		document.getElementById('resolvedTag').style.display = 'block';
+        document.getElementById('contribute-btn-block').style.display = 'none';
 	}
 });
 });
