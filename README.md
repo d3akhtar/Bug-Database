@@ -1,4 +1,4 @@
-This is a Bug Report System that currently utilizes HTML, CSS, JavaScript, Bootstrap, and PHP. The purpose of this website is to let users input bugs/errors into a database. 
+This is a Bug Report System that currently utilizes HTML, CSS, JavaScript, NodeJS, Bootstrap, SQL, and JQuery. The purpose of this website is to let users input bugs/errors into a database. 
 
 SQL and Node, along with some node packages are required.
 
