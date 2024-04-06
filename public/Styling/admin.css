@@ -1,44 +1,101 @@
 /* Styles for the user management form */
 body {
     font-family: Arial, sans-serif;
-	color: white;
     margin: 0;
     padding: 0;
-	background-color: rgb(15,15,15);
+    background-image: url('../Images/backDrop.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff; /* Set text color to white for contrast */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 h1 {
     text-align: center;
+    margin-top: 50px; /* Increase top margin for more spacing */
+    font-size: 36px; /* Increase font size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
 }
 
+
 form {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 500px;
+    margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Soft black shadow */
+    overflow: hidden;
+    transition: max-height 0.5s ease;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
-select, input[type="email"], input[type="text"], input[type="password"], button {
-    width: 100%;
+select,
+input[type="email"],
+input[type="text"],
+input[type="password"],
+button {
+    width: calc(100% - 18px);
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    color: #fff; /* White text color */
 }
 
 button {
     background-color: #007bff;
     color: #fff;
-    border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+
+/* Styles for the action select and submit button */
+#action {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, #9b59b6, #e91e63);
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    appearance: none; /* Remove default appearance */
+}
+
+#action option {
+    background-color: pink; /* Black background */
+    color: black; /* White text */
+}
+
+.submit-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submit-container button {
+    width: 48%;
+    margin: 0;
+    font-size: 16px;
+    background: linear-gradient(to right, #007bff, #0056b3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.submit-container button:first-child {
+    margin-right: 2%;
 }
