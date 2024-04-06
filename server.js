@@ -166,11 +166,11 @@ function createTablesAndFillData() {
   });
 }
 
-const senderEmail = "bugByte406@gmail.com";
-const senderPassword = "!cps406yeet";
+const senderEmail = "bugbytes123@gmail.com";
+const senderPassword = "ppmzynniahaneegl"; // App password, not actual email password
 
 const transporter = nodemailer.createTransport({
-  service: "Gmail",
+  service: "gmail",
   auth: {
     user: senderEmail,
     pass: senderPassword,
@@ -183,7 +183,7 @@ function sendEmailToUsers(users, subject, message) {
     // Create email message
     const mailOptions = {
       from: senderEmail, // Sender's email address
-      to: user.email, // Receiver's email address
+      to: user, // Receiver's email address
       subject: subject,
       text: message,
     };
@@ -215,7 +215,7 @@ function getEmailsForBug(bugId, subject, message) {
 
     const emails = results.map((result) => result.email);
     console.log(emails);
-    // sendEmailToUsers(emails, subject, message);
+    sendEmailToUsers(emails, subject, message);
     return;
   });
 }
