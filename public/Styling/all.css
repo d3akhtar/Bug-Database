@@ -4,6 +4,7 @@
     margin: 5px;
     z-index: 1;
     font-weight: bold;
+    font-size: 20px;
 }
 
 .name {
@@ -12,6 +13,7 @@
     margin: 15px;
     z-index: 1;
     font-weight: bold;
+    font-size: 20px;
 }
 
 .nav-link {
