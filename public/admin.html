@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - BugBytes</title>
+    
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+     <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="Styling/admin.css">
-
+    <link rel="stylesheet" href="Styling/all.css">
 </head>
 <body>
-    <script src="scripts/isValidSession.js"></script>
     <h1>User Management</h1>
     <form id="userForm">
         <label for="action">Select Action:</label>
@@ -23,7 +25,7 @@
             <div id="addUserFields" style="display: none;">
                 <label for="newUsername">Username:</label>
                 <input type="text" id="addUsername"><br>
-		<label for="email">Email:</label>
+                <label for="email">Email:</label>
                 <input type="email" id="addEmail"><br>
                 <label for="newPassword">New Password:</label>
                 <input type="password" id="addPassword"><br>
@@ -47,10 +49,12 @@
                 <input type="password" id="passwordConfirmPassword"><br>
             </div>
         </div>
-	<input type="checkbox" id="confirmAction">Confirm action</input>
+        <input type="checkbox" id="confirmAction">
+        <label for="confirmAction">Confirm action</label><br>
         <button type="submit">Submit</button>
     </form>
-
+    <script src="scripts/createNavBar.js"></script>
+    <script src="scripts/isValidSession.js"></script>
     <script src="scripts/adminOptions.js"></script>
     <script src="scripts/adminActions.js"></script>
 </body>
