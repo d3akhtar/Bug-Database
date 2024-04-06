@@ -35,26 +35,11 @@ app.use(
   }),
 );
 
-// fetch username and password from json
-
-let readData;
-
-try {
-  const data = fs.readFileSync('./userSQL.json', 'utf8');
-  readData = JSON.parse(data);
-} catch (error) {
-  console.error('Error reading or parsing userSQL.json:', error);
-}
-
-// some con query thing that sends the emails to a fetched list of users
-
-const userData = readData;
 
 // Create a MySQL connection
 const con = mysql.createConnection({
   host: "localhost",
-  user: userData.username,
-  password: userData.password,
+  user: 'root',
 });
 
 // Connect to MySQL server
