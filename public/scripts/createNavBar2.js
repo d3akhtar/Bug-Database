@@ -47,7 +47,7 @@ function createNavBar() {
   var toggleDarkModeLi = document.createElement("li");
   toggleDarkModeLi.innerHTML = "<a class='dropdown-item' href='#'>Sign Out</a>"; // Use Bootstrap dropdown-item class
   var signOutLi = document.createElement("li");
-  signOutLi.innerHTML = "<a class='dropdown-item' href='../../createPassword.html'>Change Password</a>"; // Use Bootstrap dropdown-item class and direct to resetPassword.html
+  signOutLi.innerHTML = "<a class='dropdown-item' href='../createPassword.html'>Change Password</a>"; // Use Bootstrap dropdown-item class and direct to resetPassword.html
   dropdownMenuUl.appendChild(toggleDarkModeLi);
   dropdownMenuUl.appendChild(signOutLi);
   settingsLi.appendChild(dropdownMenuUl);
@@ -57,7 +57,7 @@ function createNavBar() {
   helpLi.classList.add("nav-item");
   var helpLink = document.createElement("a");
   helpLink.classList.add("nav-link");
-  helpLink.href = "FAQ.html";
+  helpLink.href = "../FAQ.html";
   var helpSpan = document.createElement("span");
   helpSpan.style.fontSize = "large";
   helpSpan.style.position = "static";
@@ -105,7 +105,7 @@ document.querySelector('.dropdown-menu a[href="#"]').addEventListener('click', (
     .then(response => {
         if (response.ok) {
             // Redirect to resetPassword page after successful logout
-            window.location.href = '../../login.html';
+            window.location.href = '../login.html';
         } else {
             // Handle error responses
             console.error('Error:', response.statusText);
