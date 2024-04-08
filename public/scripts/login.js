@@ -9,7 +9,7 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify({ username, password, rememberMe})
+		body: JSON.stringify({ username, password, rememberMe })
 	});
 	if (response.ok) {
 		window.location.href = '/dashboard';

@@ -11,7 +11,7 @@ function checkBugStatus(bugId) {
         .then(data => {
             // Log the bug status (true if resolved, false if not)
             console.log('Bug Status:', data.isResolved);
-		return data.isResolved;
+            return data.isResolved;
         })
         .catch(error => {
             console.error('Error:', error);

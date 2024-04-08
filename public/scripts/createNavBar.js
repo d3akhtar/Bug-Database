@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Create an XMLHttpRequest object
   var xhr = new XMLHttpRequest();
 
@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", function() {
   xhr.open('GET', '/isAdmin', true);
 
   // Setup a callback function to handle the response
-  xhr.onload = function() {
+  xhr.onload = function () {
     if (xhr.status >= 200 && xhr.status < 300) {
       // Request was successful, print the response to the console
-	console.log("text here");
-	console.log(xhr.responseText);
-      if (xhr.responseText === "true"){
-	addAdminPanelLink()
+      console.log("text here");
+      console.log(xhr.responseText);
+      if (xhr.responseText === "true") {
+        addAdminPanelLink()
       }
     } else {
       // Request failed
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   // Setup a callback function to handle errors
-  xhr.onerror = function() {
+  xhr.onerror = function () {
     console.error('Request failed');
   };
 
@@ -54,10 +54,10 @@ function createNavBar() {
   // Create li element for settings
   var settingsLi = document.createElement("li");
   settingsLi.classList.add("nav-item", "dropdown"); // Add classes for styling
-  settingsLi.addEventListener("mouseenter", function() {
+  settingsLi.addEventListener("mouseenter", function () {
     toggleDropdown(true);
   });
-  settingsLi.addEventListener("mouseleave", function() {
+  settingsLi.addEventListener("mouseleave", function () {
     toggleDropdown(false);
   });
   var settingsLink = document.createElement("a");
@@ -110,7 +110,7 @@ function createNavBar() {
 
   // Append nav to the body
   document.body.insertBefore(nav, document.body.firstChild);
-	console.log("made nav bar");
+  console.log("made nav bar");
 }
 
 // Call the function to create the navbar
@@ -118,36 +118,36 @@ createNavBar();
 
 // Function to toggle dropdown menu
 function toggleDropdown(show) {
-    var dropdownMenu = document.querySelector(".dropdown-menu");
-    var settingsLink = document.querySelector(".dropdown-toggle");
-    if (show) {
-        dropdownMenu.style.display = "block";
-        settingsLink.setAttribute("aria-expanded", "true");
-    } else {
-        dropdownMenu.style.display = "none";
-        settingsLink.setAttribute("aria-expanded", "false");
-    }
+  var dropdownMenu = document.querySelector(".dropdown-menu");
+  var settingsLink = document.querySelector(".dropdown-toggle");
+  if (show) {
+    dropdownMenu.style.display = "block";
+    settingsLink.setAttribute("aria-expanded", "true");
+  } else {
+    dropdownMenu.style.display = "none";
+    settingsLink.setAttribute("aria-expanded", "false");
+  }
 }
 
 // Logout functionality
 document.querySelector('.dropdown-menu a[href="#"]').addEventListener('click', () => {
-    fetch('/logout', {
-        method: 'POST',
-        credentials: 'same-origin' // Include cookies in the request
-    })
+  fetch('/logout', {
+    method: 'POST',
+    credentials: 'same-origin' // Include cookies in the request
+  })
     .then(response => {
-        if (response.ok) {
-            // Redirect to resetPassword page after successful logout
-            window.location.href = '/login.html';
-        } else {
-            // Handle error responses
-            console.error('Error:', response.statusText);
-            alert('Failed to logout. Please try again.');
-        }
+      if (response.ok) {
+        // Redirect to resetPassword page after successful logout
+        window.location.href = '/login.html';
+      } else {
+        // Handle error responses
+        console.error('Error:', response.statusText);
+        alert('Failed to logout. Please try again.');
+      }
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('An unexpected error occurred. Please try again later.');
+      console.error('Error:', error);
+      alert('An unexpected error occurred. Please try again later.');
     });
 });
 
