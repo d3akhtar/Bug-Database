@@ -36,8 +36,9 @@ function createNavBar() {
 
   // Create div element for the name
   var nameDiv = document.createElement("div");
-  nameDiv.classList.add("name");
-  nameDiv.textContent = "BugBytes";
+  nameDiv.classList.add("nav-link");
+  nameDiv.classList.add("nav-item");
+  nameDiv.href = "/home.html";
 
   // Create ul element
   var ul = document.createElement("ul");
@@ -48,8 +49,8 @@ function createNavBar() {
   var homeLink = document.createElement("a");
   homeLink.classList.add("nav-link");
   homeLink.href = "/home.html";
-  homeLink.textContent = "Home";
-  homeLi.appendChild(homeLink);
+  homeLink.textContent = "BugBytes";
+  nameDiv.appendChild(homeLink);
 
   // Create li element for settings
   var settingsLi = document.createElement("li");
@@ -63,7 +64,7 @@ function createNavBar() {
   var settingsLink = document.createElement("a");
   settingsLink.classList.add("nav-link", "dropdown-toggle"); // Add classes for styling
   settingsLink.href = "#"; // Set href for dropdown
-  settingsLink.textContent = "Settings"; // Use text content for "Settings"
+  settingsLink.textContent = "Settings "; // Use text content for "Settings"
   settingsLink.setAttribute("role", "button"); // Set role for accessibility
   settingsLink.setAttribute("aria-expanded", "false"); // Set aria-expanded for accessibility
   settingsLink.setAttribute("aria-haspopup", "true"); // Set aria-haspopup for accessibility
@@ -78,7 +79,7 @@ function createNavBar() {
   dropdownMenuUl.setAttribute("id", "dropdownMenu"); // Set aria-labelledby for accessibility
   dropdownMenuUl.setAttribute("aria-labelledby", "navbarDropdown"); // Set aria-labelledby for accessibility
   var toggleDarkModeLi = document.createElement("li");
-  toggleDarkModeLi.innerHTML = "<a class='dropdown-item' href='#'>Sign Out</a>"; // Use Bootstrap dropdown-item class
+  toggleDarkModeLi.innerHTML = "<a class='dropdown-item' id='logoutBtn' href='#'>Sign Out</a>"; // Use Bootstrap dropdown-item class
   var signOutLi = document.createElement("li");
   signOutLi.innerHTML = "<a class='dropdown-item' href='/createPassword.html'>Change Password</a>"; // Use Bootstrap dropdown-item class and direct to resetPassword.html
   dropdownMenuUl.appendChild(toggleDarkModeLi);
@@ -97,9 +98,10 @@ function createNavBar() {
   var helpIcon = document.createElement("i");
   helpIcon.classList.add("bi", "bi-question-circle", "navbtn");
   helpSpan.appendChild(helpIcon);
+  helpLink.appendChild(document.createTextNode("Help "));
   helpLink.appendChild(helpSpan);
-  helpLink.appendChild(document.createTextNode("Help"));
   helpLi.appendChild(helpLink);
+
 
   // Append all elements
   ul.appendChild(homeLi);
