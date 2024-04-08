@@ -1,4 +1,3 @@
-/* Styles for the user management form */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -13,19 +12,18 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 50px; /* Increase top margin for more spacing */
-    font-size: 36px; /* Increase font size */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+    margin-top: 50px; 
+    font-size: 36px; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
-
 
 form {
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Soft black shadow */
+    background-color: rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
     overflow: hidden;
     transition: max-height 0.5s ease;
 }
@@ -48,8 +46,8 @@ button {
     border-radius: 5px;
     box-sizing: border-box;
     transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
-    color: #fff; /* White text color */
+    background: rgba(255, 255, 255, 0.1); 
+    color: #fff; 
 }
 
 button {
@@ -63,8 +61,6 @@ button:hover {
     background-color: #0056b3;
 }
 
-
-/* Styles for the action select and submit button */
 #action {
     width: 100%;
     padding: 10px;
@@ -74,12 +70,12 @@ button:hover {
     color: #fff;
     font-size: 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    appearance: none; /* Remove default appearance */
+    appearance: none; 
 }
 
 #action option {
-    background-color: pink; /* Black background */
-    color: black; /* White text */
+    background-color: pink; 
+    color: black; 
 }
 
 .submit-container {

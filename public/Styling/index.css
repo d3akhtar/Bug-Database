@@ -1,16 +1,13 @@
-/* Global Styles */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
     color: #333;
 }
 
-/* Navbar Styles */
 .navbar {
-    background: linear-gradient(90deg, #343a40, #007bff); /* Use gradient background */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+    background: linear-gradient(90deg, #343a40, #007bff); 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
 }
-
 
 .nav-div {
     padding-left: 20px

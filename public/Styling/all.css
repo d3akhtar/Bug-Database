@@ -41,7 +41,7 @@ nav li {
 }
 
 nav a {
-  color: #fff; /* Change link text color to white */
+  color: #fff; 
   text-decoration: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -53,7 +53,6 @@ nav a:hover {
   background-color: lightblue;
 }
 
-/* Underline effect */
 nav a::before {
   content: '';
   position: absolute;
@@ -71,7 +70,6 @@ nav a:hover::before {
   visibility: visible;
   transform: scaleX(1);
 }
-
 
 .navbtn{
     cursor: "pointer"

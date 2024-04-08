@@ -1,9 +1,5 @@
-/* Style for section */
-
-
 .graph-container {
   width: 80vw;
-  height: 
   max-width: 600px;
   background-color: #fff;
   border-radius: 10px;
@@ -21,9 +17,9 @@
 }
 
 .graph{
-  max-width: 90%; /* Set maximum width */
-  min-width: 80%; /* Set minimum width */
-  margin: 0 auto; /* Horizontally center the div */
+  max-width: 90%; 
+  min-width: 80%; 
+  margin: 0 auto; 
   table-layout: fixed;
   border: 3px solid black;
   border-radius: 20px;
@@ -32,7 +28,6 @@
 }
 
 .graph:hover {
-
   transform: scale(1.05);
 }
 
@@ -53,15 +48,10 @@
   z-index: 1001;
   display: none;
   width: 80%;
-  /* Larger width */
   max-width: 800px;
-  /* Maximum width */
   height: 80%;
-  /* Larger height */
   max-height: 600px;
-  /* Maximum height */
   overflow-y: auto;
-  /* Enable vertical scroll if needed */
 }
 
 .sub-box.active {
