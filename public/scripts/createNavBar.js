@@ -173,3 +173,7 @@ function addAdminPanelLink() {
   // Append the list item to the dropdown menu
   dropdownMenu.appendChild(listItem);
 }
+
+function moveToAdminPanel() {
+  window.location.href = "admin.html";
+}
