@@ -24,10 +24,9 @@
 }
 
 td {
-  width: 85px;
+  width: 145px;
   vertical-align: top;
   display: inline-block;
-  text-align: right;
 }
 
 .values {
