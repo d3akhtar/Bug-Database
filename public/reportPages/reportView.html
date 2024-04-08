@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,11 @@
     <link rel="stylesheet" href="../Styling/reportView.css">
     <title>Report View - BugBytes</title>
 </head>
+
 <body class="bg">
     <div class="header" style="width:100%; height: 100px; margin-bottom: 20px;">
-        <h1 class="text-bold text-white text-uppercase" style="text-align:center; top:25%; position: relative; font-weight: bolder;">
+        <h1 class="text-bold text-white text-uppercase"
+            style="text-align:center; top:25%; position: relative; font-weight: bolder;">
             Bug #
             <span id="bug-number-display">[ID]</span>
             <span style="font-size:large; position:static; top:20px; right:50px; display:none;" id="resolvedTag">
@@ -35,25 +38,29 @@
             <!-- Divs will be dynamically generated here -->
         </div>
     </div>
-    <div id="contributeFormBlock" style="display:none; width: 1000px; height: 500px; padding: 50px;background-color:rgb(48, 48, 48); position:fixed; top: 25%; left: 25%">
+    <div id="contributeFormBlock"
+        style="display:none; width: 1000px; height: 500px; padding: 50px;background-color:rgb(48, 48, 48); position:fixed; top: 25%; left: 25%">
         <form id="contributeForm">
-            <a class="btn btn-outline-danger p-1" onclick="hideContributionForm()" style="width: 30px; height:30px; position:absolute; top: 3%; left: 1%;"><i class="bi bi-x-lg"></i></a>
+            <a class="btn btn-outline-danger p-1" onclick="hideContributionForm()"
+                style="width: 30px; height:30px; position:absolute; top: 3%; left: 1%;"><i class="bi bi-x-lg"></i></a>
             <h4 style="color: white; font-weight:bold;">Write Your Comment:</h4>
             <div style="width: 100%; height: 1px; background-color: aliceblue; margin: 15px 0;"></div>
-            <div style="margin-bottom: 20px;"><label style="color: white; margin-right: 10px;" for="inputTitle">Title: </label> <input style="padding:2px; width:100%" type="text" id="inputTitle" /> <br></div>
+            <div style="margin-bottom: 20px;"><label style="color: white; margin-right: 10px;" for="inputTitle">Title:
+                </label> <input style="padding:2px; width:100%" type="text" id="inputTitle" /> <br></div>
             <label for="inputDescription" style="margin-bottom: 5px; color:white">Description: </label> <br />
-            <textarea style="resize: none;" required maxlength="500" id="inputDescription" rows="8" cols="105"></textarea>
+            <textarea style="resize: none;" required maxlength="500" id="inputDescription" rows="8"
+                cols="105"></textarea>
             <button class="w-50" style="margin-left:25%" type="submit" id="updateBugButton">SUBMIT</button>
         </form>
     </div>
     <script>
 
-        function showContributionForm(){
+        function showContributionForm() {
             let form = document.getElementById("contributeFormBlock");
             form.style.display = "block";
         }
 
-        function hideContributionForm(){
+        function hideContributionForm() {
             console.log("hide form");
             let form = document.getElementById("contributeFormBlock");
             form.style.display = "none";
@@ -68,4 +75,5 @@
     <script src="../scripts/commentBug.js"></script>
     <script src="../scripts/resolveBug.js"></script>
 </body>
+
 </html>
