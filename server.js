@@ -963,7 +963,7 @@ app.post("/logout", (req, res) => {
     }
     // Redirect the user to the login page after successful logout
     console.log("The cookie muncher has devoured your cookie");
-    res.redirect("/login.html");
+    res.sendStatus(200); // good
   });
 });
 

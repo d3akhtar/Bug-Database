@@ -140,7 +140,7 @@ document.querySelector('.dropdown-menu a[href="#"]').addEventListener('click', (
     .then(response => {
       if (response.ok) {
         // Redirect to resetPassword page after successful logout
-        window.location.href = '/login.html';
+        window.location.href = '/index.html';
       } else {
         // Handle error responses
         console.error('Error:', response.statusText);
