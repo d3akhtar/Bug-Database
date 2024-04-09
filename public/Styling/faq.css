@@ -1,5 +1,6 @@
 .faq-section {
-    background-image: url('../Images/bottom.png');
+    /*background-image: url('../Images/bottom.png');*/
+    background-image: linear-gradient(white, lightblue);
     padding-bottom: 65px;
 }
 
