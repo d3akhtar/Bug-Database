@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    console.log("reloading?");
     document.getElementById("action").selectedIndex = 0;
 
     // Reset all input fields
@@ -71,6 +72,5 @@ document.getElementById('action').addEventListener('change', function () {
         removeRequirement(removeUserFields.id);
         addRequirement(changePasswordFields.id);
     }
-    document.getElementById("confirmAction").checked = false;
     console.log(addUserFields);
 });
