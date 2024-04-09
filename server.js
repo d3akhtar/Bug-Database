@@ -981,9 +981,9 @@ app.post("/logout", (req, res) => {
 // back to login
 app.get("/checkLogin", (req, res) => {
     if (!req.session.isLoggedIn) {
-        res.redirect("/login"); // Redirect to login page if not logged in
+        res.status(401).send("Unauthorized"); // Send 401 Unauthorized status
     } else {
-        res.end();
+        res.sendStatus(200);
     }
 });
 
