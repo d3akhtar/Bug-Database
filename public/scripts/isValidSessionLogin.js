@@ -1,3 +1,12 @@
+window.addEventListener('pageshow', function(event) {
+    // Check if the event's persisted property is false
+    console.log("reloading");
+    if (event.persisted) {
+        // Reload the page
+        window.location.reload();
+    }
+});
+
 // Check login status when the page is loaded
 // Make an AJAX request to check login status
 const xhr = new XMLHttpRequest();
