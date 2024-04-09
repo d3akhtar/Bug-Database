@@ -1,31 +1,6 @@
-.container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 0 20px;
-}
-
-.bug-bg{
-    background-image: url("../Images/backDrop.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-.top-bar {
-    background-color: rgba(64,76,92); 
-    color: white; 
-    text-align: left;
-    display: flex;
-    justify-content: flex-end; 
-    width: 100%; 
-}
-
-.top-bar h1 {
-    margin: 0; 
-    line-height: 50px;
-    text-align: right;
-    padding-right: 1030px;
-    font-size: 15px;
+.faq-section {
+    background-image: url('../Images/bottom.png');
+    padding-bottom: 65px;
 }
 
 .FAQ {
@@ -33,8 +8,9 @@
 }
 
 .FAQ h1 {
-    color: white;
+    color: black;
     padding-top: 35px;
+    padding-bottom: 35px;
     margin: 0; 
 }
 
@@ -44,8 +20,8 @@
 }
 
 .accordion-title {
-    background-color: rgba(249, 249, 249, 0.8); 
-    color: #333;
+    background-color: rgba(59, 56, 56, 0.8); 
+    color: white;
     cursor: pointer;
     padding: 15px;
     font-weight: bold;
