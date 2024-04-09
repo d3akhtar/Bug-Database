@@ -8,7 +8,7 @@ xhr.onreadystatechange = function () {
       // User is logged in, do nothing
     } else {
       // User is not logged in, redirect to login page
-      window.location.href = '/login.html';
+      window.location.href = '/index.html';
     }
   }
 };

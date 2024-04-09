@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="Styling/all.css">
     <link rel="stylesheet" href="Styling/home.css">
-    <title>Home - BugBytes</title>
+    <title>Dashboard - BugBytes</title>
 </head>
 
 <body class="bg">
@@ -35,27 +35,20 @@
     </div>
     <script>
         function moveToAddReport() {
-            window.location.href = "reportPages/createReport.html";
+            window.location.href = "/reportPages/createReport.html";
         }
 
         function moveToProgressView() {
-            window.location.href = "reportPages/sprintDetails.html";
+            window.location.href = "/reportPages/sprintDetails.html";
         }
 
-        function moveToAdminPanel() {
-            window.location.href = "admin.html";
-        }
-        function toggleDropdown() {
-            var dropdownMenu = document.getElementById("dropdownMenu");
-            dropdownMenu.style.display = (dropdownMenu.style.display === "block") ? "none" : "block";
-        }
     </script>
     <script src="scripts/createNavBar.js"></script>
     <script src="/jquery/jquery.min.js"></script>
     <script src="scripts/loadHomeReports.js"></script>
-    <script src="scripts/renderAdminButton.js"></script>
     <script src="scripts/transferToNewPage.js"></script>
     <script src="//cdn.datatables.net/2.0.3/js/dataTables.min.js"></script>
+    <script src="scripts/isValidSession.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../Styling/all.css">
     <link rel="stylesheet" href="../Styling/reportView.css">
@@ -24,34 +24,36 @@
         </h1>
     </div>
     <div class="container">
-        <div id="details">
-            <!-- Divs will be dynamically generated here -->
-        </div>
-        <div>
-            <br>
-            <div id="contribute-btn-block" style="margin-left: 36%;">
-                <button onclick="showContributionForm()">Add contribution</button>
-                <button id="resolveBugButton">Resolve Bug</button>
-            </div>
-        </div>
-        <div id="comments">
-            <!-- Divs will be dynamically generated here -->
-        </div>
-    </div>
-    <div id="contributeFormBlock"
-        style="display:none; width: 1000px; height: 500px; padding: 50px;background-color:rgb(48, 48, 48); position:fixed; top: 25%; left: 25%">
+	<div id="contributeFormBlock"
+        style="display:none; width: 1000px; height: 500px; padding: 50px;background-color:rgb(48, 48, 48); position:fixed; top: 20%; left: 50%; transform: translateX(-50%);" >
         <form id="contributeForm">
-            <a class="btn btn-outline-danger p-1" onclick="hideContributionForm()"
-                style="width: 30px; height:30px; position:absolute; top: 3%; left: 1%;"><i class="bi bi-x-lg"></i></a>
+            <a class="btn btn-outline-danger p-1" onclick="hideContributionForm()" style="width: 30px; height:30px; position:absolute; top: 3%; left: 1%; display: flex; align-items: center;"><i class="bi bi-x-lg" style="display: inline-block; text-align: center; width: 100%;"></i></a>
             <h4 style="color: white; font-weight:bold;">Write Your Comment:</h4>
             <div style="width: 100%; height: 1px; background-color: aliceblue; margin: 15px 0;"></div>
             <div style="margin-bottom: 20px;"><label style="color: white; margin-right: 10px;" for="inputTitle">Title:
                 </label> <input style="padding:2px; width:100%" type="text" id="inputTitle" /> <br></div>
             <label for="inputDescription" style="margin-bottom: 5px; color:white">Description: </label> <br />
-            <textarea style="resize: none;" required maxlength="500" id="inputDescription" rows="8"
+            <textarea style="resize: none; width:100%" required maxlength="500" id="inputDescription" rows="8"
                 cols="105"></textarea>
-            <button class="w-50" style="margin-left:25%" type="submit" id="updateBugButton">SUBMIT</button>
+		<div style="text-align: center;">
+		    <div style="display: inline-block; padding-top: 10px;">
+		        <button style="" type="submit" id="updateBugButton">Add Contribution</button>
+		        <button style="" type="submit" id="resolveBugButton">Resolve Report</button>
+		    </div>
+		</div>
         </form>
+    </div>
+        <div id="details">
+            <!-- Divs will be dynamically generated here -->
+        </div>
+        <div>
+            <br>
+
+	    </br>
+        </div>
+        <div id="comments">
+            <!-- Divs will be dynamically generated here -->
+        </div>
     </div>
     <script>
 
@@ -74,6 +76,7 @@
     <script src="../scripts/getCommentsForBug.js"></script>
     <script src="../scripts/commentBug.js"></script>
     <script src="../scripts/resolveBug.js"></script>
+    <script src="../scripts/isValidSession.js"></script>
 </body>
 
 </html>

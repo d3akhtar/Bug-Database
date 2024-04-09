@@ -42,9 +42,18 @@ body{
 .login-button{
     padding: 0px;
     margin-left: 0px;
-    width: 100%;
+    width: 47%;
     height: 50px;
     margin-bottom: 15px;
+}
+
+.cancel-button{
+    padding: 0px;
+    margin-left: 0px;
+    width: 47%;
+    height: 50px;
+    margin-bottom: 15px;
+    margin-left: 5%;
 }
 
 .remember-me-text{

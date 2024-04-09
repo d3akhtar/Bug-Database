@@ -1,3 +1,4 @@
+
 document.getElementById('userForm').addEventListener('submit', function (event) {
 	console.log("submitted");
 
@@ -8,13 +9,6 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 	// Check if the selected action is still "Select Action"
 	if (action === '') {
 		alert('Select an action');
-		return;
-	}
-
-	// Check if any field is empty
-	// need to add a confirmAction checkbox somewhere
-	if (!document.getElementById("confirmAction").checked) {
-		alert('Please Confirm Changes');
 		return;
 	}
 
@@ -30,6 +24,9 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 			confirmPassword: document.getElementById('addConfirmPassword').value,
 			adminSetting: document.getElementById('addAsAdmin').checked
 		};
+		if (fields.username.length == 0) {
+			alert("something went wrong");
+		}
 		if (fields.username.length > 8) {
 			alert("username is too long");
 			return;
@@ -43,43 +40,55 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 			return;
 		}
 
-		// Make an AJAX request to the server-side endpoint
-		const xhr = new XMLHttpRequest();
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You will be able to remove user.",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, add user!"
+		}).then((result) => {
+			if (result.isConfirmed) {
+				// Make an AJAX request to the server-side endpoint
+				const xhr = new XMLHttpRequest();
 
-		xhr.open('POST', '/addUser', true);
-		xhr.setRequestHeader('Content-Type', 'application/json');
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === XMLHttpRequest.DONE) {
-				if (xhr.status === 200) {
-					console.log(xhr.responseText);
-					alert(`${fields.username} was added successfully`);
-					return;
-					// Optionally, do something with the response
-				} else if (xhr.status === 404) {
-					alert("You do not have permission to make these changes");
-					return;
-				} else if (xhr.status === 409) {
-					alert("Username is already taken");
-					return;
-				} else if (xhr.status === 410) {
-					alert("Email is already taken");
-					return;
-				} else if (xhr.status === 500) {
-					alert("Internal server error");
-					return;
-				} else {
-					alert("error adding User");
-					console.error('Error:', xhr.status);
-					return;
-					// Optionally, handle errors
-				}
+				xhr.open('POST', '/addUser', true);
+				xhr.setRequestHeader('Content-Type', 'application/json');
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === XMLHttpRequest.DONE) {
+						if (xhr.status === 200) {
+							console.log(xhr.responseText);
+							alert(`${fields.username} was added successfully`);
+							return;
+							// Optionally, do something with the response
+						} else if (xhr.status === 404) {
+							alert("You do not have permission to make these changes");
+							return;
+						} else if (xhr.status === 409) {
+							alert("Username is already taken");
+							return;
+						} else if (xhr.status === 410) {
+							alert("Email is already taken");
+							return;
+						} else if (xhr.status === 500) {
+							alert("Internal server error");
+							return;
+						} else {
+							alert("error adding User");
+							console.error('Error:', xhr.status);
+							return;
+							// Optionally, handle errors
+						}
+					}
+				};
+				xhr.send(JSON.stringify(fields));
 			}
-		};
-		xhr.send(JSON.stringify(fields));
-
+		});
 
 	} else if (action === 'remove') {
 		console.log('remove');
+
 		fields = {
 			username: document.getElementById('removeUsername').value,
 		};
@@ -91,43 +100,56 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 
 		}
 
-		// Make an AJAX request to the server-side endpoint
-		const xhr = new XMLHttpRequest();
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, remove user!"
+		}).then((result) => {
+			if (result.isConfirmed) {
 
-		xhr.open('POST', '/removeUser', true);
-		xhr.setRequestHeader('Content-Type', 'application/json');
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === XMLHttpRequest.DONE) {
-				if (xhr.status === 200) {
-					console.log(xhr.responseText);
-					alert(`${fields.username} was removed successfully`);
-					return;
-					// Optionally, do something with the response
-				} else if (xhr.status === 401) {
-					alert("You do not have permission to make these changes");
-					return;
-				} else if (xhr.status === 404) {
-					alert("Username was not found");
-					return;
-				} else if (xhr.status === 400) {
-					alert("Cannot remove yourself");
-					return;
-				} else if (xhr.status === 500) {
-					alert("Internal server error");
-					return;
-				} else {
-					alert("error removing User");
-					console.error('Error:', xhr.status);
-					return;
-					// Optionally, handle errors
-				}
+				// Make an AJAX request to the server-side endpoint
+				const xhr = new XMLHttpRequest();
+
+				xhr.open('POST', '/removeUser', true);
+				xhr.setRequestHeader('Content-Type', 'application/json');
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === XMLHttpRequest.DONE) {
+						if (xhr.status === 200) {
+							console.log(xhr.responseText);
+							alert(`${fields.username} was removed successfully`);
+							return;
+							// Optionally, do something with the response
+						} else if (xhr.status === 401) {
+							alert("You do not have permission to make these changes");
+							return;
+						} else if (xhr.status === 404) {
+							alert("Username was not found");
+							return;
+						} else if (xhr.status === 400) {
+							alert("Cannot remove yourself");
+							return;
+						} else if (xhr.status === 500) {
+							alert("Internal server error");
+							return;
+						} else {
+							alert("error removing User");
+							console.error('Error:', xhr.status);
+							return;
+							// Optionally, handle errors
+						}
+					}
+				};
+				xhr.send(JSON.stringify(fields));
 			}
-		};
-		xhr.send(JSON.stringify(fields));
-
+		});
 
 	} else if (action === 'change') {
 		console.log('change');
+
 		fields = {
 			username: document.getElementById('passwordUsername').value,
 			newPassword: document.getElementById('passwordNewPassword').value,
@@ -143,36 +165,47 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 			return;
 		}
 
-		// Make an AJAX request to the server-side endpoint
-		const xhr = new XMLHttpRequest();
+		Swal.fire({
+			title: "Are you sure?",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, change password!"
+		}).then((result) => {
+			if (result.isConfirmed) {
+				// Make an AJAX request to the server-side endpoint
+				const xhr = new XMLHttpRequest();
 
-		xhr.open('POST', '/changeUserPassword', true);
-		xhr.setRequestHeader('Content-Type', 'application/json');
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === XMLHttpRequest.DONE) {
-				if (xhr.status === 200) {
-					console.log(xhr.responseText);
-					alert(`${fields.username}\'s password changed successfully`);
-					return;
-					// Optionally, do something with the response
-				} else if (xhr.status === 401) {
-					alert("You do not have permission to make these changes");
-					return;
-				} else if (xhr.status === 404) {
-					alert("Username was not found");
-					return;
-				} else if (xhr.status === 500) {
-					alert("Internal server error");
-					return;
-				} else {
-					alert("error removing User");
-					console.error('Error:', xhr.status);
-					return;
-					// Optionally, handle errors
-				}
+				xhr.open('POST', '/changeUserPassword', true);
+				xhr.setRequestHeader('Content-Type', 'application/json');
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === XMLHttpRequest.DONE) {
+						if (xhr.status === 200) {
+							console.log(xhr.responseText);
+							alert(`${fields.username}\'s password changed successfully`);
+							return;
+							// Optionally, do something with the response
+						} else if (xhr.status === 401) {
+							alert("You do not have permission to make these changes");
+							return;
+						} else if (xhr.status === 404) {
+							alert("Username was not found");
+							return;
+						} else if (xhr.status === 500) {
+							alert("Internal server error");
+							return;
+						} else {
+							alert("error removing User");
+							console.error('Error:', xhr.status);
+							return;
+							// Optionally, handle errors
+						}
+					}
+				};
+				xhr.send(JSON.stringify(fields));
 			}
-		};
-		xhr.send(JSON.stringify(fields));
+		});
 
 	}
 
@@ -187,3 +220,4 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 	this.reset();
 	selectElement.value = selectedValue;
 });
+

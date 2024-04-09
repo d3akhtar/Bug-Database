@@ -1,6 +1,6 @@
 .graph-container {
   width: 80vw;
-  max-width: 600px;
+  max-width: 80%;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(43, 39, 39, 0.956);
@@ -10,10 +10,28 @@
   border: 2px solid white;
   box-shadow: 0 0 10px white;
   display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,50px);
+  
+}
+
+.container {
+    position: relative;
+    margin-top: -8px;
+    width:100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center; /* Horizontally center the inner div */
+    align-items: center; /* Vertically center the inner div */
+}
+
+td {
+  width: 145px;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.values {
+  display: block;
+  padding: 5px;
 }
 
 .graph{

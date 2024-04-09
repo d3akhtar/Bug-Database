@@ -77,14 +77,6 @@ function drawGraph(xValue, yValue) {
   });
 }
 
-// Function to draw the graph that you see when you click the original
-
-// Function to close the sub-box
-function closeSubBox() {
-  var subBox = document.getElementById('subBox');
-  subBox.classList.remove('active');
-}
-
 function getDates(startDate, endDate) {
   const dates = [];
   let currentDate = new Date(startDate);
@@ -101,11 +93,6 @@ function getDates(startDate, endDate) {
 async function gatherArray(startDate, endDate) {
   // Make an AJAX request to the server with the start and end dates
   const today = Date(getTodaysDate());
-  const newDate = endDate > Date(today) ? Date(today) : endDate;
-  console.log(endDate);
-  console.log(getTodaysDate());
-  console.log(newDate);
-  console.log("");
   const response = await fetch('/sprintDetails', {
     method: 'POST',
     headers: {
@@ -136,7 +123,10 @@ function changeData(results) {
 document.getElementById('submitDatesBtn').addEventListener('click', async () => {
   const startDate = document.getElementById('startDate').value;
   const endDate = document.getElementById('endDate').value;
-
+  if (startDate > endDate) {
+    alert("please enter valid dates");
+    return;
+  }
   const xValues = getDates(startDate, endDate);
   const bugReports = await gatherArray(startDate, endDate);
   const yValues = bugReports.result;
