@@ -175,5 +175,5 @@ function addAdminPanelLink() {
 }
 
 function moveToAdminPanel() {
-  window.location.href = "admin.html";
+  window.location.href = "/admin.html";
 }
