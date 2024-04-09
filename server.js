@@ -125,7 +125,7 @@ function createTablesAndFillData() {
     const insertUserQuery = [
         `INSERT INTO users(username, email, password, isAdmin) VALUES("admin1", "user@gmail.com", "1234", TRUE)`,
         `INSERT INTO users(id, username, email, password, isAdmin) VALUES(0, "Deleted User", null, null, false)`,
-        `UPDATE users SET id=0 WHERE username="null"`,
+        `UPDATE users SET id=0 WHERE username="Deleted User"`,
     ];
 
     // Execute create table queries
@@ -607,19 +607,20 @@ app.post("/removeUser", (req, res) => {
                                     console.error("Error executing query:", err);
                                     return;
                                 }
-                                console.log("updated user comments");
+				console.log("updated user comments");
+                           	con.query(sql2, (err, results) => {
+                                	if (err) {
+                                	    console.log("query error");
+                                	    console.error("Error executing query:", err);
+                                	    return;
+                                	}
+                                	console.log("user removed");
+                                	res.sendStatus(200); // user added
+                                	return;
+                            	});
                                 return;
                             });
-                            con.query(sql2, (err, results) => {
-                                if (err) {
-                                    console.log("query error");
-                                    console.error("Error executing query:", err);
-                                    return;
-                                }
-                                console.log("user removed");
-                                res.sendStatus(200); // user added
-                                return;
-                            });
+ 
                         });
                     })
                     .catch((error) => {
