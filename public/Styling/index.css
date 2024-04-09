@@ -3,7 +3,28 @@ body {
     background-color: white;
     color: #333;
 }
-
+.about-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            background-image: linear-grsdient(lightblue, navy blue)
+        }
+        .person-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .person-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff; /* add border for better visibility */
+        }
+        .person-name {
+            margin-top: 10px;
+            font-weight: bold;
+        }
 .navbar {
     background: linear-gradient(90deg, #343a40, #007bff); 
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 

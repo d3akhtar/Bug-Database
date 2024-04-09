@@ -95,6 +95,8 @@ button {
     border-width: 3px;
     color: white;
     background-color:rgb(44, 42, 42);
+    font-size: 24px;
+    font-weight: bold;
 }
 
 button:hover {
