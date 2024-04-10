@@ -39,8 +39,29 @@ function createPassword() {
     const confirmNewPassword = document.getElementById('confirmNewPassword').value;
 
     // Check if new passwords match
-    if (!isStrongPassword(newPassword)){
-	alert("this password is not strong");
+    if (!isStrongPassword(newPassword)) {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                cancelButton: "btn w-25"
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: "Weak Password!",
+            showCancelButton: true,
+            cancelButtonColor: "#d33",
+            cancelButtonText: "OK",
+            showConfirmButton:false,
+            html: `<p style="color: white; text-align:center;">Make sure to have more than 7 characters, including an uppercase, lowercase, number, and special character<p>`,
+            timer: 2500,
+            timerProgressBar: true,
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+            }
+        });
 	return;
     }
     if (newPassword !== confirmNewPassword) {

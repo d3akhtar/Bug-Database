@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\scripts\\adminActions.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\scripts\\adminActions.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\scripts\\adminOptions.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\scripts\\adminOptions.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\scripts\\changeSelfPassword.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:public\\scripts\\changeSelfPassword.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "server.js",
-              "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\server.js",
-              "RelativeDocumentMoniker": "server.js",
-              "ToolTip": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\server.js",
-              "RelativeToolTip": "server.js",
-              "ViewState": "AQIAAEMCAAAAAAAAAAArwFICAAA1AAAA",
+              "Title": "changeSelfPassword.js",
+              "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\scripts\\changeSelfPassword.js",
+              "RelativeDocumentMoniker": "public\\scripts\\changeSelfPassword.js",
+              "ToolTip": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\scripts\\changeSelfPassword.js",
+              "RelativeToolTip": "public\\scripts\\changeSelfPassword.js",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAADUAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-09T03:43:31.475Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "adminActions.js",
-              "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\scripts\\adminActions.js",
-              "RelativeDocumentMoniker": "public\\scripts\\adminActions.js",
-              "ToolTip": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\scripts\\adminActions.js",
-              "RelativeToolTip": "public\\scripts\\adminActions.js",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAqwIoAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-09T03:10:31.334Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "admin.html",
-              "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\admin.html",
-              "RelativeDocumentMoniker": "public\\admin.html",
-              "ToolTip": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\admin.html",
-              "RelativeToolTip": "public\\admin.html",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAAwAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-04-09T03:07:56.899Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "adminOptions.js",
-              "DocumentMoniker": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\scripts\\adminOptions.js",
-              "RelativeDocumentMoniker": "public\\scripts\\adminOptions.js",
-              "ToolTip": "C:\\Users\\Danyal\\Documents\\CPS406\\Bug-Database\\public\\scripts\\adminOptions.js",
-              "RelativeToolTip": "public\\scripts\\adminOptions.js",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAkwEoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-09T03:07:46.465Z",
+              "WhenOpened": "2024-04-10T02:20:59.456Z",
               "EditorCaption": ""
             }
           ]

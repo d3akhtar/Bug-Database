@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\public",
+    "\\public\\bootstrap-5.0.2-dist",
     "\\public\\reportPages",
     "\\public\\scripts",
     "\\public\\Styling"
   ],
-  "SelectedNode": "\\server.js",
+  "SelectedNode": "\\public\\createPassword.html",
   "PreviewInSolutionExplorer": false
 }

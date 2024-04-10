@@ -76,9 +76,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <h3>Description:</h3>
                                 <p>${comment_body}</p>
                             </div><br><br>
-            <div id="contribute-btn-block" style="text-align: center;">
-                <button onclick="showContributionForm()">Contribute</button>
-            </div>
+                            <div id="contribute-btn-block" style="text-align: center;">
+                                <button id="show-comment-form-btn" onclick="showContributionForm()">Contribute</button>
+                            </div>
                         </div>`
                 } else {
 
