@@ -25,7 +25,7 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 			adminSetting: document.getElementById('addAsAdmin').checked
 		};
 		if (fields.username.length == 0) {
-			alert("something went wrong");
+			alert("enter a username");
 		}
 		if (fields.username.length > 8) {
 			alert("username is too long");
@@ -33,6 +33,10 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 		}
 		if (fields.email.length > 255) {
 			alert("email is too long");
+			return;
+		}
+		if (!isStrongPassword(fields.password)){
+			alert("this password is not strong");
 			return;
 		}
 		if (fields.password != fields.confirmPassword) {
@@ -160,11 +164,14 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 			alert("username is too long");
 			return;
 		}
+		if (!isStrongPassword(fields.newPassword)){
+			alert("this password is not strong");
+			return;
+		}
 		if (fields.newPassword != fields.confirmPassword) {
 			alert("passwords don't match");
 			return;
 		}
-
 		Swal.fire({
 			title: "Are you sure?",
 			icon: "warning",
@@ -220,4 +227,36 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 	this.reset();
 	selectElement.value = selectedValue;
 });
+
+function isStrongPassword(password) {
+    if (password.length < 8) {
+        return false;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+        return false;
+    }
+
+    if (!/[a-z]/.test(password)) {
+        return false;
+    }
+
+    if (!/\d/.test(password)) {
+        return false;
+    }
+
+    if (!/[!@#$%^&*()_+{}[\]:;<>,.?/\\|`~-]/.test(password)) {
+        return false;
+    }
+
+    return true;
+}
+
+function strength(password) {
+    if (isStrongPassword(password)) {
+        return "Strong";
+    } else {
+        return "Weak";
+    }
+}
 

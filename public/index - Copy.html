@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BugBytes</title>
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Styling/index.css">
+    <link rel="stylesheet" href="Styling/faq.css">
+</head>
+
+<body>
+ 
+    <!-- Make navbar follow the user on the page -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">BugBytes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <div class="nav-div">
+                            <a class="nav-link" href="#About">About</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-div">
+                            <a class="nav-link" href="#FAQ">Frequently Asked Questions</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-div">
+                            <a class="nav-link" href="login.html">Sign In</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bug-bg-contain">
+        <div class="container">
+            <h1 style="font-weight: bold;">BugBytes: Organize, Develop, Excel!</h1>
+        </div>
+    </div>
+
+    <div id="About" class="main-page-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title">About Us</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-page-section">
+                        <div class="image-section">
+                            <img src="../Images/reportIcon.png" alt="Report Icon">
+                        </div>
+                        <div class="text-section-info">
+                            <h3 class="text-uppercase">Report Resolution</h3>
+                            <p>System notifies all people who have edited the bug report</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-page-section">
+                        <div class="text-section-info">
+                            <h3 class="text-uppercase">Notification System</h3>
+                            <p>Get notified when a bug report has been changed to a "resolved" status or any relevant
+                                updates about the progress of the bug</p>
+                        </div>
+                        <div class="image-section">
+                            <img src="../Images/notification.png" alt="Notification Icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-page-section">
+                        <div class="image-section">
+                            <img src="../Images/graph.jpeg" alt="Graph Image">
+                        </div>
+                        <div class="text-section-info">
+                            <h3 class="text-uppercase">Graphs</h3>
+                            <p>Our system provides a graph of the past sprints to indicate the number of existing bugs
+                                and new bugs that are in the system</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-section">
+    <div id="FAQ" class="FAQ">
+        <h1>Frequently Asked Questions (FAQ)</h1>
+    </div>
+    <div class="container">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-title">What is BugByte?</div>
+                <div class="accordion-content">
+                    <p>We intend to help users to keep track of bugs/defects in
+                        design documents, diagrams, formal specs, source files, test source files, binaries and data
+                        files.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">How Do I Change My Password?</div>
+                <div class="accordion-content">
+                    <p>The admin would notify you about your username, password. If you do not know either your username
+                        or password, please contact the admin and
+                        they would assist you in creating a new password/username.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">Is There A Support System Available If I Encounter Any Difficulties Using
+                    The Website?</div>
+                <div class="accordion-content">
+                    <p>For support in technical difficulties or bugs regarding the site, please contact the admin
+                        manually.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">How Often Should I Update My Progress Or Report Bugs?</div>
+                <div class="accordion-content">
+                    <p>The frequency of reporting bugs of the project depends on the current progress of your project.
+                        If there are any defects or bugs that are found attempt to immediately
+                        post a report allowing others in the team to get notified of the issue.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">How Can I Report A Bug Or Issue I've Encountered?</div>
+                <div class="accordion-content">
+                    <p>Once logged in, there is a button that allows you or your team members to enter the name/subject
+                        of the current bug, and a textbox to write a detailed summary of the issue.
+                        Furthermore, there would be timeline to show when each bug is discovered during the sprint, and
+                        which defects to prioritize.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">Can I Update Or Edit Information I've Submitted Previously?</div>
+                <div class="accordion-content">
+                    <p>Currently, there is no way to edit previous bug posts, however if you noticed a mistake in your
+                        report, a new posted can be created to correct any mistakes.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">Is There A Limit To The Number Of Team Members Who Can Access The Project
+                    Tracking?</div>
+                <div class="accordion-content">
+                    <p>There is no limit to the number of team members who can access the project tracking, as long as
+                        the admin creates an account for each team member, all members are able to access the
+                        website and report a bug in their project.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-title">Are There Notifications Or Reminders For Upcoming Deadlines Or Critical
+                    Issues?</div>
+                <div class="accordion-content">
+                    <p>Yes. Once a bug report is posted, members when logged in will recieve a Notification of a bug.
+                        However, currently there are no notifications for any emergency deadlines or critical issues.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<div class="about-section">
+        <div class="person-container">
+            <img class="person-image" src="person1.jpg" alt="Person 1">
+            <p class="person-name">Ahmed</p>
+        </div>
+        <div class="person-container">
+            <img class="person-image" src="person2.jpg" alt="Person 2">
+            <p class="person-name">Danyal</p>
+        </div>
+        <div class="person-container">
+            <img class="person-image" src="person3.jpg" alt="Person 3">
+            <p class="person-name">Sabagan</p>
+        </div>
+        <div class="person-container">
+            <img class="person-image" src="person4.jpg" alt="Person 4">
+            <p class="person-name">Duncan</p>
+        </div>
+        <div class="person-container">
+            <img class="person-image" src="person5.jpg" alt="Person 5">
+            <p class="person-name">Jun</p>
+        </div>
+    </div>
+    <script src="Scripts/faq.js"></script>
+</body>
+
+</html>

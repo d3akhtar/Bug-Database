@@ -39,6 +39,10 @@ function createPassword() {
     const confirmNewPassword = document.getElementById('confirmNewPassword').value;
 
     // Check if new passwords match
+    if (!isStrongPassword(newPassword)){
+	alert("this password is not strong");
+	return;
+    }
     if (newPassword !== confirmNewPassword) {
         alert("New passwords do not match");
         return false; // Prevent form submission
@@ -55,7 +59,7 @@ function createPassword() {
         .then(response => {
             if (response.ok) {
                 alert("Password changed successfully");
-                window.location.href = '../home.html';
+                window.location.href = '/home.html';
                 // Optionally, do something with the response
             } else {
                 alert("Failed to create password");
@@ -67,4 +71,37 @@ function createPassword() {
         });
 
     return false; // Prevent form submission
+}
+
+
+function isStrongPassword(password) {
+    if (password.length < 8) {
+        return false;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+        return false;
+    }
+
+    if (!/[a-z]/.test(password)) {
+        return false;
+    }
+
+    if (!/\d/.test(password)) {
+        return false;
+    }
+
+    if (!/[!@#$%^&*()_+{}[\]:;<>,.?/\\|`~-]/.test(password)) {
+        return false;
+    }
+
+    return true;
+}
+
+function strength(password) {
+    if (isStrongPassword(password)) {
+        return "Strong";
+    } else {
+        return "Weak";
+    }
 }
