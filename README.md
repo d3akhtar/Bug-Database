@@ -2,7 +2,7 @@ The Bug Report System is a program designed to let users log bugs/errors into a 
 
 ## Requirements: ##
 - SQL (Server) 8.0.36 - https://dev.mysql.com/downloads/installer/
-	- in the "Accounts and Roles" section, click add user with the username "bugbytes" and leave the password section empty for that user
+	- in the "Accounts and Roles" section, click add user with the username "bugbytes" and leave the password section empty for that user. Otherwise, stick with the default settings.
 - Node js v20.10.0-x64 - https://nodejs.org/en/download
 
 ## Setup: ##
