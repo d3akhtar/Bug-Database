@@ -24,7 +24,7 @@ The Bug Report System is a program designed to let users log bugs/errors into a 
 - Close the report 
 - view progress in the form a graph
 
-- Admin functions
--- Add users
--- Remove users
--- Reset users' passwords
+- Admin functions:
+	- Add users
+	- Remove users
+	- Reset users' passwords
