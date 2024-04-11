@@ -1,6 +1,6 @@
 The Bug Report System is a program designed to let users log bugs/errors into a database. 
 
-#Requirements:#
+# Requirements: #
 - SQL (Server) 8.0.36
 	https://dev.mysql.com/downloads/installer/
 - Node js v20.10.0-x64
