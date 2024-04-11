@@ -54,7 +54,7 @@ function createPassword() {
             cancelButtonText: "OK",
             showConfirmButton:false,
             html: `<p style="color: white; text-align:center;">Make sure to have more than 7 characters, including an uppercase, lowercase, number, and special character<p>`,
-            timer: 2500,
+            timer: 10000,
             timerProgressBar: true,
         }).then((result) => {
             /* Read more about handling dismissals below */
