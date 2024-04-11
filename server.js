@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 // Create a MySQL connection
 const con = mysql.createConnection({
     host: "localhost",
-    user: 'root',
+    user: 'bugbytes',
 });
 
 // Connect to MySQL server
