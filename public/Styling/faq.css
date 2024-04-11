@@ -4,6 +4,11 @@
     padding-bottom: 65px;
 }
 
+.accordion-item {
+    background-color: #fff0;
+    border: 0px;
+}
+
 .FAQ {
     text-align: center;
 }

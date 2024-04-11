@@ -46,7 +46,7 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 
 		Swal.fire({
 			title: "Are you sure?",
-			text: "You will be able to remove user.",
+			text: `User "${fields.username}" will be added.`,
 			icon: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
@@ -106,7 +106,7 @@ document.getElementById('userForm').addEventListener('submit', function (event) 
 
 		Swal.fire({
 			title: "Are you sure?",
-			text: "You won't be able to revert this!",
+			text: `User "${fields.username}" will be removed.`,
 			icon: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",

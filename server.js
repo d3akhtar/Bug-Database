@@ -130,8 +130,8 @@ function createTablesAndFillData() {
 
     // Query to insert user
     const insertUserQuery = [
-        `INSERT INTO users(username, email, password, isAdmin) VALUES("admin1", "user@gmail.com", "1234", TRUE)`,
-        `INSERT INTO users(id, username, email, password, isAdmin) VALUES(0, "Deleted User", null, null, false)`,
+        `INSERT INTO users(username, email, password, isAdmin) VALUES("admin1", NULL, "1234", TRUE)`,
+        `INSERT INTO users(id, username, email, password, isAdmin) VALUES(0, "Deleted User", NULL, NULL, FALSE)`,
         `UPDATE users SET id=0 WHERE username="Deleted User"`,
     ];
 
