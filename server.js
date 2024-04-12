@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
@@ -20,10 +21,38 @@ app.use(session({
         maxAge: (60 * 60 * 1000 * 24)
     }
 }));
+=======
+const http = require("http");
+const bodyParser = require("body-parser");
+const express = require("express");
+const mysql = require("mysql2");
+const path = require("path");
+const fs = require("fs");
+const session = require("express-session");
+const os = require("os");
+const nodemailer = require("nodemailer");
+
+const app = express();
+const hostname = "0.0.0.0";
+const port = 3000;
+
+// Configure session middleware
+app.use(
+    session({
+        secret: "your_secret_key",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 60 * 60 * 1000 * 24,
+        },
+    }),
+);
+>>>>>>> ahmad-branch
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+<<<<<<< HEAD
 app.use(session({
     secret: 'your_secret_key',
     resave: false,
@@ -41,12 +70,33 @@ try {
 }
 
 const userData = readData;
+=======
+app.use(
+    session({
+        secret: "your_secret_key",
+        resave: false,
+        saveUninitialized: true,
+    }),
+);
+
+// Middleware to disable caching for all routes
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate'); // HTTP 1.1.
+    res.setHeader('Pragma', 'no-cache'); // HTTP 1.0.
+    res.setHeader('Expires', '0'); // Proxies.
+    next();
+});
+>>>>>>> ahmad-branch
 
 // Create a MySQL connection
 const con = mysql.createConnection({
     host: "localhost",
+<<<<<<< HEAD
     user: userData.username,
     password: userData.password,
+=======
+    user: 'bugbytes',
+>>>>>>> ahmad-branch
 });
 
 // Connect to MySQL server
@@ -58,7 +108,11 @@ con.connect((err) => {
     console.log("Connected to MySQL server");
 
     // Check if the database exists
+<<<<<<< HEAD
     con.query("SHOW DATABASES LIKE 'bugs'", (err, results) => {
+=======
+    con.query("SHOW DATABASES LIKE 'bugsForBugBytes'", (err, results) => {
+>>>>>>> ahmad-branch
         if (err) {
             console.error("Error checking if database exists:", err);
             throw err;
@@ -66,20 +120,35 @@ con.connect((err) => {
 
         if (results.length === 0) {
             // Database doesn't exist, create it
+<<<<<<< HEAD
             con.query("CREATE DATABASE bugs", (err) => {
+=======
+            con.query("CREATE DATABASE bugsForBugBytes", (err) => {
+>>>>>>> ahmad-branch
                 if (err) {
                     console.error("Error creating database:", err);
                     throw err;
                 }
+<<<<<<< HEAD
                 console.log("Database 'bugs' created");
 
                 // Connect to the 'bugs' database
                 con.changeUser({ database: "bugs" }, (err) => {
+=======
+                console.log("Database 'bugsForBugBytes' created");
+
+                // Connect to the 'bugs' database
+                con.changeUser({ database: "bugsForBugBytes" }, (err) => {
+>>>>>>> ahmad-branch
                     if (err) {
                         console.error("Error connecting to 'bugs' database:", err);
                         throw err;
                     }
+<<<<<<< HEAD
                     console.log("Connected to 'bugs' database");
+=======
+                    console.log("Connected to 'bugsForBugBytes' database");
+>>>>>>> ahmad-branch
 
                     // Call a function to create tables and fill data if needed
                     createTablesAndFillData();
@@ -87,19 +156,30 @@ con.connect((err) => {
             });
         } else {
             // Database exists, connect to it directly
+<<<<<<< HEAD
             con.changeUser({ database: "bugs" }, (err) => {
+=======
+            con.changeUser({ database: "bugsForBugBytes" }, (err) => {
+>>>>>>> ahmad-branch
                 if (err) {
                     console.error("Error connecting to 'bugs' database:", err);
                     throw err;
                 }
+<<<<<<< HEAD
                 console.log("Connected to 'bugs' database");
+=======
+                console.log("Connected to 'bugsForBugBytes' database");
+>>>>>>> ahmad-branch
             });
         }
     });
 });
 
 // Function to create tables and fill data if needed
+<<<<<<< HEAD
 // Function to create tables and fill data if needed
+=======
+>>>>>>> ahmad-branch
 function createTablesAndFillData() {
     // Queries to create tables
     const createQueries = [
@@ -111,9 +191,15 @@ function createTablesAndFillData() {
     )`,
         `CREATE TABLE users (
       id INT PRIMARY KEY AUTO_INCREMENT,
+<<<<<<< HEAD
       username VARCHAR(8) NOT NULL UNIQUE,
       email VARCHAR(255) NOT NULL UNIQUE,
       password TEXT NOT NULL,
+=======
+      username VARCHAR(16) NOT NULL UNIQUE,
+      email VARCHAR(255) UNIQUE,
+      password TEXT,
+>>>>>>> ahmad-branch
       isAdmin BOOLEAN NOT NULL
     )`,
         `CREATE TABLE comments (
@@ -126,6 +212,7 @@ function createTablesAndFillData() {
       PRIMARY KEY (id),
       FOREIGN KEY (author_id) REFERENCES users(id),
       FOREIGN KEY (bug_id) REFERENCES bugs(id)
+<<<<<<< HEAD
     )`
     ];
 
@@ -134,6 +221,20 @@ function createTablesAndFillData() {
 
     // Execute create table queries
     createQueries.forEach(query => {
+=======
+    )`,
+    ];
+
+    // Query to insert user
+    const insertUserQuery = [
+        `INSERT INTO users(username, email, password, isAdmin) VALUES("admin1", NULL, "1234", TRUE)`,
+        `INSERT INTO users(id, username, email, password, isAdmin) VALUES(0, "Deleted User", NULL, NULL, FALSE)`,
+        `UPDATE users SET id=0 WHERE username="Deleted User"`,
+    ];
+
+    // Execute create table queries
+    createQueries.forEach((query) => {
+>>>>>>> ahmad-branch
         con.query(query, (err, results) => {
             if (err) {
                 console.error("Error creating table:", err);
@@ -144,6 +245,7 @@ function createTablesAndFillData() {
     });
 
     // Execute insert user query
+<<<<<<< HEAD
     con.query(insertUserQuery, (err, results) => {
         if (err) {
             console.error("Error inserting user:", err);
@@ -153,6 +255,89 @@ function createTablesAndFillData() {
     });
 }
 
+=======
+    insertUserQuery.forEach((query) => {
+        con.query(query, (err, results) => {
+            if (err) {
+                console.error("Error inserting user:", err);
+                throw err;
+            }
+            console.log("query executed:", results);
+        });
+    });
+}
+
+const senderEmail = "bugbytes123@gmail.com";
+const senderPassword = "ppmzynniahaneegl"; // App password, not actual email password
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: senderEmail,
+        pass: senderPassword,
+    },
+});
+
+function sendEmailToUsers(users, subject, message) {
+    // Iterate over each user
+    users.forEach((user) => {
+        // Create email message
+        const mailOptions = {
+            from: senderEmail, // Sender's email address
+            to: user, // Receiver's email address
+            subject: subject,
+            text: message,
+        };
+
+        // Send email
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error("Error sending email:", error);
+            } else {
+                console.log("Email sent:", info.response);
+            }
+        });
+    });
+}
+
+function getEmailsForBug(bugId, subject, message) {
+    const query = `
+    SELECT DISTINCT u.email
+    FROM users u
+    JOIN comments c ON u.id = c.author_id
+    WHERE c.bug_id = ? AND c.author_id != 0;
+  `;
+
+    con.query(query, [bugId], (err, results) => {
+        if (err) {
+            console.error("Error executing query:", err);
+            return;
+        }
+
+        const emails = results.map((result) => result.email);
+        console.log(emails);
+        sendEmailToUsers(emails, subject, message);
+        return;
+    });
+}
+
+function convertToUTCMinus4(timestampStr) {
+    // Parse the timestamp string into a Date object
+    const date = new Date(timestampStr);
+
+    // Get the timezone offset in minutes
+    const offsetInMinutes = date.getTimezoneOffset();
+
+    // Convert the timezone offset to milliseconds
+    const offsetInMilliseconds = offsetInMinutes * 60 * 1000;
+
+    // Adjust the date to UTC-4 by subtracting the offset
+    const dateUTCMinus4 = new Date(date.getTime() - offsetInMilliseconds);
+
+    return dateUTCMinus4;
+}
+
+>>>>>>> ahmad-branch
 function calculateBugStats(bugs, startDate, endDate, startingNum) {
     // Call the calculateBugStats function here with the bug reports array
     // Define a helper function to calculate the difference in days between two dates
@@ -172,13 +357,26 @@ function calculateBugStats(bugs, startDate, endDate, startingNum) {
     let bugsAdded = 0;
     let bugsResolved = 0;
     let netIncrease = 0;
+<<<<<<< HEAD
+=======
+    console.log(dateDiffInDays(startDate, endDate) + 1);
+>>>>>>> ahmad-branch
     let result = new Array(dateDiffInDays(startDate, endDate) + 1).fill(0);
 
     // Iterate over each bug
     //console.log(bugs);
+<<<<<<< HEAD
     bugs.forEach(bug => {
         // Calculate the difference in days between the bug's dateAdded and the start date
         const daysSinceStart = dateDiffInDays(new Date(startDate), new Date(bug.dateAdded));
+=======
+    bugs.forEach((bug) => {
+        // Calculate the difference in days between the bug's dateAdded and the start date
+        const daysSinceStart = dateDiffInDays(
+            new Date(startDate),
+            new Date(convertToUTCMinus4(bug.dateAdded)),
+        );
+>>>>>>> ahmad-branch
 
         // Increment the number of bugs added on the corresponding day
         result[daysSinceStart]++;
@@ -186,7 +384,14 @@ function calculateBugStats(bugs, startDate, endDate, startingNum) {
 
         // If the bug has been resolved, adjust counts accordingly
         if (bug.dateResolved) {
+<<<<<<< HEAD
             const daysResolved = dateDiffInDays(new Date(startDate), new Date(bug.dateResolved));
+=======
+            const daysResolved = dateDiffInDays(
+                new Date(startDate),
+                new Date(bug.dateResolved),
+            );
+>>>>>>> ahmad-branch
             if (daysResolved < result.length) {
                 result[daysResolved]--;
                 bugsResolved++;
@@ -208,7 +413,11 @@ function calculateBugStats(bugs, startDate, endDate, startingNum) {
         netIncrease,
         bugsAdded,
         bugsResolved,
+<<<<<<< HEAD
         result
+=======
+        result,
+>>>>>>> ahmad-branch
     };
 }
 
@@ -220,7 +429,11 @@ function incrementDate(dateString) {
     date.setDate(date.getDate() + 1);
 
     // Format the incremented date as YYYY-MM-DD
+<<<<<<< HEAD
     const incrementedDateString = date.toISOString().split('T')[0];
+=======
+    const incrementedDateString = date.toISOString().split("T")[0];
+>>>>>>> ahmad-branch
 
     return incrementedDateString;
 }
@@ -228,13 +441,22 @@ function incrementDate(dateString) {
 function getBugReports(startDate, endDate, callback) {
     // Construct the SQL query to fetch bug reports within the specified date range
     const sql = `SELECT * FROM bugs WHERE dateAdded >= ? AND dateAdded < ?`;
+<<<<<<< HEAD
     const asql = 'SELECT SUM(1) AS total FROM bugs WHERE dateAdded <= ?';
     const bsql = 'SELECT SUM(1) AS total FROM bugs WHERE dateResolved <= ?';
+=======
+    const asql = "SELECT SUM(1) AS total FROM bugs WHERE dateAdded <= ?";
+    const bsql = "SELECT SUM(1) AS total FROM bugs WHERE dateResolved <= ?";
+>>>>>>> ahmad-branch
 
     // Execute the query to get the total bugs added until the start date
     con.query(asql, [startDate], (err, aResult) => {
         if (err) {
+<<<<<<< HEAD
             console.error('Error executing query:', err);
+=======
+            console.error("Error executing query:", err);
+>>>>>>> ahmad-branch
             callback(err, null);
             return;
         }
@@ -242,7 +464,11 @@ function getBugReports(startDate, endDate, callback) {
         // Execute the query to get the total bugs resolved until the start date
         con.query(bsql, [startDate], (err, bResult) => {
             if (err) {
+<<<<<<< HEAD
                 console.error('Error executing query:', err);
+=======
+                console.error("Error executing query:", err);
+>>>>>>> ahmad-branch
                 callback(err, null);
                 return;
             }
@@ -255,14 +481,27 @@ function getBugReports(startDate, endDate, callback) {
             // Execute the query to fetch bug reports within the specified date range
             con.query(sql, [startDate, incrementDate(endDate)], (err, results) => {
                 if (err) {
+<<<<<<< HEAD
                     console.error('Error executing query:', err);
+=======
+                    console.error("Error executing query:", err);
+>>>>>>> ahmad-branch
                     callback(err, null);
                     return;
                 }
 
                 // Modify bug reports based on a, b, and n
                 console.log(results.length);
+<<<<<<< HEAD
                 const modifiedResults = calculateBugStats(results, startDate, endDate, n);
+=======
+                const modifiedResults = calculateBugStats(
+                    results,
+                    startDate,
+                    endDate,
+                    n,
+                );
+>>>>>>> ahmad-branch
                 console.log(modifiedResults);
                 // Pass the modified bug reports to the callback function
                 callback(null, modifiedResults, n);
@@ -271,19 +510,32 @@ function getBugReports(startDate, endDate, callback) {
     });
 }
 
+<<<<<<< HEAD
 app.get('/getBugStatus/:bugId', (req, res) => {
+=======
+app.get("/getBugStatus/:bugId", (req, res) => {
+>>>>>>> ahmad-branch
     const bugId = req.params.bugId;
 
     // Query the database to fetch the bug with the specified ID
     const sql = `SELECT id, dateResolved FROM bugs WHERE id = ?`;
     con.query(sql, [bugId], (error, results) => {
         if (error) {
+<<<<<<< HEAD
             console.error('Error fetching bug details:', error);
             res.status(500).json({ error: 'Failed to fetch bug details' });
         } else {
             if (results.length === 0) {
                 // Bug with the specified ID not found
                 res.status(404).json({ error: 'Bug not found' });
+=======
+            console.error("Error fetching bug details:", error);
+            res.status(500).json({ error: "Failed to fetch bug details" });
+        } else {
+            if (results.length === 0) {
+                // Bug with the specified ID not found
+                res.status(404).json({ error: "Bug not found" });
+>>>>>>> ahmad-branch
             } else {
                 // Bug found, return whether dateResolved is null or not
                 const bug = results[0];
@@ -294,8 +546,20 @@ app.get('/getBugStatus/:bugId', (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 // Add a route to handle the AJAX request for retrieving bug reports
 app.post('/sprintDetails', (req, res) => {
+=======
+app.get('/isAdmin', (req, res) => {
+    // Send the response back to the client
+    console.log("testing for admin here");
+    console.log(req.session.isAdmin);
+    res.send(req.session.isAdmin);
+});
+
+// Add a route to handle the AJAX request for retrieving bug reports
+app.post("/sprintDetails", (req, res) => {
+>>>>>>> ahmad-branch
     const { startDate, endDate } = req.body;
     // add something so that if endDate > todayDate, endDate = todayDate
     // might need more work since endDate is const
@@ -303,8 +567,13 @@ app.post('/sprintDetails', (req, res) => {
     // Call the getBugReports function with the provided start and end dates
     getBugReports(startDate, endDate, (err, bugReports) => {
         if (err) {
+<<<<<<< HEAD
             console.error('Error retrieving bug reports:', err);
             res.status(500).send('Error retrieving bug reports');
+=======
+            console.error("Error retrieving bug reports:", err);
+            res.status(500).send("Error retrieving bug reports");
+>>>>>>> ahmad-branch
             return;
         }
         // Send the retrieved bug reports back to the client
@@ -312,7 +581,11 @@ app.post('/sprintDetails', (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 app.get('/getBugsTable', (req, res) => {
+=======
+app.get("/getBugsTable", (req, res) => {
+>>>>>>> ahmad-branch
     // Query to fetch comments from the database
     const order = req.query.param;
     const sql = `SELECT 
@@ -320,11 +593,18 @@ app.get('/getBugsTable', (req, res) => {
     c.title AS comment_title,
     c.body AS comment_body,
     LEFT(DATE(b.dateAdded), 10) AS bug_dateAdded,
+<<<<<<< HEAD
     LEFT(DATE(b.dateModified), 10) AS bug_dateModified,
     CASE
         WHEN b.dateResolved IS NOT NULL THEN LEFT(DATE(b.dateResolved), 10)
         ELSE "In Progress"
     END AS bug_resolved
+=======
+    CASE
+        WHEN b.dateResolved IS NULL THEN LEFT(DATE(b.dateModified), 10)
+        ELSE CONCAT(LEFT(DATE(b.dateResolved), 10), ' (Resolved)')
+    END AS bug_dateModified
+>>>>>>> ahmad-branch
 FROM 
     bugs b
 JOIN 
@@ -333,8 +613,13 @@ JOIN
     // Execute the query
     con.query(sql + " " + order, (error, results) => {
         if (error) {
+<<<<<<< HEAD
             console.error('Error fetching comments:', error);
             res.status(500).json({ error: 'Failed to fetch comments' });
+=======
+            console.error("Error fetching comments:", error);
+            res.status(500).json({ error: "Failed to fetch comments" });
+>>>>>>> ahmad-branch
         } else {
             // Send the comments as a JSON response
             res.json(results);
@@ -342,7 +627,11 @@ JOIN
     });
 });
 
+<<<<<<< HEAD
 app.get('/getCommentsForBug', (req, res) => {
+=======
+app.get("/getCommentsForBug", (req, res) => {
+>>>>>>> ahmad-branch
     // Query to fetch comments from the database
     const id = req.query.param;
     const sql = `SELECT
@@ -364,8 +653,13 @@ ORDER BY
     // Execute the query
     con.query(sql, (error, results) => {
         if (error) {
+<<<<<<< HEAD
             console.error('Error fetching comments:', error);
             res.status(500).json({ error: 'Failed to fetch comments' });
+=======
+            console.error("Error fetching comments:", error);
+            res.status(500).json({ error: "Failed to fetch comments" });
+>>>>>>> ahmad-branch
         } else {
             // Send the comments as a JSON response
             res.json(results);
@@ -373,7 +667,239 @@ ORDER BY
     });
 });
 
+<<<<<<< HEAD
 app.post('/checkCurrentPassword', (req, res) => {
+=======
+function isAdmin(userId) {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM users WHERE id=${userId} AND isAdmin = TRUE`;
+        con.query(sql, [userId], (err, results) => {
+            if (err) {
+                console.error("Error executing query:", err);
+                reject(err);
+                return;
+            }
+            resolve(results.length > 0);
+        });
+    });
+}
+
+function isTakenUsername(username) {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM users WHERE username="${username}"`;
+        con.query(sql, [username], (err, results) => {
+            if (err) {
+                console.error("Error executing query:", err);
+                reject(err);
+                return;
+            }
+            resolve(results.length > 0);
+        });
+    });
+}
+
+function isTakenEmail(email) {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM users WHERE email="${email}"`;
+        con.query(sql, [email], (err, results) => {
+            if (err) {
+                console.error("Error executing query:", err);
+                reject(err);
+                return;
+            }
+            resolve(results.length > 0);
+        });
+    });
+}
+
+app.post("/addUser", (req, res) => {
+    const { email, username, password, confirmPassword, adminSetting } = req.body;
+    const userId = req.session.userId;
+    const isLoggedIn = req.session.isLoggedIn;
+
+    console.log("server here");
+    if (!isLoggedIn) {
+        console.log("not logged in");
+        res.sendStatus(401); // Unauthorized - Current password is incorrect
+        return;
+    }
+    isAdmin(userId)
+        .then((isAdmin) => {
+            if (isAdmin) {
+                isTakenUsername(username)
+                    .then((isTakenUsername) => {
+                        if (isTakenUsername) {
+                            console.log("username taken");
+                            res.sendStatus(409); // username taken
+                            return;
+                        }
+                        isTakenEmail(email)
+                            .then((isTakenEmail) => {
+                                if (isTakenEmail) {
+                                    console.log("email taken");
+                                    res.sendStatus(410); // username taken
+                                    return;
+                                }
+                                const sql = `INSERT INTO users(username, email, password, isAdmin) VALUES("${username}", "${email}", "${password}", ${adminSetting})`;
+                                con.query(sql, (err, results) => {
+                                    if (err) {
+                                        console.log("query error");
+                                        console.error("Error executing query:", err);
+                                        return;
+                                    }
+                                    console.log("user added");
+                                    res.sendStatus(200); // user added
+                                    return;
+                                });
+                            })
+                            .catch((error) => {
+                                console.error("Error:", error);
+                                res.sendStatus(500);
+                            });
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        res.sendStatus(500);
+                    });
+            } else {
+                res.sendStatus(404); // admin with given id not found
+                return;
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            res.sendStatus(500);
+        });
+});
+
+// should probably make this not change the user's own password
+app.post("/removeUser", (req, res) => {
+    const { username } = req.body;
+    const userId = req.session.userId;
+    const isLoggedIn = req.session.isLoggedIn;
+
+    console.log("server here");
+    if (!isLoggedIn) {
+        console.log("not logged in");
+        res.sendStatus(401); // Unauthorized - Current password is incorrect
+        return;
+    }
+    isAdmin(userId)
+        .then((isAdmin) => {
+            if (isAdmin) {
+                isTakenUsername(username)
+                    .then((isTakenUsername) => {
+                        if (!isTakenUsername) {
+                            console.log("no user exists");
+                            res.sendStatus(404); // username doesn't exist
+                            return;
+                        }
+
+                        const check = `SELECT * FROM users WHERE username = "${username}" AND id = "${userId}"`;
+                        let checkRes;
+                        con.query(check, (err, results) => {
+                            if (err) {
+                                console.log("query error");
+                                console.error("Error executing query:", err);
+                                return;
+                            }
+                            if (results.length > 0) {
+                                console.log("cannot remove yourself");
+                                res.sendStatus(400); // user not removed
+                                return;
+                            }
+
+                            const sql = `UPDATE comments c JOIN users u ON c.author_id = u.id SET c.author_id = 0 WHERE u.username = "${username}"`;
+                            //const sql = `DELETE FROM comments WHERE author_id = 3;`
+                            const sql2 = `DELETE FROM users WHERE username = "${username}"`;
+                            con.query(sql, (err, results) => {
+                                if (err) {
+                                    console.log("query error");
+                                    console.error("Error executing query:", err);
+                                    return;
+                                }
+				console.log("updated user comments");
+                           	con.query(sql2, (err, results) => {
+                                	if (err) {
+                                	    console.log("query error");
+                                	    console.error("Error executing query:", err);
+                                	    return;
+                                	}
+                                	console.log("user removed");
+                                	res.sendStatus(200); // user added
+                                	return;
+                            	});
+                                return;
+                            });
+ 
+                        });
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        res.sendStatus(500);
+                    });
+            } else {
+                res.sendStatus(401); // admin with given id not found
+                return;
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            res.sendStatus(500);
+        });
+});
+
+app.post("/changeUserPassword", (req, res) => {
+    const { username, newPassword, confirmPassword } = req.body;
+    const userId = req.session.userId;
+    const isLoggedIn = req.session.isLoggedIn;
+
+    console.log("server here");
+    if (!isLoggedIn) {
+        console.log("not logged in");
+        res.sendStatus(401); // Unauthorized - Current password is incorrect
+        return;
+    }
+    isAdmin(userId)
+        .then((isAdmin) => {
+            if (isAdmin) {
+                isTakenUsername(username)
+                    .then((isTakenUsername) => {
+                        if (!isTakenUsername) {
+                            console.log(username);
+                            console.log("no user exists");
+                            res.sendStatus(404); // username doesn't exist
+                            return;
+                        }
+                        const sql = `UPDATE users SET password = "${newPassword}" WHERE username = "${username}"`;
+                        con.query(sql, (err, results) => {
+                            if (err) {
+                                console.log("query error");
+                                console.error("Error executing query:", err);
+                                return;
+                            }
+                            console.log("user's password changed");
+                            res.sendStatus(200); // user added
+                            return;
+                        });
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        res.sendStatus(500);
+                    });
+            } else {
+                res.sendStatus(401); // admin with given id not found
+                return;
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            res.sendStatus(500);
+        });
+});
+
+app.post("/checkCurrentPassword", (req, res) => {
+>>>>>>> ahmad-branch
     const { currentPassword } = req.body;
     const userId = req.session.userId;
     const isLoggedIn = req.session.isLoggedIn;
@@ -387,7 +913,11 @@ app.post('/checkCurrentPassword', (req, res) => {
     const sql = `SELECT * FROM users WHERE id = ? AND password = ?`;
     con.query(sql, [userId, currentPassword], (err, results) => {
         if (err) {
+<<<<<<< HEAD
             console.error('Error executing query:', err);
+=======
+            console.error("Error executing query:", err);
+>>>>>>> ahmad-branch
             return;
         }
         if (results.length > 0) {
@@ -395,11 +925,19 @@ app.post('/checkCurrentPassword', (req, res) => {
             res.sendStatus(200); // Current password is correct
             return;
         }
+<<<<<<< HEAD
         res.sendStatus(404); // Current password is correct	
     });
 });
 
 app.post('/createPassword', (req, res) => {
+=======
+        res.sendStatus(404); // Current password is correct
+    });
+});
+
+app.post("/createPassword", (req, res) => {
+>>>>>>> ahmad-branch
     const { newPassword } = req.body;
     const userId = req.session.userId;
     const isLoggedIn = req.session.isLoggedIn;
@@ -414,7 +952,11 @@ app.post('/createPassword', (req, res) => {
     const sql = `UPDATE users SET password = ? WHERE id = ?`;
     con.query(sql, [newPassword, userId], (err, results) => {
         if (err) {
+<<<<<<< HEAD
             console.error('Error executing query:', err);
+=======
+            console.error("Error executing query:", err);
+>>>>>>> ahmad-branch
             res.sendStatus(400);
             return;
         }
@@ -422,12 +964,17 @@ app.post('/createPassword', (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 app.use(express.static('public/'));
+=======
+app.use(express.static("public"));
+>>>>>>> ahmad-branch
 
 // Middleware to enable CORS
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+<<<<<<< HEAD
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -435,6 +982,18 @@ app.use((req, res, next) => {
 app.post('/resolveBugAndComment', (req, res) => {
     // Retrieve bugId, title, and description from the request body
     const userId = 1; // req.session.userId;
+=======
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept",
+    );
+    next();
+});
+
+app.post("/resolveBugAndComment", (req, res) => {
+    // Retrieve bugId, title, and description from the request body
+    const userId = req.session.userId;
+>>>>>>> ahmad-branch
     const isLoggedIn = req.session.isLoggedIn;
     const { bugId, title, description } = req.body;
 
@@ -445,6 +1004,7 @@ app.post('/resolveBugAndComment', (req, res) => {
         return;
     }
 
+<<<<<<< HEAD
 
     // Execute the queries to resolve the bug and add a comment
     const resolveBugQuery = 'UPDATE bugs SET dateResolved = CURRENT_TIMESTAMP, dateModified = CURRENT_TIMESTAMP WHERE id = ?';
@@ -454,20 +1014,39 @@ app.post('/resolveBugAndComment', (req, res) => {
         if (err) {
             console.error('Error beginning transaction:', err);
             res.status(500).send('Internal Server Error');
+=======
+    // Execute the queries to resolve the bug and add a comment
+    const resolveBugQuery =
+        "UPDATE bugs SET dateResolved = CURRENT_TIMESTAMP, dateModified = CURRENT_TIMESTAMP WHERE id = ?";
+    const addCommentQuery =
+        "INSERT INTO comments(bug_id, author_id, title, body) VALUES (?, ?, ?, ?)";
+
+    con.beginTransaction((err) => {
+        if (err) {
+            console.error("Error beginning transaction:", err);
+            res.status(500).send("Internal Server Error");
+>>>>>>> ahmad-branch
             return;
         }
 
         // Execute the query to resolve the bug
         con.query(resolveBugQuery, [bugId], (err, result) => {
             if (err) {
+<<<<<<< HEAD
                 console.error('Error resolving bug:', err);
                 con.rollback(() => {
                     res.status(500).send('Error resolving bug');
+=======
+                console.error("Error resolving bug:", err);
+                con.rollback(() => {
+                    res.status(500).send("Error resolving bug");
+>>>>>>> ahmad-branch
                 });
                 return;
             }
 
             // Execute the query to add a comment
+<<<<<<< HEAD
             con.query(addCommentQuery, [bugId, userId, title, description], (err, result) => {
                 if (err) {
                     console.error('Error adding comment:', err);
@@ -483,19 +1062,55 @@ app.post('/resolveBugAndComment', (req, res) => {
                         console.error('Error committing transaction:', err);
                         con.rollback(() => {
                             res.status(500).send('Error committing transaction');
+=======
+            con.query(
+                addCommentQuery,
+                [bugId, userId, title, description],
+                (err, result) => {
+                    if (err) {
+                        console.error("Error adding comment:", err);
+                        con.rollback(() => {
+                            res.status(500).send("Error adding comment");
+>>>>>>> ahmad-branch
                         });
                         return;
                     }
 
+<<<<<<< HEAD
                     console.log('Bug resolved and comment added successfully');
                     res.status(200).send('Bug resolved and comment added successfully');
                 });
             });
+=======
+                    // Commit the transaction
+                    con.commit((err) => {
+                        if (err) {
+                            console.error("Error committing transaction:", err);
+                            con.rollback(() => {
+                                res.status(500).send("Error committing transaction");
+                            });
+                            return;
+                        }
+                        getEmailsForBug(
+                            bugId,
+                            `Report#${bugId}: New Activity`,
+                            "This report has been resolved, please do not reply.",
+                        );
+                        console.log("Bug resolved and comment added successfully");
+                        res.status(200).send("Bug resolved and comment added successfully");
+                    });
+                },
+            );
+>>>>>>> ahmad-branch
         });
     });
 });
 
+<<<<<<< HEAD
 app.post('/updateBug', (req, res) => {
+=======
+app.post("/updateBug", (req, res) => {
+>>>>>>> ahmad-branch
     const userId = req.session.userId;
     const isLoggedIn = req.session.isLoggedIn;
     const { bugId, title, description } = req.body;
@@ -509,6 +1124,7 @@ app.post('/updateBug', (req, res) => {
 
     // Update the bug report in the database
     // I should also make a few lines to check if the bug is resolved or not
+<<<<<<< HEAD
     const updateBug = 'UPDATE bugs SET dateModified = CURRENT_TIMESTAMP WHERE id = ?';
     const insertComment = 'INSERT INTO comments(bug_id, author_id, title, body) VALUES (?, ?, ?, ?)';
 
@@ -527,11 +1143,48 @@ app.post('/updateBug', (req, res) => {
 
             res.status(200).send('Bug report updated and comment added successfully');
         });
+=======
+    const updateBug =
+        "UPDATE bugs SET dateModified = CURRENT_TIMESTAMP WHERE id = ?";
+    const insertComment =
+        "INSERT INTO comments(bug_id, author_id, title, body) VALUES (?, ?, ?, ?)";
+
+    const participants = "SELECT * FROM ";
+    con.query(updateBug, [bugId], (updateErr, result) => {
+        if (updateErr) {
+            console.error("Error updating bug report:", err);
+            res.status(500).send("Error updating bug report");
+            return;
+        }
+        con.query(
+            insertComment,
+            [bugId, userId, title, description],
+            (insertErr, insertResult) => {
+                if (insertErr) {
+                    console.error("Error adding comment:", insertErr);
+                    res.status(500).send("Error adding comment");
+                    return;
+                }
+                getEmailsForBug(
+                    bugId,
+                    `Report#${bugId}: New Activity`,
+                    "This report has recieved new activity, please do not reply.",
+                );
+                res
+                    .status(200)
+                    .send("Bug report updated and comment added successfully");
+            },
+        );
+>>>>>>> ahmad-branch
     });
 });
 
 // Route handler for adding a bug and comment
+<<<<<<< HEAD
 app.post('/addBugAndComment', (req, res) => {
+=======
+app.post("/addBugAndComment", (req, res) => {
+>>>>>>> ahmad-branch
     // Retrieve user ID from session
     const userId = req.session.userId;
     const isLoggedIn = req.session.isLoggedIn;
@@ -545,7 +1198,12 @@ app.post('/addBugAndComment', (req, res) => {
     const { title, description } = req.body;
 
     const makeBugQuery = "INSERT INTO bugs() VALUES()";
+<<<<<<< HEAD
     const addCommentQuery = "INSERT INTO comments(bug_id, author_id, title, body) SELECT MAX(id), ?, ?, ? FROM bugs";
+=======
+    const addCommentQuery =
+        "INSERT INTO comments(bug_id, author_id, title, body) SELECT MAX(id), ?, ?, ? FROM bugs";
+>>>>>>> ahmad-branch
 
     con.query(makeBugQuery, (err, result) => {
         if (err) {
@@ -564,62 +1222,142 @@ app.post('/addBugAndComment', (req, res) => {
             }
 
             console.log("Comment added");
+<<<<<<< HEAD
             res.redirect('/Pages/main.html');
+=======
+            res.redirect("/home.html");
+>>>>>>> ahmad-branch
         });
     });
 });
 
 // Login endpoint
+<<<<<<< HEAD
 app.post('/login', (req, res) => {
     const { username, password, rememberMe } = req.body;
 
     const sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
+=======
+app.post("/login", (req, res) => {
+    /// I need to make this not case sensitive for username
+    const { username, password, rememberMe } = req.body;
+
+    const sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
+    const sql2 = `SELECT * FROM users WHERE username = ? AND password = ? AND isAdmin = true`;
+>>>>>>> ahmad-branch
     con.query(sql, [username, password], (err, results) => {
         if (err) {
             console.error("Error executing query:", err);
             res.status(500).send("Internal Server Error");
             return;
         }
+<<<<<<< HEAD
 
         if (results.length > 0) {
             // Start a session
             const userId = results[0].id;
             req.session.userId = userId;
             req.session.isLoggedIn = true;
+=======
+        if (results.length == 0) {
+            res.status(401).send("Invalid username or password");
+            return;
+        }
+        // Start a session
+        const userId = results[0].id;
+        req.session.userId = userId;
+        req.session.isLoggedIn = true;
+
+        con.query(sql2, [username, password], (err, results2) => {
+            if (err) {
+                console.error("Error executing query:", err);
+                res.status(500).send("Internal Server Error");
+                return;
+            }
+            if (results2.length > 0) {
+                req.session.isAdmin = true;
+                console.log("this is admin");
+            } else {
+                req.session.isAdmin = false;
+                console.log("this is not an admin");
+            }
+>>>>>>> ahmad-branch
             if (rememberMe) {
                 console.log("big cookie");
                 req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
             } else {
                 console.log("smol cookie");
             }
+<<<<<<< HEAD
             res.redirect('/dashboard');
         } else {
             res.status(401).send("Invalid username or password");
         }
+=======
+            res.redirect("/dashboard");
+        });
+    });
+});
+
+app.post("/logout", (req, res) => {
+    // Perform logout actions here, such as destroying session, clearing cookies, etc.
+    console.log("logging out");
+    // For example, if you're using sessions with express-session middleware
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Error destroying session:", err);
+            res.sendStatus(500); // Internal Server Error
+            return;
+        }
+        // Redirect the user to the login page after successful logout
+        console.log("The cookie muncher has devoured your cookie");
+        res.sendStatus(200); // good
+>>>>>>> ahmad-branch
     });
 });
 
 // back to login
+<<<<<<< HEAD
 app.get('/checkLogin', (req, res) => {
     if (!req.session.isLoggedIn) {
         res.redirect('/login'); // Redirect to login page if not logged in
     } else {
         res.end();
+=======
+app.get("/checkLogin", (req, res) => {
+    if (!req.session.isLoggedIn) {
+        res.status(401).send("Unauthorized"); // Send 401 Unauthorized status
+    } else {
+        res.sendStatus(200);
+>>>>>>> ahmad-branch
     }
 });
 
 // Dashboard endpoint (protected route)
+<<<<<<< HEAD
 app.get('/dashboard', (req, res) => {
     if (req.session.isLoggedIn) {
         res.redirect('/Pages/main.html');
     } else {
         res.redirect('/Pages/login.html'); // Redirect to login page if not logged in
+=======
+app.get("/dashboard", (req, res) => {
+    if (req.session.isLoggedIn) {
+        res.redirect("/home.html");
+    } else {
+        res.redirect("/login.html"); // Redirect to login page if not logged in
+>>>>>>> ahmad-branch
     }
 });
 
 // Route handler for serving index.html
+<<<<<<< HEAD
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/Pages/index.html'));
+=======
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+>>>>>>> ahmad-branch
 });
 
 // Get local IP address
@@ -628,7 +1366,11 @@ let ipAddress;
 for (const ifaceName in interfaces) {
     const iface = interfaces[ifaceName];
     for (const alias of iface) {
+<<<<<<< HEAD
         if (alias.family === 'IPv4' && !alias.internal) {
+=======
+        if (alias.family === "IPv4" && !alias.internal) {
+>>>>>>> ahmad-branch
             ipAddress = alias.address;
             break;
         }
@@ -638,11 +1380,19 @@ for (const ifaceName in interfaces) {
     }
 }
 
+<<<<<<< HEAD
 // Start the server 
+=======
+// Start the server
+>>>>>>> ahmad-branch
 // change first line below to "const server = app.listen(port, ipAddress, () => {"const server = app.listen(port, ipAddress, () => {"
 // for hosting a server to current ipaddress
 const server = app.listen(port, () => {
     const host = server.address().address;
     const port = server.address().port;
     console.log(`Server running at http://${host}:${port}`);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> ahmad-branch

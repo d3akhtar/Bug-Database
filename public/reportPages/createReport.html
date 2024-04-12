@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../Styling/all.css">
+    <link rel="stylesheet" href="../Styling/enterReport.css">
+    <title>Create Report - BugBytes</title>
+</head>
+
+<body class="bg">
+
+    <div class="container">
+        <div class="formCont">
+            <form id="addForm">
+                <div class="inputBlock">
+                    <div class="lab">
+                        <label>Title: </label>
+                    </div>
+                    <div class="inp">
+                        <input class="reportNum" type="text" id="bugTitle" name="reportNum"
+                            placeholder="Enter the report type" required>
+                    </div>
+                </div>
+                <div class="inputBlock">
+                    <div class="lab">
+                        <label>Summary of Bug: </label>
+                    </div>
+                    <div class="inp">
+                        <textarea class="summary" id="bugDescription" name="summary"
+                            placeholder="Enter description of report"></textarea>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button id="addReport" style="padding:0px">Submit</button>
+                    <button onclick="movePage()" style="padding:0px">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <script src="/scripts/createNavBar.js"></script>
+        <script src="/scripts/addBug.js"></script>
+        <script>function movePage() {
+                window.location.href = "../home.html";
+            }</script>
+        <script src="/scripts/isValidSession.js"></script>
+</body>
+
+</html>

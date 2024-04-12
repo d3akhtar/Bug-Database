@@ -1,0 +1,41 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 18px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    margin: auto;
+}
+
+.lab {
+    width: 18%;
+}
+
+.inp {
+    width: 40%;
+}
+
+.inputBlock {
+    display: flex;
+    margin: 15px 0px 40px 25px;
+}
+
+.reportNum, .bugType {
+    width: 350px;
+}
+
+.summary {
+    width: 350px;
+    height: 140px;
+}
+
+button {
+    width: 110px;
+    height: 50px;
+    margin-left: 20px;
+}
