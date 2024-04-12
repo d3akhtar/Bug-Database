@@ -36,16 +36,6 @@
 ehthumbs.db
 Thumbs.db
 
-<<<<<<< HEAD
-# SQL Server files
-*.mdf
-*.ldf
-
-# Other stuff
-
-userSQL.json
-=======
 
 #extras
 userSQL.json
->>>>>>> ahmad-branch

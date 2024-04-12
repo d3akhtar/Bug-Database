@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-This is a Bug Report System that currently utilizes HTML, CSS, JavaScript, NodeJS, Bootstrap, SQL, and JQuery. The purpose of this website is to let users input bugs/errors into a database. 
-
-SQL and Node, along with some node packages are required.
-=======
 The Bug Report System is a program designed to let users log bugs/errors into a database. 
->>>>>>> ahmad-branch
 
 ## Requirements: ##
 - SQL (Server) 8.0.36 - https://dev.mysql.com/downloads/installer/
