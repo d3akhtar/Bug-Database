@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
-var webMail = 'bugByte406@gmail.com';
-var webMailPass = 'the password';   // Find secure way to hold this (hash,bycrypt)
+var webMail = 'bugbytes123@gmail.com';
+var webMailPass = 'ppmzynniahaneegl';   // Find secure way to hold this (hash,bycrypt)
 var subjectList = ['Bug #id has been resolved', 'Bug #id has been modified'];
 
 var transporter = nodemailer.createTransport({
